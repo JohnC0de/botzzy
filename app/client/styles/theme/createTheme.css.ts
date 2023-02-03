@@ -60,6 +60,8 @@ export const colors = createThemeContract({
     100: null,
     500: null,
   },
+
+  line: null,
 });
 
 export const lightTheme = createTheme(colors, lightThemeColors);

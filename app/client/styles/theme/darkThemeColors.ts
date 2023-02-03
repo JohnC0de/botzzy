@@ -56,4 +56,6 @@ export const darkThemeColors = {
     100: "#202024",
     500: "#121214",
   },
+
+  line: "#323238",
 };

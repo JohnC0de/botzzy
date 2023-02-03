@@ -9,8 +9,6 @@ globalStyle("*", {
   padding: 0,
   margin: 0,
   boxSizing: "border-box",
-  fontFamily: vars.fonts.default,
-  color: vars.colors.text[500],
 });
 
 globalStyle("li", {
@@ -19,6 +17,8 @@ globalStyle("li", {
 
 globalStyle("body", {
   backgroundColor: vars.colors.bg[500],
+  fontFamily: vars.fonts.default,
+  color: vars.colors.text[500],
 });
 
 export const globalStyles = { vars, darkTheme, lightTheme };

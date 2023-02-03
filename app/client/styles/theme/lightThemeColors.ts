@@ -56,4 +56,6 @@ export const lightThemeColors = {
     100: "#ffffff",
     500: "#f8f9fa",
   },
+
+  line: "#e9ecef",
 };
