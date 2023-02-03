@@ -7,10 +7,10 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { useState } from "react";
-import { globalStyles } from "~/styles";
+import { globalStyles } from "~/client/styles";
 
 export function View() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   const toggleDarkTheme = () => setIsDarkTheme((oldState) => !oldState);
 
   return (

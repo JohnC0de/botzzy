@@ -10,14 +10,15 @@ globalStyle("*", {
   margin: 0,
   boxSizing: "border-box",
   fontFamily: vars.fonts.default,
+  color: vars.colors.text[500],
 });
 
 globalStyle("li", {
   listStyle: "none",
 });
 
-globalStyle("#body", {
-  backgroundColor: "red",
+globalStyle("body", {
+  backgroundColor: vars.colors.bg[500],
   height: "100vh",
   width: "100vw",
 });
