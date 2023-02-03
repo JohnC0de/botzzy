@@ -6,9 +6,9 @@ import {
   errorBoundaryAside,
   errorBoundaryAncora,
 } from "./styles.css";
-import type { ErrorBoundaryComponent as Props } from "@remix-run/node";
+import type { ErrorBoundaryComponent } from "@remix-run/node";
 
-export const ErrorBoundaryComponent: Props = ({ error }) => {
+export const Treatment: ErrorBoundaryComponent = ({ error }) => {
   const { message } = error;
 
   return (

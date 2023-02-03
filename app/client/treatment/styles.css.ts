@@ -4,6 +4,7 @@ const { vars } = globalStyles;
 
 export const errorBoundaryContainer = style({
   margin: vars.space[4],
+  flex: 1,
 });
 
 export const errorBoundaryHeading = style({
@@ -14,7 +15,6 @@ export const errorBoundaryHeading = style({
 
 export const errorBoundaryAside = style({
   display: "flex",
-  width: "100%",
   height: "1px",
   background: vars.colors.danger[400],
   margin: `${vars.space[4]} 0`,
@@ -24,7 +24,6 @@ export const errorBoundaryStrong = style({
   display: "block",
   color: vars.colors.danger[400],
   background: vars.colors.bg[100],
-  maxWidth: "100vw",
   padding: vars.space[4],
   borderRadius: vars.radii.px,
 });
@@ -32,6 +31,7 @@ export const errorBoundaryStrong = style({
 export const errorBoundaryCode = style({
   fontSize: vars.fontSizes.lg,
   fontWeight: vars.fontWeights.bold,
+  fontFamily: vars.fonts.code,
   color: vars.colors.text[500],
 });
 

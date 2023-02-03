@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Links,
   LiveReload,
@@ -6,7 +7,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { useState } from "react";
+
+import { ToastContextProvider } from "~/client/context";
 import { globalStyles } from "~/client/styles";
 
 export function View() {
@@ -23,7 +25,9 @@ export function View() {
         <Links />
       </head>
       <body>
-        <Outlet context={{ isDarkTheme, toggleDarkTheme }} />
+        <ToastContextProvider>
+          <Outlet context={{ isDarkTheme, toggleDarkTheme }} />
+        </ToastContextProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
