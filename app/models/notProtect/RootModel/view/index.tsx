@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import { ToastContextProvider } from "~/client/context";
+import { ToastContextProvider } from "~/client/contexts";
 import { globalStyles } from "~/client/styles";
 
 export function View() {
