@@ -31,7 +31,7 @@ export const buttonStyle = recipe({
         background: "inherit",
         selectors: {
           "&:hover:not(:disabled)": {
-            filter: "brightness(0.96)",
+            filter: "brightness(0.92)",
             color: vars.colors.primary[300],
           },
         },
@@ -39,7 +39,7 @@ export const buttonStyle = recipe({
       ghost: {
         color: vars.colors.text[500],
         background: "inherit",
-        selectors: { "&:hover:not(:disabled)": { filter: "brightness(0.96)" } },
+        selectors: { "&:hover:not(:disabled)": { filter: "brightness(0.92)" } },
       },
     },
 

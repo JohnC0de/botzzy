@@ -63,10 +63,10 @@ export const cardStyle = recipe({
       inherit: { alignItems: "inherit" },
     },
     boxShadow: {
-      xs: { boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.5)" },
-      sm: { boxShadow: "4px 4px 9px rgba(0, 0, 0, 0.5)" },
+      xs: { boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.1)" },
+      sm: { boxShadow: "4px 4px 9px rgba(0, 0, 0, 0.3)" },
       md: { boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.5)" },
-      lg: { boxShadow: "6px 6px 11px rgba(0, 0, 0, 0.5)" },
+      lg: { boxShadow: "6px 6px 11px rgba(0, 0, 0, 0.7)" },
     },
     justify: {
       "flex-start": { justifyContent: "flex-start" },
