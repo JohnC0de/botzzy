@@ -1,4 +1,5 @@
 // Feedback
+export { Spinner } from "./Spinner";
 
 // Form
 export { Button } from "./Button";

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Button, Card } from "~/client/components";
-import { Spinner } from "~/client/components/Spinner";
+import { Button, Card, Spinner } from "~/client/components";
 
 export function View() {
   const [isLoading1, setIsLoading1] = useState(false);
