@@ -1,4 +1,5 @@
-import { buttonStyle } from "./styles.css";
+import { Spinner } from "../Spinner";
+import { buttonStyle, loadingStyle } from "./styles.css";
 import type { ButtonTypes } from "./types";
 
 export function Button({
@@ -10,14 +11,29 @@ export function Button({
   fontWeight,
   space,
   children,
+  disabled,
   ...rest
 }: ButtonTypes) {
   return (
     <button
-      className={buttonStyle({ variant, fontSize, fontWeight, radii, space })}
+      disabled={isLoading || disabled}
+      className={buttonStyle({
+        variant,
+        fontSize,
+        fontWeight,
+        radii,
+        space,
+      })}
       {...rest}
     >
-      {children}
+      {isLoading && (
+        <div className={loadingStyle}>
+          <Spinner />
+        </div>
+      )}
+      <span style={{ opacity: isLoading ? 0 : 1, transition: "all 0.2s" }}>
+        {children}
+      </span>
     </button>
   );
 }

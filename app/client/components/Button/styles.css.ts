@@ -1,3 +1,4 @@
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { globalStyles } from "~/client/styles";
 const { vars } = globalStyles;
@@ -6,6 +7,7 @@ export const buttonStyle = recipe({
   base: {
     display: "flex",
     alignItems: "center",
+    position: "relative",
 
     height: "min-content",
     border: "1px solid transparent",
@@ -13,7 +15,7 @@ export const buttonStyle = recipe({
     transition: "all 0.2s",
 
     ":hover": { cursor: "pointer" },
-    ":disabled": { cursor: "not-allowed" },
+    ":disabled": { cursor: "not-allowed", opacity: 0.7 },
   },
 
   variants: {
@@ -92,4 +94,12 @@ export const buttonStyle = recipe({
     fontWeight: "bold",
     variant: "default",
   },
+});
+
+export const loadingStyle = style({
+  opacity: 1,
+  position: "absolute",
+  left: "50%",
+  top: "50%",
+  transform: "translate(-50%, -50%)",
 });
