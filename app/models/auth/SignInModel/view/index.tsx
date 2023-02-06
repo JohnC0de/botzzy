@@ -1,4 +1,4 @@
-import { Card } from "~/components";
+import { Card } from "~/client/components";
 
 export function View() {
   return (
