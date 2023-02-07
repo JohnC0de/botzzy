@@ -34,7 +34,6 @@ export const buttonStyle = recipe({
         selectors: {
           "&:hover:not(:disabled)": {
             filter: "brightness(0.92)",
-            color: vars.colors.primary[300],
           },
         },
       },
@@ -96,8 +95,7 @@ export const buttonStyle = recipe({
   },
 });
 
-export const loadingStyle = style({
-  opacity: 1,
+export const loadingContainerStyle = style({
   position: "absolute",
   left: "50%",
   top: "50%",

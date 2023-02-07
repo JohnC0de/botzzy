@@ -1,12 +1,13 @@
 import { recipe } from "@vanilla-extract/recipes";
-import { vars } from "~/client/styles/global.css";
+import { globalStyles } from "~/client/styles";
+const { vars } = globalStyles;
 
 export const spinnerStyle = recipe({
   base: {
     display: "block",
     borderRadius: vars.radii.full,
-    border: "3px solid " + vars.colors.text[100],
-    borderTopColor: vars.colors.primary[500],
+    border: "3px solid " + vars.colors.line,
+    borderTopColor: vars.colors.text[500],
   },
 
   variants: {
@@ -19,9 +20,21 @@ export const spinnerStyle = recipe({
       xl: { height: "1.75rem", width: "1.75rem" },
       "2xl": { height: "2rem", width: "2rem" },
     },
+
+    colorful: {
+      colored: {
+        border: "3px solid " + vars.colors.primary[700],
+        borderTopColor: "#FFFFFF",
+      },
+      unColored: {
+        border: "3px solid " + vars.colors.line,
+        borderTopColor: vars.colors.text[500],
+      },
+    },
   },
 
   defaultVariants: {
     size: "md",
+    colorful: "unColored",
   },
 });

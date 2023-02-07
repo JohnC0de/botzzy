@@ -1,12 +1,12 @@
 import { Spinner } from "../Spinner";
-import { buttonStyle, loadingStyle } from "./styles.css";
+import { buttonStyle, loadingContainerStyle } from "./styles.css";
 import type { ButtonTypes } from "./types";
 
 export function Button({
   isDanger,
   isLoading,
   radii,
-  variant,
+  variant = "default",
   fontSize,
   fontWeight,
   space,
@@ -27,10 +27,11 @@ export function Button({
       {...rest}
     >
       {isLoading && (
-        <div className={loadingStyle}>
-          <Spinner />
-        </div>
+        <span className={loadingContainerStyle}>
+          <Spinner colorful={variant === "default" ? "colored" : "unColored"} />
+        </span>
       )}
+
       <span style={{ opacity: isLoading ? 0 : 1, transition: "all 0.2s" }}>
         {children}
       </span>

@@ -12,7 +12,7 @@ import { ToastContextProvider } from "~/client/contexts";
 import { globalStyles } from "~/client/styles";
 
 export function View() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   const toggleDarkTheme = () => setIsDarkTheme((oldState) => !oldState);
 
   return (
@@ -26,6 +26,7 @@ export function View() {
       </head>
       <body>
         <ToastContextProvider>
+          <button onClick={toggleDarkTheme}>switch theme</button>
           <Outlet context={{ isDarkTheme, toggleDarkTheme }} />
         </ToastContextProvider>
         <ScrollRestoration />
