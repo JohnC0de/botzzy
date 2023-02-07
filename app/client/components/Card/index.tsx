@@ -11,6 +11,7 @@ export function Card({
   radii,
   space,
   as = "div",
+  children,
   boxShadow,
   direction,
   spacing,
@@ -32,6 +33,8 @@ export function Card({
         spacing,
       })}
       {...rest}
-    />
+    >
+      {children}
+    </Tag>
   );
 }

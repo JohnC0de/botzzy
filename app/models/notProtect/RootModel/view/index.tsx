@@ -26,7 +26,6 @@ export function View() {
       </head>
       <body>
         <ToastContextProvider>
-          <button onClick={toggleDarkTheme}>switch theme</button>
           <Outlet context={{ isDarkTheme, toggleDarkTheme }} />
         </ToastContextProvider>
         <ScrollRestoration />

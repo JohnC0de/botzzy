@@ -1,5 +1,13 @@
+import { useOutletContext } from "@remix-run/react";
 import { useState } from "react";
-import { Button, Card, Menu, Spinner } from "~/client/components";
+import {
+  Button,
+  Card,
+  Menu,
+  Modal,
+  Popover,
+  Spinner,
+} from "~/client/components";
 import { useToast } from "~/client/hooks";
 
 export function View() {
@@ -26,6 +34,10 @@ export function View() {
     fireToast({ type, message: type + "toast" });
   }
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const toogleModal = () => setModalIsOpen((old) => !old);
+
+  const outletContext = useOutletContext<any>();
   return (
     <Card space={4} spacing={4} direction="column">
       <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
@@ -57,12 +69,20 @@ export function View() {
         <Spinner size="2xl" />
       </Card>
 
-      <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
+      <Card
+        title="Actions"
+        space={4}
+        spacing={2}
+        radii="xs"
+        showBgColor
+        boxShadow="xs"
+      >
         <Menu
           options={[
-            <div key="a">Choose a toast</div>,
+            <h4 key="a">Menu:</h4>,
             <Button
               key="a"
+              variant="ghost"
               style={{ width: "100%" }}
               onClick={() => handleFireToast("error")}
             >
@@ -70,6 +90,7 @@ export function View() {
             </Button>,
             <Button
               key="a"
+              variant="ghost"
               style={{ width: "100%" }}
               onClick={() => handleFireToast("info")}
             >
@@ -77,6 +98,7 @@ export function View() {
             </Button>,
             <Button
               key="a"
+              variant="ghost"
               style={{ width: "100%" }}
               onClick={() => handleFireToast("success")}
             >
@@ -84,6 +106,7 @@ export function View() {
             </Button>,
             <Button
               key="a"
+              variant="ghost"
               style={{ width: "100%" }}
               onClick={() => handleFireToast("warning")}
             >
@@ -93,7 +116,29 @@ export function View() {
         >
           <Button>Fire toast</Button>
         </Menu>
+
+        <Button onClick={toogleModal}>Open modal</Button>
+
+        <Popover button={<Button>Switch Theme</Button>}>
+          <Card space={2} direction="column" spacing={1}>
+            <h4>Popover:</h4>
+            <Button
+              style={{ whiteSpace: "nowrap" }}
+              onClick={outletContext.toggleDarkTheme}
+            >
+              switch to theme {outletContext.isDarkTheme ? "light" : "dark"}
+            </Button>
+          </Card>
+        </Popover>
       </Card>
+
+      <Modal
+        title="One modal"
+        isVisible={modalIsOpen}
+        makeInvisible={toogleModal}
+      >
+        <Card space={4}>This is a beautiful modal</Card>
+      </Modal>
     </Card>
   );
 }
