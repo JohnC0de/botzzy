@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button, Card, Spinner } from "~/client/components";
+import { Button, Card, Menu, Spinner } from "~/client/components";
+import { useToast } from "~/client/hooks";
 
 export function View() {
   const [isLoading1, setIsLoading1] = useState(false);
@@ -18,6 +19,11 @@ export function View() {
   function handleActivateLoading3() {
     setIsLoading3(true);
     setTimeout(() => setIsLoading3(false), 4000);
+  }
+
+  const { fireToast } = useToast();
+  function handleFireToast(type: "error" | "success" | "warning" | "info") {
+    fireToast({ type, message: type + "toast" });
   }
 
   return (
@@ -49,6 +55,44 @@ export function View() {
         <Spinner size="lg" />
         <Spinner size="xl" />
         <Spinner size="2xl" />
+      </Card>
+
+      <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
+        <Menu
+          options={[
+            <div key="a">Choose a toast</div>,
+            <Button
+              key="a"
+              style={{ width: "100%" }}
+              onClick={() => handleFireToast("error")}
+            >
+              Error
+            </Button>,
+            <Button
+              key="a"
+              style={{ width: "100%" }}
+              onClick={() => handleFireToast("info")}
+            >
+              info
+            </Button>,
+            <Button
+              key="a"
+              style={{ width: "100%" }}
+              onClick={() => handleFireToast("success")}
+            >
+              success
+            </Button>,
+            <Button
+              key="a"
+              style={{ width: "100%" }}
+              onClick={() => handleFireToast("warning")}
+            >
+              warning
+            </Button>,
+          ]}
+        >
+          <Button>Fire toast</Button>
+        </Menu>
       </Card>
     </Card>
   );

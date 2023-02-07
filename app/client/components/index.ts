@@ -6,3 +6,6 @@ export { Button } from "./Button";
 
 // Data display
 export { Card } from "./Card";
+
+// Overlay
+export { Menu } from "./Menu";

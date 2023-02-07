@@ -101,3 +101,11 @@ export const loadingContainerStyle = style({
   top: "50%",
   transform: "translate(-50%, -50%)",
 });
+
+export const childrenStyle = style({
+  transition: "all 0.2s",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flex: 1,
+});

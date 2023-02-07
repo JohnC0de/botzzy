@@ -1,5 +1,9 @@
 import { Spinner } from "../Spinner";
-import { buttonStyle, loadingContainerStyle } from "./styles.css";
+import {
+  buttonStyle,
+  childrenStyle,
+  loadingContainerStyle,
+} from "./styles.css";
 import type { ButtonTypes } from "./types";
 
 export function Button({
@@ -32,7 +36,7 @@ export function Button({
         </span>
       )}
 
-      <span style={{ opacity: isLoading ? 0 : 1, transition: "all 0.2s" }}>
+      <span className={childrenStyle} style={{ opacity: isLoading ? 0 : 1 }}>
         {children}
       </span>
     </button>
