@@ -8,6 +8,5 @@ export { Button } from "./Button";
 export { Card } from "./Card";
 
 // Overlay
-export { Menu } from "./Menu";
 export { Modal } from "./Modal";
 export { Popover } from "./Popover";
