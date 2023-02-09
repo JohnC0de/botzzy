@@ -21,7 +21,8 @@ export const modalContentStyle = style({
   height: "max-content",
   backgroundColor: vars.colors.bg[100],
   zIndex: 4,
-  minWidth: "400px",
+  minWidth: "300px",
+  overflow: "hidden",
 });
 
 export const modalContentHeaderStyle = style({

@@ -25,17 +25,17 @@ export function calcPosition({
     case "top":
       if (popoverH > position.bottom) setDirection("bottom");
       break;
+    case "right":
+      const rMinus = windowWidth - position.left;
+      if (popoverW > rMinus) setDirection("left");
+      break;
     case "bottom":
       const bMinus = windowHeight - position.top;
       if (bMinus < popoverH) setDirection("top");
       break;
     case "left":
-      const lMinus = windowWidth - position.right;
-      if (popoverW < lMinus) setDirection("right");
-      break;
-    case "right":
-      const rMinus = windowWidth - position.left;
-      if (popoverW < rMinus) setDirection("left");
+      if (popoverW > position.right || position.right < 0)
+        setDirection("right");
       break;
     case "top-left":
       if (popoverH > position.bottom) setDirection("bottom-left");

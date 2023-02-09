@@ -64,9 +64,9 @@ export const cardStyle = recipe({
     },
     boxShadow: {
       xs: { boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.1)" },
-      sm: { boxShadow: "4px 4px 9px rgba(0, 0, 0, 0.3)" },
-      md: { boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.5)" },
-      lg: { boxShadow: "6px 6px 11px rgba(0, 0, 0, 0.7)" },
+      sm: { boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.2)" },
+      md: { boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.4)" },
+      lg: { boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.6)" },
     },
     justify: {
       "flex-start": { justifyContent: "flex-start" },
@@ -80,6 +80,13 @@ export const cardStyle = recipe({
     },
     showBgColor: {
       true: { backgroundColor: vars.colors.bg[100] },
+    },
+    bordered: {
+      top: { borderTop: "1px solid " + vars.colors.line },
+      left: { borderLeft: "1px solid " + vars.colors.line },
+      right: { borderRight: "1px solid " + vars.colors.line },
+      bottom: { borderBottom: "1px solid " + vars.colors.line },
+      full: { border: "1px solid " + vars.colors.line },
     },
   },
 });

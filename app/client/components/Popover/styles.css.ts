@@ -59,6 +59,12 @@ export const contentContainerStyle = recipe({
         transform: "translateY(50%)",
       },
     },
+    boxShadow: {
+      xs: { boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.1)" },
+      sm: { boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.2)" },
+      md: { boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.4)" },
+      lg: { boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.6)" },
+    },
   },
 
   defaultVariants: {

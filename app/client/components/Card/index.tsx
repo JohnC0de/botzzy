@@ -17,6 +17,7 @@ export function Card({
   spacing,
   justify,
   align,
+  bordered,
   ...rest
 }: CardProps) {
   const Tag = tags[as];
@@ -31,6 +32,7 @@ export function Card({
         space,
         align,
         spacing,
+        bordered,
       })}
       {...rest}
     >
