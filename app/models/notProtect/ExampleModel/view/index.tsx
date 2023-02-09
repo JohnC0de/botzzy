@@ -1,10 +1,11 @@
 import { useOutletContext } from "@remix-run/react";
 import { useState } from "react";
-import { Button, Card, Modal, Popover } from "~/client/components";
+import { Button, Card, Drawer, Modal, Popover } from "~/client/components";
 
 export function View() {
   const outletContext = useOutletContext<any>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   return (
     <>
       <Card space={4} spacing={6} direction="column">
@@ -18,6 +19,7 @@ export function View() {
                 Switch theme
               </Button>
               <Button onClick={() => setModalIsOpen(true)}>Open modal</Button>
+              <Button onClick={() => setDrawerIsOpen(true)}>Open drawer</Button>
             </Card>
           </Popover>
         </Card>
@@ -45,6 +47,19 @@ export function View() {
           <Button>Confirm</Button>
         </Card>
       </Modal>
+
+      <Drawer
+        isVisible={drawerIsOpen}
+        title="I love drawing"
+        makeInvisible={() => setDrawerIsOpen(false)}
+      >
+        <Card space={4} style={{ maxWidth: "20rem" }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+          laboriosam, voluptas magni praesentium, ullam et id consequatur dolor
+          sit cum sapiente hic. Nihil, non iusto. Mollitia voluptas quia error
+          et.
+        </Card>
+      </Drawer>
     </>
   );
 }

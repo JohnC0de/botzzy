@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 
-import type { ReactNode } from "react";
 import { Icons } from "~/client/icons";
 import { globalStyles } from "~/client/styles";
 import {
@@ -11,12 +10,7 @@ import {
   modalOverlayStyle,
 } from "./styles.css";
 
-type ModalProps = {
-  title?: string;
-  children?: ReactNode;
-  isVisible: boolean;
-  makeInvisible: () => void;
-};
+import type { ModalProps } from "./stypes";
 
 export function Modal({
   isVisible,
