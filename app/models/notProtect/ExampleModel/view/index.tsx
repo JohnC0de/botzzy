@@ -1,25 +1,72 @@
 import { useOutletContext } from "@remix-run/react";
 import { useState } from "react";
-import { Button, Card, Drawer, Modal, Popover } from "~/client/components";
+import {
+  Button,
+  Card,
+  Drawer,
+  Input,
+  Modal,
+  Popover,
+  Spinner,
+} from "~/client/components";
 
 export function View() {
   const outletContext = useOutletContext<any>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const [drawerIsOpen, setDrawerIsOpen] = useState<any>("");
   return (
     <>
-      <Card space={4} spacing={6} direction="column">
-        <Card space={4} radii="xs" showBgColor boxShadow="xs">
-          <Popover
-            position="top-right"
-            button={<Button>Popover options</Button>}
-          >
+      <Card space={4} spacing={4} direction="column">
+        <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
+          <Button>Default button</Button>
+          <Button variant="outline">Outline button</Button>
+          <Button variant="ghost">Ghost button</Button>
+        </Card>
+
+        <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
+          <Spinner size="xxs" />
+          <Spinner size="xs" />
+          <Spinner size="sm" />
+          <Spinner size="md" />
+          <Spinner size="lg" />
+          <Spinner size="xl" />
+          <Spinner size="2xl" />
+        </Card>
+
+        <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
+          <Input placeholder="Write here..." />
+          <Input variant="outline" placeholder="Write here..." />
+          <Input variant="ghost" placeholder="Write here..." />
+        </Card>
+
+        <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
+          <Input label="Text input:" placeholder="Write here..." />
+          <Input label="Currency input:" type="currency" />
+          <Input
+            label="Mask input:"
+            type="mask"
+            mask="999.999.999-99"
+            placeholder="Write here..."
+          />
+        </Card>
+
+        <Card space={4} spacing={2} radii="xs" showBgColor boxShadow="xs">
+          <Button onClick={outletContext.toggleDarkTheme}>Switch theme</Button>
+          <Button onClick={() => setModalIsOpen(true)}>Modal</Button>
+          <Popover position="bottom-right" button={<Button>Drawer</Button>}>
             <Card space={2} direction="column" spacing={1}>
-              <Button onClick={outletContext.toggleDarkTheme}>
-                Switch theme
+              <Button
+                style={{ whiteSpace: "nowrap" }}
+                onClick={() => setDrawerIsOpen("left")}
+              >
+                Open left drawer
               </Button>
-              <Button onClick={() => setModalIsOpen(true)}>Open modal</Button>
-              <Button onClick={() => setDrawerIsOpen(true)}>Open drawer</Button>
+              <Button
+                style={{ whiteSpace: "nowrap" }}
+                onClick={() => setDrawerIsOpen("right")}
+              >
+                Open rigth drawer
+              </Button>
             </Card>
           </Popover>
         </Card>
@@ -43,15 +90,18 @@ export function View() {
           bordered="top"
           showBgColor
         >
-          <Button variant="ghost">Cancel</Button>
+          <Button onClick={() => setModalIsOpen(false)} variant="ghost">
+            Cancel
+          </Button>
           <Button>Confirm</Button>
         </Card>
       </Modal>
 
       <Drawer
-        isVisible={drawerIsOpen}
+        isVisible={!!drawerIsOpen}
+        position={drawerIsOpen}
         title="I love drawing"
-        makeInvisible={() => setDrawerIsOpen(false)}
+        makeInvisible={() => setDrawerIsOpen("")}
       >
         <Card space={4} style={{ maxWidth: "20rem" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
