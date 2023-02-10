@@ -56,6 +56,7 @@ export function Input({
           value={
             inputCurrencyValue !== 0 ? valueDisplay(inputCurrencyValue) : ""
           }
+          readOnly
           className={inputStyle({
             fontSize,
             fontWeight,

@@ -1,12 +1,12 @@
+import { sidebarCookie } from "~/server/cookies";
 import type { ActionFunction } from "@remix-run/node";
-import { themeCookie } from "~/server/cookies";
 
 export const action: ActionFunction = async ({ request }) => {
-  const { commitSession, getSession } = themeCookie;
+  const { commitSession, getSession } = sidebarCookie;
   const session = await getSession(request.headers.get("Cookie"));
 
-  const themeState = session.get("theme");
-  session.set("theme", themeState === "dark" ? "light" : "dark");
+  const sidebarState = session.get("sidebar");
+  session.set("sidebar", sidebarState === "true" ? "false" : "true");
 
   return new Response(undefined, {
     headers: { "Set-Cookie": await commitSession(session) },
