@@ -76,6 +76,7 @@ export const buttonStyle = recipe({
       64: { padding: vars.space[64] },
       80: { padding: vars.space[80] },
     },
+
     radii: {
       px: { borderRadius: vars.radii.px },
       xs: { borderRadius: vars.radii.xs },
@@ -102,10 +103,36 @@ export const loadingContainerStyle = style({
   transform: "translate(-50%, -50%)",
 });
 
-export const childrenStyle = style({
-  transition: "all 0.2s",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flex: 1,
+export const childrenStyle = recipe({
+  base: {
+    transition: "all 0.2s",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+  },
+
+  variants: {
+    spacing: {
+      1: { gap: vars.space[1] },
+      2: { gap: vars.space[2] },
+      3: { gap: vars.space[3] },
+      4: { gap: vars.space[4] },
+      5: { gap: vars.space[5] },
+      6: { gap: vars.space[6] },
+      7: { gap: vars.space[7] },
+      8: { gap: vars.space[8] },
+      10: { gap: vars.space[10] },
+      12: { gap: vars.space[12] },
+      16: { gap: vars.space[16] },
+      20: { gap: vars.space[20] },
+      40: { gap: vars.space[40] },
+      64: { gap: vars.space[64] },
+      80: { gap: vars.space[80] },
+    },
+  },
+
+  defaultVariants: {
+    spacing: 1,
+  },
 });

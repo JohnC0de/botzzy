@@ -12,6 +12,7 @@ export function Button({
   radii,
   variant = "default",
   fontSize,
+  spacing,
   fontWeight,
   space,
   children,
@@ -36,7 +37,10 @@ export function Button({
         </span>
       )}
 
-      <span className={childrenStyle} style={{ opacity: isLoading ? 0 : 1 }}>
+      <span
+        className={childrenStyle({ spacing })}
+        style={{ opacity: isLoading ? 0 : 1 }}
+      >
         {children}
       </span>
     </button>

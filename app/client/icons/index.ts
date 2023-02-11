@@ -32,6 +32,7 @@ import {
   BiMoon,
   BiSun,
   BiLayout,
+  BiArchive,
 } from "react-icons/bi";
 
 const Icons = {
@@ -73,6 +74,7 @@ const Icons = {
   Dowload: BiDownload,
   Block: BiBlock,
   QRCode: BiQr,
+  Archive: BiArchive,
 };
 
 export { Icons };

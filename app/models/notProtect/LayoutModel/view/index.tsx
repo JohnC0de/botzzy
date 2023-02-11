@@ -1,12 +1,13 @@
 import { Outlet, useFetcher, useOutletContext } from "@remix-run/react";
 import { useState } from "react";
 
-import { Button } from "~/client/components";
+import { Button, Card } from "~/client/components";
 import { useRoot } from "~/client/hooks";
 import { Icons } from "~/client/icons";
 
 import { SideBar } from "../components/Sidebar";
 import { ToggleSidebarButton } from "../components/ToggleSidebarButton";
+import { UserPopover } from "../components/UserPopover";
 import { viewContainerStyle, headerStyle, contentStyle } from "./styles.css";
 
 type outletContextProps = {
@@ -34,16 +35,23 @@ export function View() {
           isOpen={sidebarIsOpen}
           toggleSidebar={toggleSidebar}
         />
-        <Form
-          method="post"
-          action="/api/switchtheme"
-          style={{ background: "inherit" }}
-        >
-          <Button onClick={outletContext.toggleTheme} space={2} variant="ghost">
-            {outletContext.isDarkTheme && <Icons.Moon size={22} />}
-            {!outletContext.isDarkTheme && <Icons.Sun size={22} />}
-          </Button>
-        </Form>
+        <Card align="center" spacing={2} showBgColor>
+          <Form
+            method="post"
+            action="/api/switchtheme"
+            style={{ background: "inherit" }}
+          >
+            <Button
+              onClick={outletContext.toggleTheme}
+              space={2}
+              variant="ghost"
+            >
+              {outletContext.isDarkTheme && <Icons.Moon size={22} />}
+              {!outletContext.isDarkTheme && <Icons.Sun size={22} />}
+            </Button>
+          </Form>
+          <UserPopover />
+        </Card>
       </header>
 
       <div className={contentStyle}>
