@@ -1,6 +1,6 @@
 // Controllers
-import { LoaderController } from "./controllers/LoaderController";
-import { ActionController } from "./controllers/ActionController";
+import { LoaderController } from "./controllers/LoaderController.server";
+import { ActionController } from "./controllers/ActionController.server";
 
 // Functions
 import { meta } from "./functions/meta";

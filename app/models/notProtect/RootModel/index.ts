@@ -1,5 +1,5 @@
 // Controllers
-import { LoaderController } from "./controllers/LoaderController";
+import { LoaderController } from "./controllers/LoaderController.server";
 
 // Functions
 import { links } from "./functions/links";
