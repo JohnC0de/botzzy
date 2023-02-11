@@ -7,7 +7,7 @@ type loaderControllerProps = {
 
 export async function LoaderController({ request }: loaderControllerProps) {
   const token = await getAccessToken(request);
-  if (token !== "notLogged") return redirect("/test");
+  if (token !== "notLogged") return redirect("/v1/test");
 
   return null;
 }

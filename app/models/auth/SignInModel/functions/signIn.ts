@@ -2,7 +2,7 @@ import { json, redirect } from "@remix-run/node";
 import { z } from "zod";
 
 import { api } from "~/server/api";
-import { formControl } from "~/server/utils";
+import { formControl, getScopedParams } from "~/server/utils";
 
 import { authCookie } from "~/server/cookies";
 
@@ -49,7 +49,10 @@ export async function signIn({ request, formData }: signInProps) {
   session.set("acess_token", apiResponse.data?.token.accessToken);
   session.set("user_credentials", apiResponse.data?.user);
 
-  return redirect("/test", {
+  const scopedParams = getScopedParams(request);
+  const redirectURL = scopedParams.get("redirectURL") || "/v1/test";
+
+  return redirect(redirectURL, {
     headers: { "Set-Cookie": await commitSession(session) },
   });
 }

@@ -15,7 +15,7 @@ import { useRoot } from "~/client/hooks";
 export function View() {
   const { theme } = useRoot();
   const [isDarkTheme, setIsDarkTheme] = useState(theme === "dark");
-  const toggleDarkTheme = () => setIsDarkTheme((oldState) => !oldState);
+  const toggleTheme = () => setIsDarkTheme((oldState) => !oldState);
 
   return (
     <html
@@ -28,7 +28,7 @@ export function View() {
       </head>
       <body>
         <ToastContextProvider>
-          <Outlet context={{ isDarkTheme, toggleDarkTheme }} />
+          <Outlet context={{ isDarkTheme, toggleTheme }} />
         </ToastContextProvider>
         <ScrollRestoration />
         <Scripts />
