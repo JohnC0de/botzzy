@@ -16,15 +16,19 @@ export function SideBar({
 }: SidebarProps) {
   return (
     <SidebarContainer
-      drawerIsOpen={drawerIsOpen}
       isOpen={isOpen}
+      drawerIsOpen={drawerIsOpen}
       setDrawerIsOpen={setDrawerIsOpen}
     >
-      {isOpen && <SmallTitle>Admin (categorias)</SmallTitle>}
+      {isOpen && <SmallTitle>Usuário</SmallTitle>}
       <SidebarLink to="/v1/test" icon={Icons.Archive}>
+        Home
+      </SidebarLink>
+      {isOpen && <SmallTitle>Admin (categorias)</SmallTitle>}
+      <SidebarLink to="/v1/admin/faqcategories" icon={Icons.Archive}>
         Faq's
       </SidebarLink>
-      <SidebarLink to="/v1/tesast" icon={Icons.Archive}>
+      <SidebarLink to="/v1/admin/coursescategories" icon={Icons.Archive}>
         Cursos
       </SidebarLink>
     </SidebarContainer>

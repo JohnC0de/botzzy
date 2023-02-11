@@ -7,4 +7,5 @@ export const smallStyle = style({
   color: vars.colors.text[100],
   whiteSpace: "nowrap",
   fontWeight: vars.fontWeights.medium,
+  marginTop: vars.space[2],
 });
