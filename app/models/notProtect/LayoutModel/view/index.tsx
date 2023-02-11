@@ -1,9 +1,12 @@
 import { Outlet, useFetcher, useOutletContext } from "@remix-run/react";
 import { useState } from "react";
+
 import { Button } from "~/client/components";
 import { useRoot } from "~/client/hooks";
 import { Icons } from "~/client/icons";
+
 import { SideBar } from "../components/Sidebar";
+import { ToggleSidebarButton } from "../components/ToggleSidebarButton";
 import { viewContainerStyle, headerStyle, contentStyle } from "./styles.css";
 
 type outletContextProps = {
@@ -27,16 +30,10 @@ export function View() {
   return (
     <div className={viewContainerStyle}>
       <header className={headerStyle}>
-        <Form
-          method="post"
-          action="/api/switchsidebar"
-          style={{ background: "inherit" }}
-        >
-          <Button onClick={toggleSidebar} space={2} variant="ghost">
-            opa
-          </Button>
-        </Form>
-
+        <ToggleSidebarButton
+          isOpen={sidebarIsOpen}
+          toggleSidebar={toggleSidebar}
+        />
         <Form
           method="post"
           action="/api/switchtheme"
