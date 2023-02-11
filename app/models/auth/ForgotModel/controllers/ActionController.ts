@@ -1,12 +1,12 @@
-import { signIn } from "../functions/signIn";
+import { forgot } from "../functions/forgot";
 
 type ActionControllerProps = { request: Request };
 export async function ActionController({ request }: ActionControllerProps) {
   const formData = Object.fromEntries(await request.formData());
 
   switch (formData._action) {
-    case "sign-in":
-      return await signIn({ request, formData });
+    case "forgot":
+      return await forgot({ formData });
     default:
       return null;
   }

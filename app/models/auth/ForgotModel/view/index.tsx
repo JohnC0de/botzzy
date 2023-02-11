@@ -25,10 +25,10 @@ export function View() {
       <section className={heroContainerStyle} />
       <section className={formContainerStyle}>
         <Form method="post" className={formStyle}>
-          <h1 className={headingStyle}>Faça seu login</h1>
+          <h1 className={headingStyle}>Recuperar senha?</h1>
           <p className={textStyle}>
-            Preencha os campos abaixo com seu e-mail e senha para acessar nossa
-            plataforma.
+            Digite seu e-mail no campo abaixo para receber um link e resetar sua
+            senha.
           </p>
 
           <Input
@@ -39,26 +39,17 @@ export function View() {
             error={data?.error?.email}
           />
 
-          <Input
-            label="Senha:"
-            name="password"
-            type="password"
-            variant="outline"
-            placeholder="Escreva aqui..."
-            error={data?.error?.password}
-          />
-
           <Button
             name="_action"
-            value="sign-in"
+            value="forgot"
             isLoading={type === "actionSubmission"}
             type="submit"
           >
-            Entrar
+            Enviar
           </Button>
 
-          <Link to="/auth/forgot" className={linkStyle}>
-            Esqueci minha senha
+          <Link to="/auth/signin" className={linkStyle}>
+            Voltar para o login
           </Link>
         </Form>
       </section>

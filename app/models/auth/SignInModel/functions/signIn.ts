@@ -30,7 +30,7 @@ const schema = z.object({
   password: z.string({ required_error: errorMessage }).min(1, errorMessage),
 });
 
-export async function signInFunction({ request, formData }: signInProps) {
+export async function signIn({ request, formData }: signInProps) {
   const { data, success } = await formControl<formProps>(formData, schema);
   if (!success) return json({ error: data, success });
 
