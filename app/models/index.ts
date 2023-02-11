@@ -1,5 +1,5 @@
 // root/*
-export { RootModel } from "./notProtect/RootModel";
+export { RootClient, RootServer } from "./notProtect/RootModel";
 
 // root/auth/signin
-export { SignInModel } from "./auth/SignInModel";
+export { SignInClient, SignInServer } from "./auth/SignInModel";

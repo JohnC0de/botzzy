@@ -25,7 +25,7 @@ export async function PATCH<T = unknown>({
   } catch (err: any) {
     const failedAnswer: APIReturnProps<null> = {
       data: null,
-      error: err.response.data,
+      error: err.response.data.message,
     };
 
     return failedAnswer;

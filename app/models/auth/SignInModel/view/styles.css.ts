@@ -6,10 +6,12 @@ export const viewContainerStyle = style({
   display: "flex",
   height: "100vh",
   width: "100vw",
+  overflow: "hidden",
 });
 
 export const heroContainerStyle = style({
   flex: 1,
+  "@media": { "(max-width: 1000px)": { display: "none" } },
 });
 
 export const formContainerStyle = style({
@@ -31,7 +33,9 @@ export const formStyle = style({
   flexDirection: "column",
   justifyContent: "center",
   maxWidth: "30rem",
+  padding: vars.space[4],
   gap: vars.space[3],
+  animation: `${animateEnterForm} 0.7s`,
 });
 
 export const headingStyle = style({

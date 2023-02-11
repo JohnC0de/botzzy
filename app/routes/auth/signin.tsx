@@ -1,4 +1,4 @@
-import { SignInModel } from "~/models";
+import { SignInServer, SignInClient } from "~/models";
 import { Treatment } from "~/client/treatment";
 import type {
   ActionFunction,
@@ -6,19 +6,19 @@ import type {
   LoaderFunction,
 } from "@remix-run/node";
 
-export const meta = SignInModel.meta;
+export const meta = SignInClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
   <Treatment error={error} />
 );
 
 export const action: ActionFunction = async ({ request }) => {
-  return await SignInModel.ActionController({ request });
+  return await SignInServer.ActionController({ request });
 };
 
 export const loader: LoaderFunction = ({ request }) => {
-  return SignInModel.LoaderController({ request });
+  return SignInServer.LoaderController({ request });
 };
 
 export default function App() {
-  return <SignInModel.View />;
+  return <SignInClient.View />;
 }

@@ -1,3 +1,6 @@
+// Controllers
+import { LoaderController } from "./controllers/LoaderController";
+
 // Functions
 import { links } from "./functions/links";
 import { meta } from "./functions/meta";
@@ -5,4 +8,5 @@ import { meta } from "./functions/meta";
 // View
 import { View } from "./view";
 
-export const RootModel = { links, meta, View };
+export const RootServer = { LoaderController };
+export const RootClient = { links, meta, View };

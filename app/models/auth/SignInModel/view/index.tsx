@@ -1,5 +1,7 @@
 import { Link, useFetcher } from "@remix-run/react";
+import { useEffect } from "react";
 import { Button, Input } from "~/client/components";
+import { useToast } from "~/client/hooks";
 import {
   viewContainerStyle,
   heroContainerStyle,
@@ -11,12 +13,16 @@ import {
 } from "./styles.css";
 
 export function View() {
+  const { fireToast } = useToast();
   const { Form, data, type } = useFetcher();
+
+  useEffect(() => {
+    if (data?.toast) fireToast(data.toast);
+  }, [data, fireToast]);
 
   return (
     <main className={viewContainerStyle}>
       <section className={heroContainerStyle}>as</section>
-
       <section className={formContainerStyle}>
         <Form method="post" className={formStyle}>
           <h1 className={headingStyle}>Faça seu login</h1>
@@ -28,20 +34,29 @@ export function View() {
           <Input
             label="E-mail:"
             name="email"
-            placeholder="Escreva aqui..."
             variant="outline"
+            placeholder="Escreva aqui..."
             error={data?.error?.email}
           />
 
           <Input
-            label="Senha"
-            placeholder="Escreva aqui..."
+            label="Senha:"
+            name="password"
+            type="password"
             variant="outline"
+            placeholder="Escreva aqui..."
+            error={data?.error?.password}
           />
 
-          <Button isLoading={type === "actionSubmission"} type="submit">
+          <Button
+            name="_action"
+            value="sign-in"
+            isLoading={type === "actionSubmission"}
+            type="submit"
+          >
             Entrar
           </Button>
+
           <Link to="/auth/forgot" className={linkStyle}>
             Esqueci minha senha
           </Link>

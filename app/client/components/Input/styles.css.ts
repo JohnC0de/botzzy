@@ -84,6 +84,12 @@ export const inputStyle = recipe({
       lg: { borderRadius: vars.radii.lg },
       full: { borderRadius: vars.radii.full },
     },
+    isError: {
+      true: {
+        borderColor: vars.colors.danger[300],
+        outline: "1px solid " + vars.colors.danger[300],
+      },
+    },
   },
 
   defaultVariants: {

@@ -10,9 +10,11 @@ import {
 
 import { ToastContextProvider } from "~/client/contexts";
 import { globalStyles } from "~/client/styles";
+import { useRoot } from "~/client/hooks";
 
 export function View() {
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const { theme } = useRoot();
+  const [isDarkTheme, setIsDarkTheme] = useState(theme === "dark");
   const toggleDarkTheme = () => setIsDarkTheme((oldState) => !oldState);
 
   return (
