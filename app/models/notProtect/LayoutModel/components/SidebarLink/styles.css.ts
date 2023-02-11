@@ -9,7 +9,7 @@ export const linkStyle = recipe({
     alignItems: "center",
     padding: "0 " + vars.space[2],
     textDecoration: "none",
-    gap: vars.space[4],
+    gap: vars.space[2],
     overflow: "hidden",
     borderRadius: vars.radii.xs,
     backgroundColor: vars.colors.bg[100],
@@ -30,7 +30,7 @@ export const svgContainerStyle = style({
   justifyContent: "center",
 
   minHeight: "3rem",
-  minWidth: "3rem",
+  minWidth: "2.5rem",
 });
 
 export const svgStyle = recipe({

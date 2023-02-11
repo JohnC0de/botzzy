@@ -8,7 +8,7 @@ export const greaterThanThousand = style({
   overflow: "hidden",
   height: "calc(100vh - 4rem)",
   background: vars.colors.bg[100],
-  padding: vars.space[2],
+  padding: vars.space[3],
   gap: vars.space[1],
   "@media": { "(min-width: 1000px)": { display: "flex" } },
 });
