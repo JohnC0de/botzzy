@@ -35,12 +35,9 @@ export function View() {
           isOpen={sidebarIsOpen}
           toggleSidebar={toggleSidebar}
         />
-        <Card align="center" spacing={2} showBgColor>
-          <Form
-            method="post"
-            action="/api/switchtheme"
-            style={{ background: "inherit" }}
-          >
+
+        <Form method="post" action="/api/switchtheme">
+          <Card align="center" spacing={2} showBgColor>
             <Button
               onClick={outletContext.toggleTheme}
               space={2}
@@ -49,9 +46,9 @@ export function View() {
               {outletContext.isDarkTheme && <Icons.Moon size={22} />}
               {!outletContext.isDarkTheme && <Icons.Sun size={22} />}
             </Button>
-          </Form>
-          <UserPopover />
-        </Card>
+          </Card>
+        </Form>
+        <UserPopover />
       </header>
 
       <div className={contentStyle}>

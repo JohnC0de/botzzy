@@ -17,6 +17,7 @@ export function Button({
   space,
   children,
   disabled,
+  justify,
   ...rest
 }: ButtonTypes) {
   return (
@@ -38,7 +39,7 @@ export function Button({
       )}
 
       <span
-        className={childrenStyle({ spacing })}
+        className={childrenStyle({ spacing, justify })}
         style={{ opacity: isLoading ? 0 : 1 }}
       >
         {children}

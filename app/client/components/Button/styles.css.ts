@@ -130,6 +130,16 @@ export const childrenStyle = recipe({
       64: { gap: vars.space[64] },
       80: { gap: vars.space[80] },
     },
+    justify: {
+      "flex-start": { justifyContent: "flex-start" },
+      "flex-end": { justifyContent: "flex-end" },
+      center: { justifyContent: "center" },
+      "space-between": { justifyContent: "space-between" },
+      "space-around": { justifyContent: "space-around" },
+      "space-evenly": { justifyContent: "space-evenly" },
+      initial: { justifyContent: "initial" },
+      inherit: { justifyContent: "inherit" },
+    },
   },
 
   defaultVariants: {

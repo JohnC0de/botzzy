@@ -24,6 +24,7 @@ export function SideBar({
       <SidebarLink to="/v1/test" icon={Icons.Archive}>
         Home
       </SidebarLink>
+
       {isOpen && <SmallTitle>Admin (categorias)</SmallTitle>}
       <SidebarLink to="/v1/admin/faqcategories" icon={Icons.Archive}>
         Faq's

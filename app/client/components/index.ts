@@ -7,6 +7,7 @@ export { Input } from "./Input";
 
 // Data display
 export { Card } from "./Card";
+export { Divider } from "./Divider";
 
 // Overlay
 export { Modal } from "./Modal";

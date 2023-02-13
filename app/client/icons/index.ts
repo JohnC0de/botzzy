@@ -33,6 +33,7 @@ import {
   BiSun,
   BiLayout,
   BiArchive,
+  BiLogOut,
 } from "react-icons/bi";
 
 const Icons = {
@@ -69,6 +70,7 @@ const Icons = {
   Moon: BiMoon,
   Sun: BiSun,
 
+  Logout: BiLogOut,
   AddImage: BiImageAdd,
   DotsVertical: BiDotsVertical,
   Dowload: BiDownload,

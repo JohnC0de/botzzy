@@ -4,27 +4,17 @@ const { vars } = globalStyles;
 
 export const contentStyle = style({
   display: "flex",
-  justifyContent: "center",
   flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
   gap: vars.space[1],
-  width: "1.25rem",
+
+  width: "2.5rem",
   height: "1.25rem",
 });
 
-export const span1Style = style({
-  height: "2px",
-  width: "1rem",
-  backgroundColor: vars.colors.text[500],
-});
-
-export const span2Style = style({
+export const lineStyle = style({
   height: "2px",
   width: "1.25rem",
-  backgroundColor: vars.colors.text[500],
-});
-
-export const span3Style = style({
-  height: "2px",
-  width: "0.75rem",
   backgroundColor: vars.colors.text[500],
 });
