@@ -26,7 +26,7 @@ export function SideBar({
       </SidebarLink>
 
       {isOpen && <SmallTitle>Admin (categorias)</SmallTitle>}
-      <SidebarLink to="/v1/admin/faqcategories" icon={Icons.Archive}>
+      <SidebarLink to="/v1/admin/faqcategories" icon={Icons.DoubtCircle}>
         Faq's
       </SidebarLink>
       <SidebarLink to="/v1/admin/coursescategories" icon={Icons.Archive}>

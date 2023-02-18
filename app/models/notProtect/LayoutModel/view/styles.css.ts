@@ -10,6 +10,7 @@ export const viewContainerStyle = style({
 export const headerStyle = style({
   display: "flex",
   alignItems: "center",
+  gap: vars.space[1],
 
   background: vars.colors.bg[100],
   padding: vars.space[3],

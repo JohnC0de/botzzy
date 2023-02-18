@@ -52,6 +52,4 @@ export function calcPosition({
       if (brMinus < popoverH) setDirection("top-right");
       break;
   }
-
-  console.log({ popoverW, popoverH, windowWidth, windowHeight, position });
 }
