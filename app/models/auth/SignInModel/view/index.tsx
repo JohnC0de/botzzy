@@ -10,6 +10,7 @@ import {
   headingStyle,
   textStyle,
   linkStyle,
+  textLinkStyle,
 } from "./styles.css";
 
 export function View() {
@@ -22,12 +23,17 @@ export function View() {
 
   return (
     <main className={viewContainerStyle}>
-      <section className={heroContainerStyle} />
+      <section className={heroContainerStyle}>
+        <h1 style={{ color: "#FFF", fontSize: "2rem" }}>Botzzy</h1>
+        <footer style={{ color: "#FFF" }}>
+          Copyright © 2023 <strong>Botzzy</strong>
+        </footer>
+      </section>
       <section className={formContainerStyle}>
         <Form method="post" className={formStyle}>
-          <h1 className={headingStyle}>Faça seu login</h1>
+          <h2 className={headingStyle}>Bem vindo!</h2>
           <p className={textStyle}>
-            Preencha os campos abaixo com seu e-mail e senha para acessar nossa
+            Preencha os campos abaixo com suas credenciais para acessar nossa
             plataforma.
           </p>
 
@@ -57,9 +63,12 @@ export function View() {
             Entrar
           </Button>
 
-          <Link to="/auth/forgot" className={linkStyle}>
-            Esqueci minha senha
-          </Link>
+          <p className={textLinkStyle}>
+            <span>Esqueceu sua senha?</span>
+            <Link to="/auth/forgot" className={linkStyle}>
+              Clique aqui
+            </Link>
+          </p>
         </Form>
       </section>
     </main>

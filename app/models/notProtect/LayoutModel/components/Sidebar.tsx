@@ -1,5 +1,4 @@
 import { Icons } from "~/client/icons";
-import { SmallTitle } from "./SmallTitle";
 import { SidebarContainer } from "./SidebarContainer";
 import { SidebarLink } from "./SidebarLink";
 
@@ -20,17 +19,11 @@ export function SideBar({
       drawerIsOpen={drawerIsOpen}
       setDrawerIsOpen={setDrawerIsOpen}
     >
-      {isOpen && <SmallTitle>Usuário</SmallTitle>}
       <SidebarLink to="/v1/test" icon={Icons.Archive}>
         Home
       </SidebarLink>
-
-      {isOpen && <SmallTitle>Admin (categorias)</SmallTitle>}
-      <SidebarLink to="/v1/admin/faqcategories" icon={Icons.DoubtCircle}>
-        Faq's
-      </SidebarLink>
-      <SidebarLink to="/v1/admin/coursescategories" icon={Icons.Archive}>
-        Cursos
+      <SidebarLink to="/v1/flow" icon={Icons.Layout}>
+        Flow
       </SidebarLink>
     </SidebarContainer>
   );

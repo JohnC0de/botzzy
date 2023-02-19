@@ -1,9 +1,9 @@
 export const darkThemeColors = {
   primary: {
-    100: "#9dd3cb",
-    300: "#8ccbc2",
-    500: "#7ac3b9",
-    700: "#4ba699",
+    100: "#818cf8",
+    300: "#6366f1",
+    500: "#4f46e5",
+    700: "#4338ca",
   },
 
   success: {
@@ -47,9 +47,9 @@ export const darkThemeColors = {
   },
 
   text: {
-    100: "#5f6774",
-    500: "#d6d7db",
-    900: "#F4F5F7",
+    100: "#666E7B",
+    500: "#9CA3AF",
+    900: "#FFFFFF",
   },
 
   bg: {

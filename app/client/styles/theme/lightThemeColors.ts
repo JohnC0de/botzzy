@@ -54,7 +54,7 @@ export const lightThemeColors = {
 
   bg: {
     100: "#FFFFFF",
-    500: "#f3f4f6",
+    500: "#F3F4F6",
   },
 
   line: "#e5e7eb",

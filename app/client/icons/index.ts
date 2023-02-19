@@ -34,6 +34,9 @@ import {
   BiLayout,
   BiArchive,
   BiLogOut,
+  BiPlus,
+  BiZoomIn,
+  BiZoomOut,
 } from "react-icons/bi";
 
 const Icons = {
@@ -61,6 +64,9 @@ const Icons = {
 
   Layout: BiLayout,
   Search: BiSearch,
+  Plus: BiPlus,
+  ZoomIn: BiZoomIn,
+  ZoomOut: BiZoomOut,
   Clock: BiTimeFive,
   History: BiHistory,
   Edit: BiEdit,

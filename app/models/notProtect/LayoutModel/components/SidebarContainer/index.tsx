@@ -6,6 +6,7 @@ import {
   greaterThanThousand,
   lessThanThousand,
 } from "./styles.css";
+import { useLocation } from "@remix-run/react";
 
 type SidebarContainerProps = {
   isOpen: boolean;
@@ -20,25 +21,40 @@ export function SidebarContainer({
   setDrawerIsOpen,
   isOpen,
 }: SidebarContainerProps) {
+  const { pathname } = useLocation();
+  const includeFlow = pathname.includes("flow");
+
   return (
     <div>
-      <motion.nav
-        initial={{ width: isOpen ? "16rem" : "5rem" }}
-        animate={{ width: isOpen ? "16rem" : "5rem" }}
-        className={greaterThanThousand}
-      >
-        {children}
-      </motion.nav>
+      {!includeFlow && (
+        <motion.nav
+          initial={{ width: isOpen ? "16rem" : "5rem" }}
+          animate={{ width: isOpen ? "16rem" : "5rem" }}
+          className={greaterThanThousand}
+        >
+          {children}
+        </motion.nav>
+      )}
 
-      <div className={lessThanThousand}>
+      {!includeFlow && (
+        <div className={lessThanThousand}>
+          <Drawer
+            isVisible={drawerIsOpen}
+            makeInvisible={() => setDrawerIsOpen(false)}
+          >
+            <div className={drawerContentStyle}>{children}</div>
+          </Drawer>
+        </div>
+      )}
+
+      {includeFlow && (
         <Drawer
-          title="Menu"
           isVisible={drawerIsOpen}
           makeInvisible={() => setDrawerIsOpen(false)}
         >
           <div className={drawerContentStyle}>{children}</div>
         </Drawer>
-      </div>
+      )}
     </div>
   );
 }
