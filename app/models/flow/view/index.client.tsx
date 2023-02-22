@@ -42,7 +42,7 @@ export function View() {
     any
   > | null>(null);
 
-  const { zoomIn, zoomOut } = useReactFlow();
+  const { zoomIn, zoomOut, fitView } = useReactFlow();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const edgeStyles = useMemo(() => {
@@ -104,6 +104,14 @@ export function View() {
             variant="ghost"
           >
             <Icons.ZoomIn size={20} />
+          </Button>
+          <Button
+            title="Ajustar visualização"
+            onClick={() => fitView({ duration: 200, maxZoom: 1.5 })}
+            space={2}
+            variant="ghost"
+          >
+            <Icons.Fullscreen size={20} />
           </Button>
         </Card>
       </div>

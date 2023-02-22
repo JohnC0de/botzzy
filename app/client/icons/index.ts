@@ -37,6 +37,9 @@ import {
   BiPlus,
   BiZoomIn,
   BiZoomOut,
+  BiMessageSquareDetail,
+  BiMicrophone,
+  BiFullscreen,
 } from "react-icons/bi";
 
 const Icons = {
@@ -75,6 +78,9 @@ const Icons = {
   Note: BiNote,
   Moon: BiMoon,
   Sun: BiSun,
+  MessageSquare: BiMessageSquareDetail,
+  Microphone: BiMicrophone,
+  Fullscreen: BiFullscreen,
 
   Logout: BiLogOut,
   AddImage: BiImageAdd,

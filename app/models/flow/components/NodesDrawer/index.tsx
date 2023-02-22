@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { BiMessageSquareDetail, BiMicrophone } from "react-icons/bi";
-
 import { Button, Drawer } from "~/client/components";
 import { Icons } from "~/client/icons";
 
@@ -33,7 +31,7 @@ export function NodesDrawer() {
             onDragEnd={() => setIsOpen(false)}
             className={draggableNodeStyle}
           >
-            <BiMessageSquareDetail size={22} /> Enviar mensagem
+            <Icons.MessageSquare size={22} /> Enviar mensagem
           </div>
           <div
             draggable
@@ -41,7 +39,7 @@ export function NodesDrawer() {
             onDragEnd={() => setIsOpen(false)}
             className={draggableNodeStyle}
           >
-            <BiMicrophone size={22} /> Enviar Audio
+            <Icons.Microphone size={22} /> Enviar Audio
           </div>
         </menu>
       </Drawer>
