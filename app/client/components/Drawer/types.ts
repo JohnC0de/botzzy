@@ -6,4 +6,5 @@ export type DrawerProps = {
   isVisible: boolean;
   makeInvisible: () => void;
   children?: ReactNode;
+  showOverlay?: boolean;
 };

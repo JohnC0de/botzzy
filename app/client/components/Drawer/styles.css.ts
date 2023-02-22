@@ -20,6 +20,9 @@ export const drawerContentStyle = recipe({
       left: { left: 0 },
       right: { right: 0 },
     },
+    showOverlay: {
+      false: { boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.2)" },
+    },
   },
 
   defaultVariants: {

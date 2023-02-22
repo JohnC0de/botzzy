@@ -15,6 +15,7 @@ export function Drawer({
   children,
   title,
   position = "left",
+  showOverlay = true,
   makeInvisible,
 }: DrawerProps) {
   const translateX =
@@ -25,7 +26,10 @@ export function Drawer({
       {isVisible && (
         <>
           <motion.div
-            className={drawerContentStyle({ direction: position })}
+            className={drawerContentStyle({
+              direction: position,
+              showOverlay: showOverlay,
+            })}
             transition={{ duration: 0.1, ease: "linear" }}
             initial={{ transform: translateX }}
             animate={{ transform: "translateX(0px)" }}
@@ -48,14 +52,16 @@ export function Drawer({
             {children}
           </motion.div>
 
-          <motion.div
-            onClick={makeInvisible}
-            className={drawerOverlayStyle}
-            transition={{ duration: 0.1, ease: "linear" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          />
+          {showOverlay && (
+            <motion.div
+              onClick={makeInvisible}
+              className={drawerOverlayStyle}
+              transition={{ duration: 0.1, ease: "linear" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+          )}
         </>
       )}
     </AnimatePresence>
