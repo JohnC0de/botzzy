@@ -17,7 +17,6 @@ export const draggableNodeStyle = style({
   minWidth: "15rem",
   background: "inherit",
   padding: vars.space[3] + vars.space[5],
-  borderRadius: vars.radii.xs,
   fontWeight: vars.fontWeights.medium,
   transition: "all 0.1s",
   ":hover": {

@@ -6,9 +6,16 @@ export const viewContainer = style({
   position: "relative",
 });
 
+export const buttonSaveNodeArea = style({
+  position: "absolute",
+  zIndex: 2,
+  top: "0.5rem",
+  right: "0.5rem",
+});
+
 export const buttonAddNodeArea = style({
   position: "absolute",
   zIndex: 2,
-  bottom: "1rem",
-  left: "1rem",
+  bottom: "0.5rem",
+  left: "0.5rem",
 });

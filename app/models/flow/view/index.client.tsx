@@ -6,7 +6,11 @@ import ReactFlow, {
   addEdge,
   useReactFlow,
 } from "reactflow";
-import { buttonAddNodeArea, viewContainer } from "./styles.css";
+import {
+  buttonAddNodeArea,
+  buttonSaveNodeArea,
+  viewContainer,
+} from "./styles.css";
 import { globalStyles } from "~/client/styles";
 import { Button, Card } from "~/client/components";
 import { Icons } from "~/client/icons";
@@ -60,6 +64,20 @@ export function View() {
 
   return (
     <main className={viewContainer}>
+      <div className={buttonSaveNodeArea}>
+        <Card
+          boxShadow="xs"
+          radii="xs"
+          direction="row"
+          showBgColor
+          space={2}
+          spacing={1}
+        >
+          <Button space={2}>Salvar</Button>
+          <Button space={2}>Salvar e fechar</Button>
+        </Card>
+      </div>
+
       <div className={buttonAddNodeArea}>
         <Card
           boxShadow="xs"
