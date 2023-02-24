@@ -12,9 +12,10 @@ export const buttonStyle = recipe({
     height: "min-content",
     border: "1px solid transparent",
     outline: "none",
-    transition: "all 0.2s",
+    transition: "filter 0.2s",
 
     ":hover": { cursor: "pointer" },
+    animation: "ease-in-out",
     ":disabled": { cursor: "not-allowed", opacity: 0.7 },
   },
 

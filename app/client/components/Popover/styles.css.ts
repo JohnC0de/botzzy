@@ -10,7 +10,7 @@ export const popoverContainerStyle = style({
 export const contentContainerStyle = recipe({
   base: {
     position: "absolute",
-    zIndex: 2,
+    zIndex: 3,
 
     backgroundColor: vars.colors.bg[100],
     borderRadius: vars.radii.sm,

@@ -17,11 +17,21 @@ export function MenuButton({
   options,
   icon: Icon,
 }: MenuButtonProps) {
-  const { menuIsDetach, handleOpenDetachMenu, setOptions } = useLayout();
+  const {
+    setOptions,
+    menuIsDetach,
+    handleOpenDetachMenu,
+    handleCloseDetachMenu,
+  } = useLayout();
   const isActive = menuIsDetach ? menuIsDetach[0] === menuKey : false;
   function handleClick() {
-    handleOpenDetachMenu([menuKey, label]);
-    setOptions(options);
+    if (isActive) {
+      handleCloseDetachMenu();
+      setOptions([]);
+    } else {
+      handleOpenDetachMenu([menuKey, label]);
+      setOptions(options);
+    }
   }
 
   return (
