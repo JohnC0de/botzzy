@@ -1,5 +1,6 @@
 import { LayoutClient } from "~/models";
 import { Treatment } from "~/client/treatment";
+import { LayoutContextProvider } from "~/client/contexts";
 import type { ErrorBoundaryComponent } from "@remix-run/node";
 
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
@@ -7,5 +8,9 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
 );
 
 export default function App() {
-  return <LayoutClient.View />;
+  return (
+    <LayoutContextProvider>
+      <LayoutClient.View />
+    </LayoutContextProvider>
+  );
 }

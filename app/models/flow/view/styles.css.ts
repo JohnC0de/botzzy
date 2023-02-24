@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 export const viewContainer = style({
-  width: "100vw",
+  flex: 1,
   height: "calc(100vh - 4rem)",
   position: "relative",
 });

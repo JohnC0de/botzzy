@@ -3,7 +3,6 @@ import type { userProps } from "~/models/auth/SignInModel/functions/signIn";
 
 type rootProps = {
   theme: "dark" | "light";
-  sidebar: "true" | "false";
   user: userProps;
 };
 

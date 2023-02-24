@@ -5,11 +5,14 @@ const { vars } = globalStyles;
 export const greaterThanThousand = style({
   display: "none",
   flexDirection: "column",
+  alignItems: "center",
   overflow: "hidden",
-  height: "calc(100vh - 4rem)",
-  background: vars.colors.bg[100],
-  padding: vars.space[3],
+  width: "5rem",
+  height: "100vh",
+  background: vars.colors.primary[500],
+  // padding: vars.space[3],
   gap: vars.space[1],
+
   "@media": { "(min-width: 1000px)": { display: "flex" } },
 });
 

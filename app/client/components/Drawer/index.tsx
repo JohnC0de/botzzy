@@ -30,7 +30,7 @@ export function Drawer({
               direction: position,
               showOverlay: showOverlay,
             })}
-            transition={{ duration: 0.1, ease: "linear" }}
+            transition={{ ease: "easeOut", duration: 0.2 }}
             initial={{ transform: translateX }}
             animate={{ transform: "translateX(0px)" }}
             exit={{ transform: translateX }}

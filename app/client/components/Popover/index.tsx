@@ -34,7 +34,7 @@ export function Popover({
       <motion.div
         ref={popoverContentRef}
         style={{ visibility: isOpen ? "visible" : "hidden" }}
-        transition={{ duration: 0.1, ease: "linear" }}
+        transition={{ ease: "easeOut", duration: 0.2 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: isOpen ? 1 : 0 }}
         exit={{ opacity: 0 }}

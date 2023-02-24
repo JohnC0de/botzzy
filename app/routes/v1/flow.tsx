@@ -19,7 +19,7 @@ export default function () {
       fallback={
         <main
           style={{
-            width: "100vw",
+            flex: 1,
             height: "calc(100vh - 4rem)",
             display: "flex",
             alignItems: "center",
