@@ -40,6 +40,9 @@ import {
   BiMessageSquareDetail,
   BiMicrophone,
   BiFullscreen,
+  BiCloudUpload,
+  BiFolder,
+  BiCookie,
 } from "react-icons/bi";
 
 const Icons = {
@@ -81,6 +84,10 @@ const Icons = {
   MessageSquare: BiMessageSquareDetail,
   Microphone: BiMicrophone,
   Fullscreen: BiFullscreen,
+
+  CloudUpload: BiCloudUpload,
+  Folder: BiFolder,
+  Cookie: BiCookie,
 
   Logout: BiLogOut,
   AddImage: BiImageAdd,

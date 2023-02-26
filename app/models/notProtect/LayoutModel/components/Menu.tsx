@@ -1,4 +1,5 @@
 import { Icons } from "~/client/icons";
+import LogoIcon from "~/client/assets/logo_icon.png";
 
 import { MenuContainer } from "./MenuContainer";
 import { MenuButton } from "./MenuButton";
@@ -6,10 +7,7 @@ import { MenuButton } from "./MenuButton";
 export function Menu() {
   return (
     <MenuContainer>
-      <img
-        alt="Botzzy Logo"
-        src="https://elstar.themenate.net/img/logo/logo-dark-streamline.png"
-      />
+      <img src={LogoIcon} alt="Botzzy Logo" />
 
       <MenuButton
         label="Cruds"

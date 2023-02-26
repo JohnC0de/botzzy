@@ -4,8 +4,9 @@ import { FlowClient } from "~/models";
 import { Spinner } from "~/client/components";
 import { Treatment } from "~/client/treatment";
 
-import type { ErrorBoundaryComponent } from "@remix-run/node";
 import { ReactFlowProvider } from "reactflow";
+import { FlowContextProvider } from "~/models/flow/hook/useFlow";
+import type { ErrorBoundaryComponent } from "@remix-run/node";
 
 export const links = FlowClient.links;
 export const meta = FlowClient.meta;
@@ -33,7 +34,9 @@ export default function () {
     >
       {() => (
         <ReactFlowProvider>
-          <FlowClient.View />
+          <FlowContextProvider>
+            <FlowClient.View />
+          </FlowContextProvider>
         </ReactFlowProvider>
       )}
     </ClientOnly>

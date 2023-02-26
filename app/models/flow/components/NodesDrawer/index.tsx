@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Drawer } from "~/client/components";
 import { Icons } from "~/client/icons";
-
 import { draggableNodeStyle, drawerContentStyle } from "./styles.css";
 
 export function NodesDrawer() {
@@ -27,19 +26,11 @@ export function NodesDrawer() {
           <small>Whatsapp</small>
           <div
             draggable
-            onDragStart={(event) => onDragStart(event, "submit-message")}
+            onDragStart={(event) => onDragStart(event, "send_message")}
             onDragEnd={() => setIsOpen(false)}
             className={draggableNodeStyle}
           >
             <Icons.MessageSquare size={22} /> Enviar mensagem
-          </div>
-          <div
-            draggable
-            onDragStart={(event) => onDragStart(event, "submit-audio")}
-            onDragEnd={() => setIsOpen(false)}
-            className={draggableNodeStyle}
-          >
-            <Icons.Microphone size={22} /> Enviar Audio
           </div>
         </menu>
       </Drawer>

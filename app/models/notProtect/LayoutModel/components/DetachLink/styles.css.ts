@@ -11,7 +11,7 @@ export const detachLinkContainerStyle = recipe({
     textDecoration: "none",
     whiteSpace: "nowrap",
     fontWeight: vars.fontWeights.medium,
-    padding: vars.space[2] + vars.space[2],
+    padding: vars.space[2] + vars.space[3],
     borderRadius: vars.radii.xs,
     background: vars.colors.bg[100],
     color: vars.colors.text[500],

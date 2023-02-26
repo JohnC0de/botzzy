@@ -30,6 +30,7 @@ export function View() {
                 onClick={outletContext.toggleTheme}
                 space={2}
                 variant="ghost"
+                radii="full"
               >
                 {outletContext.isDarkTheme && <Icons.Moon size={22} />}
                 {!outletContext.isDarkTheme && <Icons.Sun size={22} />}

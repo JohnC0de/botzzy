@@ -1,120 +1,44 @@
-import { useCallback, useMemo, useRef, useState } from "react";
-import ReactFlow, {
-  Background,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-  useReactFlow,
-} from "reactflow";
-import {
-  buttonAddNodeArea,
-  buttonSaveNodeArea,
-  viewContainer,
-} from "./styles.css";
+import ReactFlow, { Background } from "reactflow";
+import { useCallback } from "react";
 import { globalStyles } from "~/client/styles";
-import { Button, Card } from "~/client/components";
-import { Icons } from "~/client/icons";
-import { NodesDrawer } from "../components/NodesDrawer";
 
-import type { OnConnect, ReactFlowInstance } from "reactflow";
+import type { NodeTypes } from "reactflow";
 import type { DragEvent } from "react";
+
 import { onDrop } from "../functions/onDrop";
+import { useFlow } from "../hook/useFlow";
+import { SendMessage } from "../nodes/SendMessage";
 
-const initialEdges = [
-  {
-    id: "e1-2",
-    animated: true,
-    style: { stroke: globalStyles.vars.colors.text[500] },
-    source: "1",
-    target: "2",
-  },
-];
+import { FloatingInteractionArea } from "../components/FloatingInteractionArea";
+import { FloatingSaveArea } from "../components/FloatingSaveArea";
+import { viewContainer } from "./styles.css";
 
-const initialNodes = [
-  { id: "1", position: { x: 100, y: 100 }, data: { label: "1" } },
-  { id: "2", position: { x: 100, y: 200 }, data: { label: "2" } },
-];
-
+const nodeTypes: NodeTypes = { send_message: SendMessage };
 export function View() {
-  const reactFlowWrapperRef = useRef<HTMLDivElement>(null);
-  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance<
-    any,
-    any
-  > | null>(null);
+  const {
+    edges,
+    nodes,
+    onConnect,
+    onDragOver,
+    onEdgesChange,
+    onNodesChange,
+    reactFlowInstance,
+    reactFlowWrapperRef,
+    setNodes,
+    setReactFlowInstance,
+  } = useFlow();
 
-  const { zoomIn, zoomOut, fitView } = useReactFlow();
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const edgeStyles = useMemo(() => {
-    return {
-      animated: true,
-      style: { stroke: globalStyles.vars.colors.text[500] },
-    };
-  }, []);
-
-  const onConnect: OnConnect = useCallback(
-    (params) => setEdges((eds) => addEdge({ ...params, ...edgeStyles }, eds)),
-    [edgeStyles, setEdges]
+  const handleDrop = useCallback(
+    (event: DragEvent<HTMLDivElement>) => {
+      onDrop({ event, setNodes, reactFlowInstance, reactFlowWrapperRef });
+    },
+    [reactFlowInstance, reactFlowWrapperRef, setNodes]
   );
-
-  const onDragOver = useCallback((event: DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = "move";
-  }, []);
 
   return (
     <main className={viewContainer}>
-      <div className={buttonSaveNodeArea}>
-        <Card
-          boxShadow="xs"
-          radii="xs"
-          direction="row"
-          showBgColor
-          space={2}
-          spacing={1}
-        >
-          <Button space={2}>Salvar</Button>
-          <Button space={2}>Salvar e fechar</Button>
-        </Card>
-      </div>
-
-      <div className={buttonAddNodeArea}>
-        <Card
-          boxShadow="xs"
-          radii="xs"
-          direction="column"
-          showBgColor
-          space={2}
-          spacing={1}
-        >
-          <NodesDrawer />
-
-          <Button
-            title="Aproximar"
-            onClick={() => zoomIn({ duration: 200 })}
-            space={2}
-            variant="ghost"
-          >
-            <Icons.ZoomIn size={20} />
-          </Button>
-          <Button
-            onClick={() => zoomOut({ duration: 200 })}
-            title="Afastar"
-            space={2}
-            variant="ghost"
-          >
-            <Icons.ZoomIn size={20} />
-          </Button>
-          <Button
-            title="Ajustar visualização"
-            onClick={() => fitView({ duration: 200, maxZoom: 1.5 })}
-            space={2}
-            variant="ghost"
-          >
-            <Icons.Fullscreen size={20} />
-          </Button>
-        </Card>
-      </div>
+      <FloatingSaveArea />
+      <FloatingInteractionArea />
 
       <ReactFlow
         nodes={nodes}
@@ -124,10 +48,9 @@ export function View() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        nodeTypes={nodeTypes}
         onDragOver={onDragOver}
-        onDrop={(event) =>
-          onDrop({ event, setNodes, reactFlowInstance, reactFlowWrapperRef })
-        }
+        onDrop={handleDrop}
       >
         <Background gap={20} color={globalStyles.vars.colors.text[100]} />
       </ReactFlow>

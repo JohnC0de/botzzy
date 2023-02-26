@@ -27,7 +27,7 @@ export function MenuButton({
   function handleClick() {
     if (isActive) {
       handleCloseDetachMenu();
-      setOptions([]);
+      setTimeout(() => setOptions([]), 200);
     } else {
       handleOpenDetachMenu([menuKey, label]);
       setOptions(options);
