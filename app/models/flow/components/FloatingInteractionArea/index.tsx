@@ -34,7 +34,7 @@ export function FloatingInteractionArea() {
           space={2}
           variant="ghost"
         >
-          <Icons.ZoomIn size={20} />
+          <Icons.ZoomOut size={20} />
         </Button>
         <Button
           title="Ajustar visualização"
