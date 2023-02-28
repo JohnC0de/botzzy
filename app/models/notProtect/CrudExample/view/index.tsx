@@ -1,8 +1,10 @@
-import { Card } from "~/client/components";
-import { Icons } from "~/client/icons";
-import { Container, Header, Table, TableButton } from "~/client/template";
-import { HeaderContent } from "./HeaderContent";
 import type { TableColumnProps } from "~/client/template/Table/types";
+
+import { Icons } from "~/client/icons";
+import { Card } from "~/client/components";
+import { Container, Header, Table, TableButton } from "~/client/template";
+
+import { HeaderContent } from "../components/HeaderContent";
 
 export function View() {
   const data = [
