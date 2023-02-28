@@ -20,5 +20,6 @@ export const headerStyle = style({
 export const contentStyle = style({
   display: "flex",
   flexDirection: "column",
+  justifyContent: "initial",
   flex: 1,
 });

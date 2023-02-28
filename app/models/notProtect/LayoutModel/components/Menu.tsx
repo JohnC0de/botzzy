@@ -14,7 +14,7 @@ export function Menu() {
         icon={Icons.Archive}
         menuKey="cruds"
         options={[
-          { icon: Icons.History, label: "Rota de test", to: "/v1/test" },
+          { icon: Icons.History, label: "Crud para teste", to: "/v1/test" },
         ]}
       />
 

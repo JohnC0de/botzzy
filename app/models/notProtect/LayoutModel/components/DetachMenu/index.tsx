@@ -18,8 +18,11 @@ export function DetachMenu() {
 
   return (
     <motion.nav
-      initial={{ width: 0 }}
-      animate={{ width: menuIsDetach ? "15.65rem" : 0 }}
+      initial={{ minWidth: 0, maxWidth: 0 }}
+      animate={{
+        minWidth: menuIsDetach ? "15.65rem" : 0,
+        maxWidth: menuIsDetach ? "15.65rem" : 0,
+      }}
       transition={{ ease: "easeOut", duration: 0.2 }}
       className={detachMenuContainerStyle}
     >

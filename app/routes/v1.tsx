@@ -7,7 +7,7 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
   <Treatment error={error} />
 );
 
-export default function App() {
+export default function () {
   return (
     <LayoutContextProvider>
       <LayoutClient.View />

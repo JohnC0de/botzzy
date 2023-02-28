@@ -22,7 +22,7 @@ export function View() {
       <Menu />
       <DetachMenu />
 
-      <main className={contentStyle}>
+      <div className={contentStyle}>
         <header className={headerStyle}>
           <Form method="post" action="/api/switchtheme">
             <Card align="center" spacing={2} showBgColor>
@@ -41,7 +41,7 @@ export function View() {
         </header>
 
         <Outlet />
-      </main>
+      </div>
     </div>
   );
 }

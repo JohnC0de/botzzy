@@ -8,12 +8,19 @@ export const headerStyle = style({
   justifyContent: "space-between",
 
   height: "min-content",
+  padding: "0 !important",
   flex: 1,
-  padding: vars.space[3],
 });
 
 export const titleStyle = style({
   fontSize: "1.75rem",
+  color: vars.colors.text[900],
+  lineHeight: vars.lineHeights.short,
+});
+
+export const subTitleStyle = style({
+  fontSize: "1rem",
+  fontWeight: vars.fontWeights.medium,
   lineHeight: vars.lineHeights.short,
 });
 

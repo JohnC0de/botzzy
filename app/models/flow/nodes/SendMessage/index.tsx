@@ -58,11 +58,7 @@ export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
 
   return (
     <>
-      <NodePort
-        type="target"
-        position={Position.Top}
-        onConnect={(params) => console.log("handle onConnect", params)}
-      />
+      <NodePort type="target" position={Position.Top} />
 
       <div
         className={sendMessageNodeContainer}
@@ -92,11 +88,7 @@ export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
         </div>
       </div>
 
-      <NodePort
-        type="source"
-        position={Position.Bottom}
-        onConnect={(params) => console.log("handle onConnect", params)}
-      />
+      <NodePort type="source" position={Position.Bottom} />
     </>
   );
 }
