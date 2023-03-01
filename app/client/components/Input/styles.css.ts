@@ -86,8 +86,8 @@ export const inputStyle = recipe({
     },
     isError: {
       true: {
-        borderColor: vars.colors.danger[300],
-        outline: "1px solid " + vars.colors.danger[300],
+        borderColor: vars.colors.danger[500],
+        outline: "1px solid " + vars.colors.danger[500],
       },
     },
   },

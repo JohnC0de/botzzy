@@ -1,19 +1,19 @@
 import { Card } from "~/client/components";
 import { Icons } from "~/client/icons";
-import {
-  badgeStyle,
-  tableContainerStyle,
-  tableTheadStyle,
-  tableThStyle,
-  tbodyTrStyle,
-} from "./styles.css";
+import { tableContainerStyle, tableThStyle, tbodyTrStyle } from "./styles.css";
 import type { TableProps } from "./types";
 
-export function Table({ columns, data, showCheckbox = false }: TableProps) {
+export function Table({
+  columns,
+  data,
+  content,
+  showCheckbox = false,
+}: TableProps) {
   return (
-    <Card space={6} radii="sm" showBgColor direction="column">
+    <Card spacing={4} space={4} radii="sm" showBgColor direction="column">
+      {content}
       <table className={tableContainerStyle}>
-        <thead className={tableTheadStyle}>
+        <thead>
           <tr>
             {columns.map((column, index) => (
               <th
@@ -53,18 +53,14 @@ export function Table({ columns, data, showCheckbox = false }: TableProps) {
             <tr key={dataItem.id + "_tbody_item_row"}>
               {columns.map((column) => (
                 <td
+                  key={column.key + "_tbody_item_column"}
                   className={tbodyTrStyle({
                     isNotLastChield: dataIndex + 1 !== data.length,
                   })}
-                  key={column.key + "_tbody_item_column"}
                 >
-                  {column.render ? (
-                    <>{column.render(dataItem)}</>
-                  ) : (
-                    <span className={badgeStyle({ variant: column.showBadge })}>
-                      {dataItem[column.key]}
-                    </span>
-                  )}
+                  {column.render
+                    ? column.render(dataItem)
+                    : dataItem[column.key]}
                 </td>
               ))}
             </tr>

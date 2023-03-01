@@ -8,6 +8,7 @@ export { Textarea } from "./Textarea";
 
 // Data display
 export { Card } from "./Card";
+export { Badge } from "./Badge";
 export { Divider } from "./Divider";
 
 // Overlay

@@ -6,10 +6,7 @@ export const headerStyle = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-
   height: "min-content",
-  padding: "0 !important",
-  flex: 1,
 });
 
 export const titleStyle = style({

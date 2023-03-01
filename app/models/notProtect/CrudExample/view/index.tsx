@@ -1,40 +1,56 @@
-import type { TableColumnProps } from "~/client/template/Table/types";
-
 import { Icons } from "~/client/icons";
-import { Card } from "~/client/components";
+import { Badge, Card } from "~/client/components";
 import { Container, Header, Table, TableButton } from "~/client/template";
+import { TableHeaderContent } from "../components/TableHeaderContent";
 
-import { HeaderContent } from "../components/HeaderContent";
+import type { TableColumnProps } from "~/client/template/Table/types";
+import { ReferralCards } from "../components/ReferralCards";
+
+type DataType = {
+  id: string;
+  name: string;
+  email: string;
+  status: 0 | 1;
+};
 
 export function View() {
   const data = [
     {
-      id: "asdasdas",
-      title1: "OrderCollumn",
-      title2: "ErrorBadge",
-      title3: "SuccessBadge",
-      title4: "WarningBadge",
-      title5: "InfoBadge",
+      id: "asd-456",
+      name: "Lucas Gonçalves",
+      email: "lucasedugoncalves123@gmail.com",
+      status: 1,
     },
     {
-      id: "asdasdasdaas",
-      title1: "OrderCollumn",
-      title2: "ErrorBadge",
-      title3: "SuccessBadge",
-      title4: "WarningBadge",
-      title5: "InfoBadge",
+      id: "asd-476",
+      name: "Francisco Dias",
+      email: "eng.franciscodias@gmail.com",
+      status: 1,
+    },
+    {
+      id: "ssd-476",
+      name: "Wanderson Willer",
+      email: "wandersonwiller@gmail.com",
+      status: 0,
     },
   ];
 
-  const columns: TableColumnProps<any>[] = [
-    { key: "title1", title: "COLLUMN-1", showOrder: true },
-    { key: "title2", title: "COLLUMN-2", showBadge: "danger" },
-    { key: "title3", title: "COLLUMN-3", showBadge: "success" },
-    { key: "title4", title: "COLLUMN-4", showBadge: "warning" },
-    { key: "title5", title: "COLLUMN-5", showBadge: "info" },
+  const columns: TableColumnProps<DataType>[] = [
+    { showOrder: true, key: "name", title: "Nome" },
+    { showOrder: true, key: "email", title: "Email" },
+    {
+      showOrder: true,
+      key: "status",
+      title: "Status",
+      render: (data) => (
+        <Badge variant={data.status ? "success" : "danger"}>
+          {data.status ? "Ativo" : "Desativo"}
+        </Badge>
+      ),
+    },
     {
       key: "action",
-      title: "COLLUMN-6",
+      title: "Ações",
       render: () => (
         <Card spacing={2}>
           <TableButton variant="danger">
@@ -43,15 +59,6 @@ export function View() {
           <TableButton variant="warning">
             <Icons.Edit size={20} />
           </TableButton>
-          <TableButton variant="primary">
-            <Icons.AlertCircle size={21} />
-          </TableButton>
-          <TableButton variant="success">
-            <Icons.CheckCircle size={21} />
-          </TableButton>
-          <TableButton variant="info">
-            <Icons.DoubtCircle size={21} />
-          </TableButton>
         </Card>
       ),
     },
@@ -59,13 +66,9 @@ export function View() {
 
   return (
     <Container>
-      <Header
-        title="Teste"
-        subTitle="Test screen description"
-        content={<HeaderContent />}
-      />
-
-      <Table data={data} columns={columns} />
+      <Header title="Teste" subTitle="SubTitle Test asdas sffeqw" />
+      <ReferralCards />
+      <Table data={data} columns={columns} content={<TableHeaderContent />} />
     </Container>
   );
 }

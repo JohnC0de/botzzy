@@ -15,10 +15,10 @@ export const tableButtonContainerStyle = recipe({
   variants: {
     variant: {
       primary: { ":hover": { color: vars.colors.primary[500] } },
-      danger: { ":hover": { color: vars.colors.danger[400] } },
-      warning: { ":hover": { color: vars.colors.warning[400] } },
-      success: { ":hover": { color: vars.colors.success[400] } },
-      info: { ":hover": { color: vars.colors.info[400] } },
+      danger: { ":hover": { color: vars.colors.danger[500] } },
+      warning: { ":hover": { color: vars.colors.warning[500] } },
+      success: { ":hover": { color: vars.colors.success[500] } },
+      info: { ":hover": { color: vars.colors.info[500] } },
     },
   },
 });

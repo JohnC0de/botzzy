@@ -4,6 +4,7 @@ import { createThemeContract, createTheme } from "@vanilla-extract/css";
 
 export const colors = createThemeContract({
   primary: {
+    50: null,
     100: null,
     300: null,
     500: null,
@@ -11,31 +12,35 @@ export const colors = createThemeContract({
   },
 
   success: {
+    50: null,
     100: null,
     300: null,
-    400: null,
     500: null,
+    700: null,
   },
 
   danger: {
+    50: null,
     100: null,
     300: null,
-    400: null,
     500: null,
+    700: null,
   },
 
   warning: {
+    50: null,
     100: null,
     300: null,
-    400: null,
     500: null,
+    700: null,
   },
 
   info: {
+    50: null,
     100: null,
     300: null,
-    400: null,
     500: null,
+    700: null,
   },
 
   gray: {

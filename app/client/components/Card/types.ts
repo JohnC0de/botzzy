@@ -3,7 +3,6 @@ import type { HTMLAttributes } from "react";
 export type TagProps = HTMLAttributes<HTMLElement>;
 export interface CardProps extends TagProps {
   as?: "section" | "aside" | "div";
-
   showBgColor?: boolean;
   direction?: "row" | "column";
   radii?: "px" | "xs" | "sm" | "md" | "lg" | "full";
