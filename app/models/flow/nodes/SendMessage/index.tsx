@@ -54,6 +54,9 @@ function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
 
 export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
   const { onOpenDrawer } = useFlow();
+
+  const message = data.message?.substring(0, 300);
+
   return (
     <>
       <NodePort type="target" position={Position.Top} />
@@ -76,18 +79,21 @@ export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
             <small>Suporte ao cliente (comum)</small>
           </Card>
         </Card>
-
-        {data.message ? (
-          <div className={messageZone}>
-            <div className={messageStyle}>{data.message}</div>
-          </div>
-        ) : (
-          <small style={{ textAlign: "center" }}>
-            Adicione uma mensagem...
-          </small>
-        )}
+        <div className={messageZone}>
+          {message ? (
+            <div
+              className={messageStyle}
+              dangerouslySetInnerHTML={{
+                __html: message.replaceAll("\n", "<br />"),
+              }}
+            />
+          ) : (
+            <small style={{ flex: 1, textAlign: "center" }}>
+              Adicione uma mensagem...
+            </small>
+          )}
+        </div>
       </div>
-
       <NodePort type="source" position={Position.Bottom} />
     </>
   );

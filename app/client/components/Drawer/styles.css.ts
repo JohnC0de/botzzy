@@ -9,7 +9,6 @@ export const drawerContentStyle = recipe({
     top: 0,
     bottom: 0,
     width: "max-content",
-    overflow: "auto",
     minWidth: "15rem",
     backgroundColor: vars.colors.bg[100],
     zIndex: 4,

@@ -1,11 +1,11 @@
 import { useNavigate } from "@remix-run/react";
 import { Button, Card, Input } from "~/client/components";
-import { useScopedParams } from "~/client/hooks";
+import { useCrud, useScopedParams } from "~/client/hooks";
 import { Icons } from "~/client/icons";
-import { FilterDrawer } from "./FilterDrawer";
 
 export function TableHeaderContent() {
   const navigate = useNavigate();
+  const { openFormModal, openFilterDrawer } = useCrud();
   const { getScopedSearch } = useScopedParams();
 
   function onChangeSearchInput(e?: string) {
@@ -24,8 +24,14 @@ export function TableHeaderContent() {
       </Card>
 
       <Card spacing={1}>
-        <FilterDrawer />
-        <Button space={2} spacing={2}>
+        <Button space={2} onClick={() => openFilterDrawer()}>
+          <Icons.Filter size={20} />
+        </Button>
+        <Button
+          space={2}
+          spacing={2}
+          onClick={() => openFormModal({ title: "Adicionar integração" })}
+        >
           <Icons.Plus size={20} />
           Adicionar
         </Button>

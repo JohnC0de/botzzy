@@ -1,10 +1,16 @@
 import { Icons } from "~/client/icons";
 import { Badge, Card } from "~/client/components";
+import { useCrud } from "~/client/hooks";
 import { Container, Header, Table, TableButton } from "~/client/template";
-import { TableHeaderContent } from "../components/TableHeaderContent";
-
 import type { TableColumnProps } from "~/client/template/Table/types";
-import { ReferralCards } from "../components/ReferralCards";
+
+import {
+  TableHeaderContent,
+  ReferralCards,
+  ModalForm,
+  FilterDrawer,
+  ModalDelete,
+} from "../components";
 
 type DataType = {
   id: string;
@@ -14,6 +20,7 @@ type DataType = {
 };
 
 export function View() {
+  const { openDeleteModal, openFormModal } = useCrud();
   const data = [
     {
       id: "asd-456",
@@ -51,12 +58,18 @@ export function View() {
     {
       key: "action",
       title: "Ações",
-      render: () => (
+      render: (data) => (
         <Card spacing={2}>
-          <TableButton variant="danger">
+          <TableButton
+            variant="danger"
+            onClick={() => openDeleteModal(data.id)}
+          >
             <Icons.Trash size={20} />
           </TableButton>
-          <TableButton variant="warning">
+          <TableButton
+            variant="warning"
+            onClick={() => openFormModal({ title: "Editar integração", data })}
+          >
             <Icons.Edit size={20} />
           </TableButton>
         </Card>
@@ -66,9 +79,13 @@ export function View() {
 
   return (
     <Container>
-      <Header title="Teste" subTitle="SubTitle Test asdas sffeqw" />
+      <Header title="Integrações" />
       <ReferralCards />
       <Table data={data} columns={columns} content={<TableHeaderContent />} />
+
+      <FilterDrawer />
+      <ModalForm />
+      <ModalDelete />
     </Container>
   );
 }

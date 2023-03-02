@@ -1,4 +1,5 @@
 import type { TextareaHTMLAttributes } from "react";
+import type { PositionProps } from "../Popover/types";
 
 export interface TextAreaTypes
   extends Omit<
@@ -12,4 +13,6 @@ export interface TextAreaTypes
   fontWeight?: "regular" | "medium" | "bold";
   label?: string;
   error?: string | null;
+  showEmoticons?: boolean;
+  emotePosition?: PositionProps;
 }

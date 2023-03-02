@@ -10,17 +10,18 @@ export function ReferralCards() {
       <ReferralCard
         icon={Icons.History}
         iconBackgrundColor={vars.colors.primary[500]}
+        badgeVariant="success"
         badgeContent={
           <Card align="center" spacing={1}>
             <Icons.ChevronTop size={16} />
             17.2%
           </Card>
         }
-        badgeVariant="success"
       >
         <small>Total users</small>
         <h3>2,420</h3>
       </ReferralCard>
+
       <ReferralCard
         icon={Icons.Note}
         iconBackgrundColor={vars.colors.success[300]}
@@ -35,6 +36,7 @@ export function ReferralCards() {
         <small>Active Users</small>
         <h3>1,897</h3>
       </ReferralCard>
+
       <ReferralCard
         icon={Icons.Plus}
         iconBackgrundColor={vars.colors.info[500]}

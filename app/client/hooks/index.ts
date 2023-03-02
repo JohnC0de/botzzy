@@ -1,3 +1,4 @@
+export { useCrud } from "./useCrud";
 export { useLayout } from "./useLayout";
 export { useLenguage } from "./useLenguage";
 export { useRoot } from "./useRoot";

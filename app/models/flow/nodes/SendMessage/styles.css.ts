@@ -7,7 +7,6 @@ export const sendMessageNodeContainer = style({
   flexDirection: "column",
   backgroundColor: vars.colors.bg[100],
   gap: vars.space[6],
-  width: "335px",
 
   borderRadius: vars.radii.sm,
   padding: vars.space[4],

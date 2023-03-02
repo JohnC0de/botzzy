@@ -6,8 +6,14 @@ import {
   labelStyle,
 } from "./styles.css";
 
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+
 import type { TextAreaTypes } from "./types";
 import { motion } from "framer-motion";
+import { Popover } from "../Popover";
+import { Button } from "../Button";
+import { Icons } from "~/client/icons";
 
 export function Textarea({
   radii,
@@ -19,6 +25,10 @@ export function Textarea({
   label,
   error,
   disabled,
+  showEmoticons = false,
+  emotePosition = "bottom-left",
+  value,
+  defaultValue,
   ...rest
 }: TextAreaTypes) {
   const id = useId();
@@ -27,6 +37,18 @@ export function Textarea({
       {label && (
         <label htmlFor={id} className={labelStyle}>
           {label}
+          {!showEmoticons && (
+            <Popover
+              position={emotePosition}
+              button={
+                <Button variant="ghost" space={1} radii="full">
+                  <Icons.MessageSquare size={18} />
+                </Button>
+              }
+            >
+              <Picker data={data} onEmojiSelect={console.log} />
+            </Popover>
+          )}
         </label>
       )}
 
