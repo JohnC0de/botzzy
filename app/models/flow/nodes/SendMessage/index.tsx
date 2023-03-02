@@ -1,21 +1,20 @@
-import { Button, Card, Textarea } from "~/client/components";
-import { Position } from "reactflow";
 import whatsLogo from "~/client/assets/whatsapp_logo.png";
-
+import { Button, Card, Textarea } from "~/client/components";
+import { useState } from "react";
+import { Position } from "reactflow";
 import type { NodeProps } from "reactflow";
+
 import { NodePort } from "../../components/NodePort";
+import { useFlow } from "../../hook/useFlow";
+
 import {
   messageZone,
   sendMessageNodeContainer,
   imageStyle,
+  messageStyle,
 } from "./styles.css";
-import { useFlow } from "../../hook/useFlow";
-import { useState } from "react";
 
-type SendMessageProps = {
-  message?: string;
-};
-
+type SendMessageProps = { message?: string };
 function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
   const [message, setMessage] = useState(data.message || "");
   const { setNodes, onCloseDrawer } = useFlow();
@@ -55,7 +54,6 @@ function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
 
 export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
   const { onOpenDrawer } = useFlow();
-
   return (
     <>
       <NodePort type="target" position={Position.Top} />
@@ -79,13 +77,15 @@ export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
           </Card>
         </Card>
 
-        <div className={messageZone}>
-          {data.message ? (
-            data.message
-          ) : (
-            <small>Adicione uma mensagem...</small>
-          )}
-        </div>
+        {data.message ? (
+          <div className={messageZone}>
+            <div className={messageStyle}>{data.message}</div>
+          </div>
+        ) : (
+          <small style={{ textAlign: "center" }}>
+            Adicione uma mensagem...
+          </small>
+        )}
       </div>
 
       <NodePort type="source" position={Position.Bottom} />

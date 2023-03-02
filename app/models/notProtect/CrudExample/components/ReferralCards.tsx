@@ -23,7 +23,7 @@ export function ReferralCards() {
       </ReferralCard>
       <ReferralCard
         icon={Icons.Note}
-        iconBackgrundColor={vars.colors.success[500]}
+        iconBackgrundColor={vars.colors.success[300]}
         badgeVariant="success"
         badgeContent={
           <Card align="center" spacing={1}>

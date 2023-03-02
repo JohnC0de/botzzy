@@ -8,7 +8,7 @@ export const darkThemeColors = {
   },
 
   success: {
-    50: "#10B98133",
+    50: "#1F362B",
     100: "#74c69d",
     300: "#4ad66d",
     500: "#2dc653",

@@ -7,6 +7,7 @@ export const sendMessageNodeContainer = style({
   flexDirection: "column",
   backgroundColor: vars.colors.bg[100],
   gap: vars.space[6],
+  width: "335px",
 
   borderRadius: vars.radii.sm,
   padding: vars.space[4],
@@ -19,9 +20,39 @@ export const imageStyle = style({
 });
 
 export const messageZone = style({
-  width: "250px",
+  width: "300px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "end",
 
-  backgroundColor: vars.colors.bg[500],
+  background: vars.colors.bg[500],
+  borderRadius: vars.radii.sm,
+  padding: vars.space[6],
+});
+
+export const messageStyle = style({
+  position: "relative",
   borderRadius: vars.radii.sm,
   padding: vars.space[2],
+  background: vars.colors.success[50],
+  color: vars.colors.text[900],
+  fontWeight: vars.fontWeights.medium,
+  fontSize: vars.fontSizes.sm,
+
+  ":after": {
+    content: "",
+    position: "absolute",
+    fontSize: 0,
+    lineHeight: 0,
+    width: 0,
+    height: 0,
+    zIndex: 1000,
+    top: 0,
+    right: 0,
+    transform: "translateX(50%)",
+    border: "solid transparent",
+    borderWidth: "6px",
+    borderTopColor: vars.colors.success[50],
+    borderBottomWidth: 0,
+  },
 });

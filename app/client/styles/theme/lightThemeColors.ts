@@ -8,10 +8,10 @@ export const lightThemeColors = {
   },
 
   success: {
-    50: "#10B98133",
+    50: "#CCEADB",
     100: "#74c69d",
     300: "#4ad66d",
-    500: "#2dc653",
+    500: "#249E42",
     700: "#1b4332",
   },
 
