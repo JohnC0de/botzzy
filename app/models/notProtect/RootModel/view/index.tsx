@@ -34,7 +34,7 @@ export function View() {
           <Outlet context={{ isDarkTheme, toggleTheme }} />
         </ToastContextProvider>
         <ScrollRestoration />
-        {isBot && <Scripts />}
+        {isBot ? null : <Scripts />}
         <LiveReload />
       </body>
     </html>
