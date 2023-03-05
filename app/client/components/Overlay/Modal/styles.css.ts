@@ -16,7 +16,7 @@ export const modalContainerStyle = style({
 });
 
 export const modalContentStyle = style({
-  borderRadius: vars.radii.sm,
+  borderRadius: vars.radii.xs,
   width: "max-content",
   height: "max-content",
   backgroundColor: vars.colors.bg[100],

@@ -13,7 +13,7 @@ export const contentContainerStyle = recipe({
     zIndex: 3,
 
     backgroundColor: vars.colors.bg[100],
-    borderRadius: vars.radii.sm,
+    borderRadius: vars.radii.xs,
   },
 
   variants: {

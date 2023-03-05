@@ -24,7 +24,7 @@ export function Modal({
         <div className={modalContainerStyle}>
           <motion.div
             className={modalContentStyle}
-            transition={{ duration: 0.1, ease: "easeIn" }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
