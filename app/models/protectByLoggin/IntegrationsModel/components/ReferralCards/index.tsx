@@ -2,11 +2,12 @@ import { Card } from "~/client/components";
 import { Icons } from "~/client/icons";
 import { globalStyles } from "~/client/styles";
 import { ReferralCard } from "~/client/template";
+import { referralCardContainerStyle } from "./styles.css";
 
 const { vars } = globalStyles;
 export function ReferralCards() {
   return (
-    <Card spacing={6} justify="space-between">
+    <div className={referralCardContainerStyle}>
       <ReferralCard
         icon={Icons.History}
         iconBackgrundColor={vars.colors.indigo[500]}
@@ -51,6 +52,6 @@ export function ReferralCards() {
         <small>New Users</small>
         <h3>241</h3>
       </ReferralCard>
-    </Card>
+    </div>
   );
 }

@@ -32,7 +32,11 @@ export function ReferralCard({
       >
         <Icon color="#FFF" size={28} />
       </Card>
-      <Card direction="column" spacing={1} style={{ flex: 1 }}>
+      <Card
+        direction="column"
+        spacing={1}
+        style={{ flex: 1, whiteSpace: "nowrap" }}
+      >
         {children}
       </Card>
       {badgeContent && badgeVariant && (
