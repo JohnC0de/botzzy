@@ -35,15 +35,15 @@ export const inputStyle = recipe({
       default: {
         backgroundColor: vars.colors.line,
         ":focus": {
-          borderColor: vars.colors.primary[500],
-          outline: "1px solid " + vars.colors.primary[500],
+          borderColor: vars.colors.indigo[500],
+          outline: "1px solid " + vars.colors.indigo[500],
         },
       },
       outline: {
         borderColor: vars.colors.line,
         ":focus": {
-          borderColor: vars.colors.primary[500],
-          outline: "1px solid " + vars.colors.primary[500],
+          borderColor: vars.colors.indigo[500],
+          outline: "1px solid " + vars.colors.indigo[500],
         },
       },
       ghost: {},
@@ -90,8 +90,8 @@ export const inputStyle = recipe({
     },
     isError: {
       true: {
-        borderColor: vars.colors.danger[500],
-        outline: "1px solid " + vars.colors.danger[500],
+        borderColor: vars.colors.red[500],
+        outline: "1px solid " + vars.colors.red[500],
       },
     },
   },
@@ -108,5 +108,5 @@ export const inputStyle = recipe({
 export const errorInputStyle = style({
   fontSize: vars.fontSizes.sm,
   fontWeight: vars.fontWeights.bold,
-  color: vars.colors.danger[300],
+  color: vars.colors.red[500],
 });

@@ -65,7 +65,7 @@ export const textLinkStyle = style({
 });
 
 export const linkStyle = style({
-  color: vars.colors.primary[500],
+  color: vars.colors.indigo[500],
   fontWeight: vars.fontWeights.regular,
 
   textDecoration: "none",

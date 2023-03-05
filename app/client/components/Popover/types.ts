@@ -15,5 +15,6 @@ export type PopoverProps = {
   children: ReactNode;
   button: ReactNode;
   position?: PositionProps;
+  isOpen?: boolean;
   boxShadow?: "xs" | "sm" | "md" | "lg";
 };

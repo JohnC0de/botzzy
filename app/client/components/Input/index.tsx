@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 export function Input({
   radii,
-  variant = "default",
+  variant,
   fontSize,
   fontWeight,
   space,

@@ -10,7 +10,8 @@ export const headerStyle = style({
 });
 
 export const titleStyle = style({
-  fontSize: "1.75rem",
+  fontSize: "1.5rem",
+  fontWeight: vars.fontWeights.bold,
   color: vars.colors.text[900],
   lineHeight: vars.lineHeights.short,
 });

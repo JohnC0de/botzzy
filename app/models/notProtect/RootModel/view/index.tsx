@@ -10,10 +10,11 @@ import {
 
 import { ToastContextProvider } from "~/client/contexts";
 import { globalStyles } from "~/client/styles";
-import { useLenguage, useRoot } from "~/client/hooks";
+import { useLenguage, useRoot, useIsBot } from "~/client/hooks";
 
 export function View() {
   const { theme } = useRoot();
+  const isBot = useIsBot();
   const { activeLanguage } = useLenguage();
 
   const [isDarkTheme, setIsDarkTheme] = useState(theme === "dark");
@@ -33,7 +34,7 @@ export function View() {
           <Outlet context={{ isDarkTheme, toggleTheme }} />
         </ToastContextProvider>
         <ScrollRestoration />
-        <Scripts />
+        {isBot && <Scripts />}
         <LiveReload />
       </body>
     </html>

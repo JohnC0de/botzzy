@@ -12,14 +12,14 @@ export function ModalForm() {
       title={formModal?.title}
       makeInvisible={closeFormModal}
     >
-      <Card space={4}>
+      <Card space={6}>
         <Form>
-          <Card direction="column" spacing={3} style={{ width: 350 }}>
+          <Card direction="column" spacing={6} style={{ width: 400 }}>
             <Input label="Nome:" name="name" placeholder="Escreva aqui..." />
 
             <Card
               showBgColor
-              spacing={2}
+              spacing={3}
               justify="flex-end"
               style={{ flex: 1 }}
             >

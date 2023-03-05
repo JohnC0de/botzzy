@@ -28,10 +28,10 @@ export function FilterDrawer() {
     >
       <Card
         direction="column"
-        space={4}
-        spacing={4}
+        space={6}
+        spacing={6}
         showBgColor
-        style={{ width: 300 }}
+        style={{ width: 350 }}
       >
         <Input
           label="Data inicial:"

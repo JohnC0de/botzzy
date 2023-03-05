@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { globalStyles } from "~/client/styles";
 const { vars } = globalStyles;
 
-export const sendMessageNodeContainer = style({
+export const awaitNodeContainer = style({
   display: "flex",
   flexDirection: "column",
   backgroundColor: vars.colors.bg[100],
@@ -30,10 +30,13 @@ export const messageZone = style({
 });
 
 export const messageStyle = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.space[2],
   position: "relative",
   borderRadius: vars.radii.sm,
   padding: vars.space[2],
-  background: vars.colors.emerald[200],
+  background: vars.colors.yellow[200],
   color: vars.colors.text[900],
   fontWeight: vars.fontWeights.medium,
   fontSize: vars.fontSizes.sm,
@@ -51,7 +54,7 @@ export const messageStyle = style({
     transform: "translateX(50%)",
     border: "solid transparent",
     borderWidth: "6px",
-    borderTopColor: vars.colors.emerald[200],
+    borderTopColor: vars.colors.yellow[200],
     borderBottomWidth: 0,
   },
 });

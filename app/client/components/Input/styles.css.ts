@@ -10,9 +10,9 @@ export const inputContainerStyle = style({
 });
 
 export const labelStyle = style({
-  fontSize: vars.fontSizes.sm,
-  fontWeight: vars.fontWeights.bold,
-  color: vars.colors.text[900],
+  fontSize: vars.fontSizes.md,
+  fontWeight: vars.fontWeights.medium,
+  color: vars.colors.text[500],
   fontFamily: vars.fonts.default,
 });
 
@@ -23,7 +23,7 @@ export const inputStyle = recipe({
     outline: "none",
     fontFamily: vars.fonts.default,
     background: "transparent",
-    "::placeholder": { color: "vars.colors.text[100]" },
+    "::placeholder": { color: vars.colors.slate[400] },
   },
 
   variants: {
@@ -31,15 +31,15 @@ export const inputStyle = recipe({
       default: {
         backgroundColor: vars.colors.line,
         ":focus": {
-          borderColor: vars.colors.primary[500],
-          outline: "1px solid " + vars.colors.primary[500],
+          borderColor: vars.colors.indigo[500],
+          outline: "1px solid " + vars.colors.indigo[500],
         },
       },
       outline: {
         borderColor: vars.colors.line,
         ":focus": {
-          borderColor: vars.colors.primary[500],
-          outline: "1px solid " + vars.colors.primary[500],
+          borderColor: vars.colors.indigo[500],
+          outline: "1px solid " + vars.colors.indigo[500],
         },
       },
       ghost: {},
@@ -86,8 +86,8 @@ export const inputStyle = recipe({
     },
     isError: {
       true: {
-        borderColor: vars.colors.danger[500],
-        outline: "1px solid " + vars.colors.danger[500],
+        borderColor: vars.colors.red[500],
+        outline: "1px solid " + vars.colors.red[500],
       },
     },
   },
@@ -104,5 +104,5 @@ export const inputStyle = recipe({
 export const errorInputStyle = style({
   fontSize: vars.fontSizes.sm,
   fontWeight: vars.fontWeights.bold,
-  color: vars.colors.danger[300],
+  color: vars.colors.red[500],
 });

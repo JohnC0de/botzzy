@@ -23,7 +23,7 @@ export const spinnerStyle = recipe({
 
     colorful: {
       colored: {
-        border: "3px solid " + vars.colors.primary[700],
+        border: "3px solid " + vars.colors.indigo[700],
         borderTopColor: "#FFFFFF",
       },
       unColored: {

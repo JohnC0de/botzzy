@@ -31,7 +31,7 @@ export function NodePort({ alignAbsolutPosition, ...rest }: NodePortProps) {
         border: "none",
         padding: isActive ? "0.1rem" : "0.25rem",
         borderRadius: isActive ? vars.radii.full : "2px",
-        background: !isActive ? vars.colors.primary[500] : vars.colors.line,
+        background: !isActive ? vars.colors.indigo[500] : vars.colors.line,
         ...alignAbsolutPosition,
       }}
       {...rest}

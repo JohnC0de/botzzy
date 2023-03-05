@@ -4,7 +4,7 @@ import type { PositionProps } from "../Popover/types";
 export interface TextAreaTypes
   extends Omit<
     TextareaHTMLAttributes<HTMLTextAreaElement>,
-    "className" | "type"
+    "className" | "type" | "onChange"
   > {
   variant?: "default" | "outline" | "ghost";
   radii?: "px" | "xs" | "sm" | "md" | "lg" | "full";
@@ -15,4 +15,5 @@ export interface TextAreaTypes
   error?: string | null;
   showEmoticons?: boolean;
   emotePosition?: PositionProps;
+  onChange?: (e: string) => void;
 }

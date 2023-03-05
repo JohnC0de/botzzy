@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { globalStyles } from "~/client/styles";
 const { vars } = globalStyles;
 
-export const sendMessageNodeContainer = style({
+export const audioNodeContainer = style({
   display: "flex",
   flexDirection: "column",
   backgroundColor: vars.colors.bg[100],
@@ -30,6 +30,9 @@ export const messageZone = style({
 });
 
 export const messageStyle = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.space[2],
   position: "relative",
   borderRadius: vars.radii.sm,
   padding: vars.space[2],
@@ -53,5 +56,14 @@ export const messageStyle = style({
     borderWidth: "6px",
     borderTopColor: vars.colors.emerald[200],
     borderBottomWidth: 0,
+  },
+});
+
+export const buttonAudioStyle = style({
+  backgroundColor: `${vars.colors.bg[100]} !important`,
+  borderRadius: `${vars.radii.xs} !important`,
+  boxShadow: "none !important",
+  ":hover": {
+    filter: "brightness(0.92) !important",
   },
 });

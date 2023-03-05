@@ -29,9 +29,9 @@ export function ToastContextProvider({ children }: CrudContextProviderProps) {
         toast(props.message, {
           icon: <Icons.InfoCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.info[100],
+            backgroundColor: vars.colors.cyan[100],
             fontWeight: vars.fontWeights.medium,
-            color: vars.colors.info[500],
+            color: vars.colors.cyan[500],
           },
         });
         break;
@@ -40,9 +40,9 @@ export function ToastContextProvider({ children }: CrudContextProviderProps) {
         toast(props.message, {
           icon: <Icons.CheckCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.success[100],
+            backgroundColor: vars.colors.emerald[100],
             fontWeight: vars.fontWeights.medium,
-            color: vars.colors.success[500],
+            color: vars.colors.emerald[500],
           },
         });
         break;
@@ -51,9 +51,9 @@ export function ToastContextProvider({ children }: CrudContextProviderProps) {
         toast(props.message, {
           icon: <Icons.XCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.danger[100],
+            backgroundColor: vars.colors.red[100],
             fontWeight: vars.fontWeights.medium,
-            color: vars.colors.danger[500],
+            color: vars.colors.red[500],
           },
         });
         break;
@@ -62,9 +62,9 @@ export function ToastContextProvider({ children }: CrudContextProviderProps) {
         toast(props.message, {
           icon: <Icons.AlertCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.warning[100],
+            backgroundColor: vars.colors.yellow[100],
             fontWeight: vars.fontWeights.medium,
-            color: vars.colors.warning[500],
+            color: vars.colors.yellow[500],
             textAlign: "center",
           },
         });

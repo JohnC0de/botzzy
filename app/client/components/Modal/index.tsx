@@ -10,7 +10,7 @@ import {
   modalOverlayStyle,
 } from "./styles.css";
 
-import type { ModalProps } from "./stypes";
+import type { ModalProps } from "./types";
 
 export function Modal({
   isVisible,

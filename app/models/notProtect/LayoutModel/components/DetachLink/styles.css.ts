@@ -16,12 +16,18 @@ export const detachLinkContainerStyle = recipe({
     background: vars.colors.bg[100],
     color: vars.colors.text[500],
 
-    ":hover": { background: vars.colors.line, color: vars.colors.text[900] },
+    ":hover": {
+      background: vars.colors.slate[200],
+      color: vars.colors.text[900],
+    },
   },
 
   variants: {
     isActive: {
-      true: { background: vars.colors.line, color: vars.colors.text[900] },
+      true: {
+        background: vars.colors.slate[200],
+        color: vars.colors.text[900],
+      },
     },
   },
 });

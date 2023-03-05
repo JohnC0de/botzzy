@@ -15,21 +15,21 @@ export const badgeStyle = recipe({
   variants: {
     variant: {
       primary: {
-        backgroundColor: vars.colors.primary[50],
-        color: vars.colors.primary[500],
+        backgroundColor: vars.colors.indigo[50],
+        color: vars.colors.indigo[500],
       },
       success: {
-        backgroundColor: vars.colors.success[50],
-        color: vars.colors.success[500],
+        backgroundColor: vars.colors.emerald[50],
+        color: vars.colors.emerald[500],
       },
       info: {},
       danger: {
-        backgroundColor: vars.colors.danger[50],
-        color: vars.colors.danger[500],
+        backgroundColor: vars.colors.red[50],
+        color: vars.colors.red[500],
       },
       warning: {
-        backgroundColor: vars.colors.warning[50],
-        color: vars.colors.warning[500],
+        backgroundColor: vars.colors.yellow[50],
+        color: vars.colors.yellow[500],
       },
     },
 
@@ -75,9 +75,9 @@ export const badgeStyle = recipe({
   },
 
   defaultVariants: {
-    fontSize: "sm",
-    space: 2,
+    space: 1,
     radii: "lg",
+    fontSize: "sm",
     fontWeight: "bold",
     variant: "primary",
   },

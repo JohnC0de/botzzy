@@ -3,47 +3,73 @@ import { lightThemeColors } from "./lightThemeColors";
 import { createThemeContract, createTheme } from "@vanilla-extract/css";
 
 export const colors = createThemeContract({
-  primary: {
+  indigo: {
     50: null,
     100: null,
+    200: null,
     300: null,
+    400: null,
     500: null,
+    600: null,
     700: null,
+    800: null,
+    900: null,
   },
 
-  success: {
+  emerald: {
     50: null,
     100: null,
+    200: null,
     300: null,
+    400: null,
     500: null,
+    600: null,
     700: null,
+    800: null,
+    900: null,
   },
 
-  danger: {
+  red: {
     50: null,
     100: null,
+    200: null,
     300: null,
+    400: null,
     500: null,
+    600: null,
     700: null,
+    800: null,
+    900: null,
   },
 
-  warning: {
+  yellow: {
     50: null,
     100: null,
+    200: null,
     300: null,
+    400: null,
     500: null,
+    600: null,
     700: null,
+    800: null,
+    900: null,
   },
 
-  info: {
+  cyan: {
     50: null,
     100: null,
+    200: null,
     300: null,
+    400: null,
     500: null,
+    600: null,
     700: null,
+    800: null,
+    900: null,
   },
 
-  gray: {
+  slate: {
+    50: null,
     100: null,
     200: null,
     300: null,

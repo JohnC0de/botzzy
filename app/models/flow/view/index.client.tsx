@@ -7,13 +7,20 @@ import type { DragEvent } from "react";
 
 import { onDrop } from "../functions/onDrop";
 import { useFlow } from "../hook/useFlow";
-import { SendMessage } from "../nodes/SendMessage";
-
 import { FloatingInteractionArea } from "../components/FloatingInteractionArea";
 import { FloatingSaveArea } from "../components/FloatingSaveArea";
 import { viewContainer } from "./styles.css";
 
-const nodeTypes: NodeTypes = { send_message: SendMessage };
+import { Await } from "../nodes/Await";
+import { SendMessage } from "../nodes/SendMessage";
+import { SendAudio } from "../nodes/SendAudio";
+
+const nodeTypes: NodeTypes = {
+  send_message: SendMessage,
+  await: Await,
+  send_audio: SendAudio,
+};
+
 export function View() {
   const {
     edges,

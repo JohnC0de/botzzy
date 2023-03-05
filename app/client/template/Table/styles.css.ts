@@ -12,10 +12,10 @@ export const tableThStyle = recipe({
   base: {
     textAlign: "start",
     whiteSpace: "nowrap",
-    fontWeight: vars.fontWeights.bold,
+    fontWeight: vars.fontWeights.medium,
     fontSize: vars.fontSizes.md,
     color: vars.colors.text[900],
-    background: vars.colors.line,
+    background: vars.colors.slate[200],
   },
   variants: {
     showOrder: {
@@ -36,7 +36,8 @@ export const tableThStyle = recipe({
 export const tbodyTrStyle = recipe({
   base: {
     padding: vars.space[4],
-    fontWeight: vars.fontWeights.medium,
+    fontSize: vars.fontSizes.sm,
+    fontWeight: vars.fontWeights.regular,
   },
   variants: {
     isNotLastChield: {

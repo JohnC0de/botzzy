@@ -1,5 +1,5 @@
 import whatsLogo from "~/client/assets/whatsapp_logo.png";
-import { Button, Card, Textarea } from "~/client/components";
+import { Button, Card, Input } from "~/client/components";
 import { useState } from "react";
 import { Position } from "reactflow";
 import type { NodeProps } from "reactflow";
@@ -9,25 +9,22 @@ import { useFlow } from "../../hook/useFlow";
 
 import {
   messageZone,
-  sendMessageNodeContainer,
+  awaitNodeContainer,
   imageStyle,
   messageStyle,
 } from "./styles.css";
+import { Icons } from "~/client/icons";
 
-type SendMessageProps = { message?: string };
-function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
-  const [message, setMessage] = useState(data.message || "");
+type awaitProps = { time?: string; timeType?: string };
+function DrawerContent({ data, id }: { data: awaitProps; id: string }) {
+  const [time, setTime] = useState(data.time || "");
+  const [timeType, setTimeType] = useState(data.timeType || "");
   const { setNodes, onCloseDrawer } = useFlow();
 
   function handleSubmitNode() {
     setNodes((nds) =>
       nds.map((node) => {
-        if (node.id === id)
-          node.data = {
-            ...node.data,
-            message: message,
-          };
-
+        if (node.id === id) node.data = { ...node.data, time, timeType };
         return node;
       })
     );
@@ -38,13 +35,17 @@ function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <Card direction="column" space={6} spacing={4} style={{ width: "400px" }}>
-        <Textarea
-          label="Mensagem:"
-          placeholder="Adicione sua mensagem aqui..."
-          value={message}
-          rows={8}
-          showEmoticons
-          onChange={(e) => setMessage(e)}
+        <Input
+          label="Tempo:"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          placeholder="Quanto tempo deve ser esperado?"
+        />
+        <Input
+          label="Medida:"
+          value={timeType}
+          onChange={(e) => setTimeType(e.target.value)}
+          placeholder="Qual a medida de tempo?"
         />
 
         <Button onClick={handleSubmitNode}>Salvar</Button>
@@ -53,21 +54,18 @@ function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
   );
 }
 
-export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
+export function Await({ data, id }: NodeProps<awaitProps>) {
   const { onOpenDrawer } = useFlow();
-
-  const message = data.message?.substring(0, 300);
-
   return (
     <>
       <NodePort type="target" position={Position.Top} />
 
       <div
-        className={sendMessageNodeContainer}
+        className={awaitNodeContainer}
         onDoubleClick={() =>
           onOpenDrawer({
             id,
-            title: "Enviar mensagem - nó",
+            title: "Esperar - nó",
             children: <DrawerContent data={data} id={id} />,
           })
         }
@@ -76,21 +74,23 @@ export function SendMessage({ data, id }: NodeProps<SendMessageProps>) {
           <img src={whatsLogo} alt="Logo do whatsapp" className={imageStyle} />
 
           <Card direction="column">
-            <p>Enviar uma mensagem</p>
-            <small>Suporte ao cliente (comum)</small>
+            <p>Esperar</p>
+            <small>Esperar ação (comum)</small>
           </Card>
         </Card>
         <div className={messageZone}>
-          {message ? (
-            <div
-              className={messageStyle}
-              dangerouslySetInnerHTML={{
-                __html: message.replaceAll("\n", "<br />"),
-              }}
-            />
+          {data.time ? (
+            <div className={messageStyle}>
+              <Icons.Clock size={20} />
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: data.time + " " + data.timeType,
+                }}
+              />
+            </div>
           ) : (
             <small style={{ flex: 1, textAlign: "center" }}>
-              Adicione uma mensagem...
+              Adicione um tempo
             </small>
           )}
         </div>

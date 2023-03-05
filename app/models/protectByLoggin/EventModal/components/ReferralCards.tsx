@@ -9,7 +9,7 @@ export function ReferralCards() {
     <Card spacing={6} justify="space-between">
       <ReferralCard
         icon={Icons.History}
-        iconBackgrundColor={vars.colors.primary[500]}
+        iconBackgrundColor={vars.colors.indigo[500]}
         badgeVariant="success"
         badgeContent={
           <Card align="center" spacing={1}>
@@ -24,7 +24,7 @@ export function ReferralCards() {
 
       <ReferralCard
         icon={Icons.Note}
-        iconBackgrundColor={vars.colors.success[300]}
+        iconBackgrundColor={vars.colors.emerald[500]}
         badgeVariant="success"
         badgeContent={
           <Card align="center" spacing={1}>
@@ -39,7 +39,7 @@ export function ReferralCards() {
 
       <ReferralCard
         icon={Icons.Plus}
-        iconBackgrundColor={vars.colors.info[500]}
+        iconBackgrundColor={vars.colors.cyan[500]}
         badgeVariant="danger"
         badgeContent={
           <Card align="center" spacing={1}>

@@ -1,6 +1,6 @@
 import uuid from "react-uuid";
 import type { DragEvent, RefObject } from "react";
-import { ReactFlowInstance, Node, Position } from "reactflow";
+import type { ReactFlowInstance, Node } from "reactflow";
 
 type onDropProps = {
   event: DragEvent<HTMLDivElement>;
@@ -32,8 +32,6 @@ export function onDrop({
 
   const newNode: Node = {
     id: uuid(),
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
     type,
     position,
     data: { label: `${type} node` },

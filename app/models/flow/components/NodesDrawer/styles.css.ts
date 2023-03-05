@@ -7,19 +7,20 @@ export const drawerContentStyle = style({
   flexDirection: "column",
   gap: vars.space[1],
   background: "inherit",
-  padding: vars.space[3],
+  padding: vars.space[6],
 });
 
 export const draggableNodeStyle = style({
   display: "flex",
   alignItems: "center",
   gap: vars.space[4],
-  minWidth: "15rem",
+  minWidth: "18rem",
   background: "inherit",
   padding: vars.space[3] + vars.space[5],
   fontWeight: vars.fontWeights.medium,
   transition: "all 0.1s",
   ":hover": {
+    cursor: "grab",
     filter: "brightness(0.9)",
   },
 });

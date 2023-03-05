@@ -12,6 +12,7 @@ import { calcPosition } from "./calcPosition";
 export function Popover({
   children,
   button,
+  isOpen: importantIsOpen,
   boxShadow = "md",
   position = "bottom-right",
 }: PopoverProps) {
@@ -27,23 +28,25 @@ export function Popover({
     });
   }, [direction, position]);
 
+  const popoverState = importantIsOpen !== undefined ? importantIsOpen : isOpen;
+
   return (
     <div className={popoverContainerStyle}>
       <span onClick={() => setIsOpen(true)}>{button}</span>
 
       <motion.div
         ref={popoverContentRef}
-        style={{ visibility: isOpen ? "visible" : "hidden" }}
+        style={{ visibility: popoverState ? "visible" : "hidden" }}
         transition={{ ease: "easeOut", duration: 0.2 }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: isOpen ? 1 : 0 }}
+        animate={{ opacity: popoverState ? 1 : 0 }}
         exit={{ opacity: 0 }}
         className={contentContainerStyle({ position: direction, boxShadow })}
       >
         {children}
       </motion.div>
 
-      {isOpen && (
+      {popoverState && (
         <span
           onClick={() => setIsOpen(false)}
           className={popoverOverlayStyle}

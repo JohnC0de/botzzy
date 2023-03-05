@@ -29,7 +29,7 @@ export const modalContentHeaderStyle = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: vars.space[4],
+  padding: vars.space[6],
   borderBottom: "1px solid " + vars.colors.line,
 });
 

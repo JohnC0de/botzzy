@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import {
   inputContainerStyle,
   errorInputStyle,
@@ -17,7 +17,7 @@ import { Icons } from "~/client/icons";
 
 export function Textarea({
   radii,
-  variant = "default",
+  variant,
   fontSize,
   fontWeight,
   space,
@@ -29,24 +29,47 @@ export function Textarea({
   emotePosition = "bottom-left",
   value,
   defaultValue,
+  onChange: textareaOnChange,
   ...rest
 }: TextAreaTypes) {
   const id = useId();
+  const [emoticonsIsVisibled, setEmoticonsIsVisibled] = useState(false);
+  const [textareaValue, setTextareaValue] = useState(
+    value || defaultValue || ""
+  );
+
+  function onChange(e: string) {
+    setTextareaValue(e);
+    if (textareaOnChange) textareaOnChange(e);
+  }
+
   return (
     <div className={inputContainerStyle}>
       {label && (
         <label htmlFor={id} className={labelStyle}>
           {label}
-          {!showEmoticons && (
+          {showEmoticons && (
             <Popover
+              isOpen={emoticonsIsVisibled}
               position={emotePosition}
               button={
-                <Button variant="ghost" space={1} radii="full">
-                  <Icons.MessageSquare size={18} />
+                <Button
+                  variant="ghost"
+                  onClick={() => setEmoticonsIsVisibled(true)}
+                  space={1}
+                  radii="full"
+                >
+                  <Icons.Smile size={18} />
                 </Button>
               }
             >
-              <Picker data={data} onEmojiSelect={console.log} />
+              <Picker
+                data={data}
+                onEmojiSelect={(e: any) => {
+                  setEmoticonsIsVisibled(false);
+                  onChange(textareaValue + e.native);
+                }}
+              />
             </Popover>
           )}
         </label>
@@ -62,6 +85,8 @@ export function Textarea({
           variant,
           isError: !!error,
         })}
+        value={textareaValue}
+        onChange={(e) => onChange(e.target.value)}
         {...rest}
       />
 

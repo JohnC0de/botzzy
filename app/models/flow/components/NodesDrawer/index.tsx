@@ -32,6 +32,22 @@ export function NodesDrawer() {
           >
             <Icons.MessageSquare size={22} /> Enviar mensagem
           </div>
+          <div
+            draggable
+            onDragStart={(event) => onDragStart(event, "await")}
+            onDragEnd={() => setIsOpen(false)}
+            className={draggableNodeStyle}
+          >
+            <Icons.Clock size={22} /> Esperar ação
+          </div>
+          <div
+            draggable
+            onDragStart={(event) => onDragStart(event, "send_audio")}
+            onDragEnd={() => setIsOpen(false)}
+            className={draggableNodeStyle}
+          >
+            <Icons.Microphone size={22} /> Enviar audio
+          </div>
         </menu>
       </Drawer>
 

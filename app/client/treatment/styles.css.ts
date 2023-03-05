@@ -8,7 +8,7 @@ export const errorBoundaryContainer = style({
 });
 
 export const errorBoundaryHeading = style({
-  color: vars.colors.danger[400],
+  color: vars.colors.red[500],
   whiteSpace: "nowrap",
   marginBottom: vars.space[2],
 });
@@ -16,13 +16,13 @@ export const errorBoundaryHeading = style({
 export const errorBoundaryAside = style({
   display: "flex",
   height: "1px",
-  background: vars.colors.danger[400],
+  background: vars.colors.red[500],
   margin: `${vars.space[4]} 0`,
 });
 
 export const errorBoundaryStrong = style({
   display: "block",
-  color: vars.colors.danger[400],
+  color: vars.colors.red[500],
   background: vars.colors.bg[100],
   padding: vars.space[4],
   borderRadius: vars.radii.px,
@@ -36,6 +36,6 @@ export const errorBoundaryCode = style({
 });
 
 export const errorBoundaryAncora = style({
-  color: vars.colors.danger[400],
+  color: vars.colors.red[500],
   paddingLeft: vars.space[2],
 });

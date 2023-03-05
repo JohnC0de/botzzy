@@ -11,14 +11,14 @@ export function ModalDelete() {
       title="Deletar integração"
       makeInvisible={closeDeleteModal}
     >
-      <Card space={4}>
+      <Card space={6}>
         <Form>
-          <Card direction="column" spacing={3} style={{ width: 350 }}>
+          <Card direction="column" spacing={6} style={{ width: 400 }}>
             <p>Você deseja deleta essa integração?</p>
 
             <Card
               showBgColor
-              spacing={2}
+              spacing={3}
               justify="flex-end"
               style={{ flex: 1 }}
             >

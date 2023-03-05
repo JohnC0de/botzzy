@@ -1,6 +1,8 @@
 import { Badge, Card } from "~/client/components";
+import { globalStyles } from "~/client/styles";
 import type { ReferralCardProps } from "./types";
 
+const { vars } = globalStyles;
 export function ReferralCard({
   badgeVariant,
   icon: Icon,
@@ -16,15 +18,15 @@ export function ReferralCard({
       spacing={4}
       showBgColor
       radii="sm"
-      style={{ flex: 1, boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.1)" }}
+      style={{ flex: 1, border: `1px solid ${vars.colors.line}` }}
     >
       <Card
         align="center"
         justify="center"
         radii="sm"
         style={{
-          width: "3rem",
-          height: "3rem",
+          width: "3.5rem",
+          height: "3.5rem",
           background: iconBackgrundColor,
         }}
       >

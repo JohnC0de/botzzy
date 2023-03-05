@@ -34,7 +34,7 @@ export const drawerHeaderButtonStyle = recipe({
     display: "flex",
     alignItems: "center",
     border: "none",
-    padding: vars.space[4],
+    padding: vars.space[6],
     ":hover": { cursor: "pointer" },
   },
   variants: {

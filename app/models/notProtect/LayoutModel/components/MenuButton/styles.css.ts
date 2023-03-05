@@ -14,14 +14,13 @@ export const buttonStyle = recipe({
     border: "none",
     borderRadius: vars.radii.xs,
 
-    transition: "all 0.2s",
-    ":hover": { background: vars.colors.primary[700] },
+    ":hover": { cursor: "pointer", background: vars.colors.indigo[700] },
   },
 
   variants: {
     isActive: {
       false: { background: "inherit" },
-      true: { background: vars.colors.primary[700] },
+      true: { background: vars.colors.indigo[500] },
     },
   },
 });

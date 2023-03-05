@@ -23,9 +23,9 @@ export const buttonStyle = recipe({
     variant: {
       default: {
         color: "#FFF",
-        background: vars.colors.primary[500],
+        background: vars.colors.indigo[500],
         selectors: {
-          "&:hover:not(:disabled)": { background: vars.colors.primary[300] },
+          "&:hover:not(:disabled)": { background: vars.colors.indigo[400] },
         },
       },
       outline: {
@@ -91,7 +91,7 @@ export const buttonStyle = recipe({
   defaultVariants: {
     fontSize: "md",
     space: 3,
-    radii: "xs",
+    radii: "sm",
     fontWeight: "bold",
     variant: "default",
   },
