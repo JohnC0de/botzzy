@@ -17,13 +17,13 @@ export function ReferralCard({
       space={4}
       spacing={4}
       showBgColor
-      radii="sm"
+      radii="xs"
       style={{ flex: 1, border: `1px solid ${vars.colors.line}` }}
     >
       <Card
         align="center"
         justify="center"
-        radii="sm"
+        radii="xs"
         style={{
           width: "3.5rem",
           height: "3.5rem",

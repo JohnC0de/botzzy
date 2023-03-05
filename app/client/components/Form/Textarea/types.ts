@@ -1,5 +1,5 @@
 import type { TextareaHTMLAttributes } from "react";
-import type { PositionProps } from "../Popover/types";
+import type { PositionProps } from "../../Overlay/Popover/types";
 
 export interface TextAreaTypes
   extends Omit<

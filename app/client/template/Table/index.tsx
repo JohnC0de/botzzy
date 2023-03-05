@@ -10,7 +10,7 @@ export function Table({
   showCheckbox = false,
 }: TableProps) {
   return (
-    <Card spacing={4} space={4} radii="sm" showBgColor direction="column">
+    <Card spacing={4} space={4} radii="xs" showBgColor direction="column">
       {content}
       <table className={tableContainerStyle}>
         <thead>

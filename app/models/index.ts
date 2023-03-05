@@ -1,13 +1,17 @@
+//* unprotect
 // root/*
-export { RootClient, RootServer } from "./notProtect/RootModel";
-export { LayoutClient } from "./notProtect/LayoutModel";
+export { RootClient, RootServer } from "./unprotectModels/RootModel";
+// root/v1/*
+export { LayoutClient } from "./unprotectModels/LayoutModel";
 
+//* auth
+// root/auth/forgot
+export { ForgotClient, ForgotServer } from "./authModels/ForgotModel";
 // root/auth/signin
-export { ForgotClient, ForgotServer } from "./auth/ForgotModel";
-export { SignInClient, SignInServer } from "./auth/SignInModel";
+export { SignInClient, SignInServer } from "./authModels/SignInModel";
 
-//root/v1/flow
-export { FlowClient } from "./flow";
-
+//* protect
+//root/v1/flow/*
+export { FlowClient } from "./protectByLoggin/FlowModel";
 //root/v1/protect/integrations
-export { CrudExampleClient } from "./protectByLoggin/EventModal";
+export { IntegrationsModelClient } from "./protectByLoggin/IntegrationsModel";

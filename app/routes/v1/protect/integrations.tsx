@@ -2,9 +2,9 @@ import type { ErrorBoundaryComponent } from "@remix-run/node";
 import { CrudContextProvider } from "~/client/contexts";
 import { Treatment } from "~/client/treatment";
 
-import { CrudExampleClient } from "~/models";
+import { IntegrationsModelClient } from "~/models";
 
-export const meta = CrudExampleClient.meta;
+export const meta = IntegrationsModelClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
   <Treatment error={error} />
 );
@@ -12,7 +12,7 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
 export default function () {
   return (
     <CrudContextProvider>
-      <CrudExampleClient.View />
+      <IntegrationsModelClient.View />
     </CrudContextProvider>
   );
 }

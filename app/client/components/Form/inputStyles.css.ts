@@ -61,7 +61,6 @@ export const inputStyle = recipe({
     space: {
       1: { padding: vars.space[1] },
       2: { padding: vars.space[2] },
-
       3: { padding: vars.space[3] },
       4: { padding: vars.space[4] },
       5: { padding: vars.space[5] },

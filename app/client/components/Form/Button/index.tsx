@@ -1,4 +1,4 @@
-import { Spinner } from "../Spinner";
+import { Spinner } from "~/client/components";
 import {
   buttonStyle,
   childrenStyle,

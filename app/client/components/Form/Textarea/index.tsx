@@ -11,7 +11,7 @@ import Picker from "@emoji-mart/react";
 
 import type { TextAreaTypes } from "./types";
 import { motion } from "framer-motion";
-import { Popover } from "../Popover";
+import { Popover } from "~/client/components";
 import { Button } from "../Button";
 import { Icons } from "~/client/icons";
 

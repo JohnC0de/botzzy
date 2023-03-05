@@ -12,7 +12,7 @@ const VALID_FIRST = /^[1-9]{1}$/;
 const VALID_NEXT = /^[0-9]{1}$/;
 const DELETE_KEY_CODE = 8;
 
-export function handleKeyDown(
+export function onKeyDown(
   e: KeyboardEvent<HTMLDivElement>,
   inputValue: number,
   handleChange: (value: number) => void,

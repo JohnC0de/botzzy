@@ -1,7 +1,7 @@
 import { Icons } from "~/client/icons";
-import { Badge, Card } from "~/client/components";
+import { Badge, Card, Container } from "~/client/components";
 import { useCrud } from "~/client/hooks";
-import { Container, Header, Table, TableButton } from "~/client/template";
+import { Header, Table, TableButton } from "~/client/template";
 import type { TableColumnProps } from "~/client/template/Table/types";
 
 import {

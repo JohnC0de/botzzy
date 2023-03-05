@@ -1,14 +1,11 @@
-import type { InputHTMLAttributes } from "react";
+import type { Props } from "react-input-mask";
 
-export interface InputTypes
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "type"> {
+export interface MaskedInputTypes extends Omit<Props, "className" | "type"> {
   variant?: "default" | "outline" | "ghost";
   radii?: "px" | "xs" | "sm" | "md" | "lg" | "full";
   space?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 10 | 12 | 16 | 20 | 40 | 64 | 80;
   fontSize?: "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
   fontWeight?: "regular" | "medium" | "bold";
-  type?: "text" | "currency" | "mask" | "password" | "date";
   label?: string;
   error?: string | null;
-  mask?: string;
 }
