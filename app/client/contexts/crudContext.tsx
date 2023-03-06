@@ -15,8 +15,8 @@ type CrudContextProps = {
   openFormModal: (event: openFormModalProps) => void;
   closeFormModal: () => void;
 
-  deleteModal: string | null;
-  openDeleteModal: (event: string) => void;
+  deleteModal: string | number | null;
+  openDeleteModal: (event: number | string) => void;
   closeDeleteModal: () => void;
 
   filterDrawer: boolean;
@@ -46,8 +46,8 @@ export function CrudContextProvider({ children }: CrudContextProviderProps) {
   }
 
   // Delete modal
-  const [deleteModal, setDeleteModal] = useState<string | null>(null);
-  const openDeleteModal = (e: string) => setDeleteModal(e);
+  const [deleteModal, setDeleteModal] = useState<string | number | null>(null);
+  const openDeleteModal = (e: string | number) => setDeleteModal(e);
   const closeDeleteModal = () => setDeleteModal(null);
 
   // FILTER drawer

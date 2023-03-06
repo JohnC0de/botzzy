@@ -1,52 +1,26 @@
-import { useNavigate } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 
 import { Icons } from "~/client/icons";
 import { useCrud, useScopedParams } from "~/client/hooks";
 import { globalStyles } from "~/client/styles";
 import {
-  Badge,
   Card,
   Container,
   Stats,
   Table,
   Button,
   Header,
-  type TableCollumnsProps,
   Input,
+  type TableCollumnsProps,
 } from "~/client/components";
 
 import { ModalForm, FilterDrawer, ModalDelete } from "../components";
-
-type DataType = {
-  id: string;
-  name: string;
-  email: string;
-  status: 0 | 1;
-};
-
-const data = [
-  {
-    id: "asd-456",
-    name: "Lucas Gonçalves",
-    email: "lucasedugoncalves123@gmail.com",
-    status: 1,
-  },
-  {
-    id: "asd-476",
-    name: "Francisco Dias",
-    email: "eng.franciscodias@gmail.com",
-    status: 1,
-  },
-  {
-    id: "ssd-476",
-    name: "Wanderson Willer",
-    email: "wandersonwiller@gmail.com",
-    status: 0,
-  },
-];
+import type { IntegrationDTO, LoaderReturnProps } from "../types";
 
 const { vars } = globalStyles;
 export function View() {
+  const loaderData = useLoaderData<LoaderReturnProps>();
+
   const navigate = useNavigate();
   const { openFormModal, openDeleteModal, openFilterDrawer } = useCrud();
   const { getScopedSearch } = useScopedParams();
@@ -55,19 +29,9 @@ export function View() {
     navigate(getScopedSearch({ search: e ? e : undefined }));
   }
 
-  const columns: TableCollumnsProps<DataType> = [
+  const columns: TableCollumnsProps<IntegrationDTO> = [
     { showOrder: true, key: "name", title: "Nome" },
-    { showOrder: true, key: "email", title: "Email" },
-    {
-      showOrder: true,
-      key: "status",
-      title: "Status",
-      render: (data) => (
-        <Badge variant={data.status ? "success" : "danger"}>
-          {data.status ? "Ativo" : "Desativo"}
-        </Badge>
-      ),
-    },
+    { showOrder: true, key: "description", title: "Descrição" },
     {
       key: "action",
       title: "Ações",
@@ -124,7 +88,7 @@ export function View() {
       </Card>
 
       <Table
-        data={data}
+        data={loaderData.integrations}
         columns={columns}
         content={
           <Card spacing={2} justify="space-between" style={{ flex: 1 }}>

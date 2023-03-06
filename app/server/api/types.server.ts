@@ -1,10 +1,5 @@
 import type { Schema } from "zod";
 
-export type APIErrorProps = {
-  code: number;
-  message: string;
-};
-
 export type APISendProps = {
   url: string;
   token?: string;
@@ -18,7 +13,7 @@ export type APISendWithBodyProps = {
 
 export type APIReturnProps<T = unknown> = {
   data: T;
-  error: APIErrorProps | null;
+  error: string | null;
 };
 
 export type APIGetProps = {
