@@ -3,6 +3,7 @@ import { Icons } from "~/client/icons";
 import { tableContainerStyle, tableThStyle, tbodyTrStyle } from "./styles.css";
 import type { TableProps } from "./types";
 
+export type { TableCollumnsProps } from "./types";
 export function Table({
   columns,
   data,

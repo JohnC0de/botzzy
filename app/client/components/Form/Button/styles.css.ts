@@ -45,6 +45,14 @@ export const buttonStyle = recipe({
       },
     },
 
+    hoverVariant: {
+      primary: { ":hover": { color: vars.colors.indigo[500] } },
+      danger: { ":hover": { color: vars.colors.red[500] } },
+      warning: { ":hover": { color: vars.colors.yellow[500] } },
+      success: { ":hover": { color: vars.colors.emerald[500] } },
+      info: { ":hover": { color: vars.colors.cyan[500] } },
+    },
+
     fontWeight: {
       regular: { fontWeight: vars.fontWeights.regular },
       medium: { fontWeight: vars.fontWeights.medium },
@@ -87,7 +95,6 @@ export const buttonStyle = recipe({
       full: { borderRadius: vars.radii.full },
     },
   },
-
   defaultVariants: {
     fontSize: "md",
     space: 3,

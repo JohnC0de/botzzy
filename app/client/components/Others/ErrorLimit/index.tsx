@@ -8,7 +8,7 @@ import {
 } from "./styles.css";
 import type { ErrorBoundaryComponent } from "@remix-run/node";
 
-export const Treatment: ErrorBoundaryComponent = ({ error }) => {
+export const ErrorLimit: ErrorBoundaryComponent = ({ error }) => {
   const { message } = error;
 
   return (

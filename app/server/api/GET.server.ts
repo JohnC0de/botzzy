@@ -1,29 +1,24 @@
-import axios from "axios";
-import type { APISendProps, APIReturnProps } from "./types.server";
+import { createZodFetcher } from "zod-fetch";
+import type { z } from "zod";
+import type { APIGetProps, APIReturnProps } from "./types.server";
 
-export async function GET<T = unknown>({ url, token }: APISendProps) {
+const fetchWithZod = createZodFetcher();
+export async function GET({ schema, url, token }: APIGetProps) {
   const apiHEADER = token
     ? { headers: { authorization: `bearer ${token}` } }
     : undefined;
 
-  try {
-    const axiosResponse = await axios.get<T>(
-      process.env.BASE_API_URL + url,
-      apiHEADER
-    );
+  const fetchResponse = await fetchWithZod(
+    schema,
+    process.env.BASE_API_URL + url,
+    apiHEADER
+  )
+    .then((data) => {
+      return { error: null, data } as APIReturnProps<z.infer<typeof schema>>;
+    })
+    .catch((error) => {
+      return { error, data: null } as APIReturnProps<any>;
+    });
 
-    const successfulAnswer: APIReturnProps<T> = {
-      error: null,
-      data: axiosResponse.data,
-    };
-
-    return successfulAnswer;
-  } catch (err: any) {
-    const failedAnswer: APIReturnProps<null> = {
-      data: null,
-      error: err.response.data.message,
-    };
-
-    return failedAnswer;
-  }
+  return fetchResponse;
 }

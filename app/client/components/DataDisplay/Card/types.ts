@@ -30,4 +30,15 @@ export interface CardProps extends TagProps {
     | "space-evenly"
     | "initial"
     | "inherit";
+  wrap?:
+    | "initial"
+    | "inherit"
+    | "-moz-initial"
+    | "revert"
+    | "revert-layer"
+    | "unset"
+    | "nowrap"
+    | "wrap"
+    | "wrap-reverse"
+    | undefined;
 }

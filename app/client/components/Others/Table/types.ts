@@ -1,14 +1,16 @@
 import type { ReactNode } from "react";
 
-export type TableColumnProps<T = unknown> = {
+type TableColumnProps<T = unknown> = {
   key: string;
   title: string;
   render?: (event: T) => void;
   showOrder?: boolean;
 };
 
+export type TableCollumnsProps<T = unknown> = TableColumnProps<T>[];
+
 export type TableProps = {
-  columns: TableColumnProps<any>[];
+  columns: TableCollumnsProps<any>;
   data: any[];
   showCheckbox?: boolean;
   content?: ReactNode;

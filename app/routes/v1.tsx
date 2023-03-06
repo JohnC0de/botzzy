@@ -1,10 +1,10 @@
 import { LayoutClient } from "~/models";
-import { Treatment } from "~/client/treatment";
+import { ErrorLimit } from "~/client/components";
 import { LayoutContextProvider } from "~/client/contexts";
 import type { ErrorBoundaryComponent } from "@remix-run/node";
 
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
-  <Treatment error={error} />
+  <ErrorLimit error={error} />
 );
 
 export default function () {

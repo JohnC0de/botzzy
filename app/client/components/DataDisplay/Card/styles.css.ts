@@ -88,5 +88,16 @@ export const cardStyle = recipe({
       bottom: { borderBottom: "1px solid " + vars.colors.line },
       full: { border: "1px solid " + vars.colors.line },
     },
+    wrap: {
+      "-moz-initial": { flexWrap: "-moz-initial" },
+      inherit: { flexWrap: "inherit" },
+      initial: { flexWrap: "initial" },
+      nowrap: { flexWrap: "nowrap" },
+      revert: { flexWrap: "revert" },
+      "revert-layer": { flexWrap: "revert-layer" },
+      unset: { flexWrap: "unset" },
+      wrap: { flexWrap: "wrap" },
+      "wrap-reverse": { flexWrap: "wrap-reverse" },
+    },
   },
 });

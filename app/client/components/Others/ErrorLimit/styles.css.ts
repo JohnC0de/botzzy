@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { globalStyles } from "../styles";
+import { globalStyles } from "~/client/styles";
 const { vars } = globalStyles;
 
 export const errorBoundaryContainer = style({

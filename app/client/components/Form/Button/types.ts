@@ -11,6 +11,7 @@ export interface ButtonTypes
   spacing?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 10 | 12 | 16 | 20 | 40 | 64 | 80;
   fontSize?: "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
   fontWeight?: "regular" | "medium" | "bold";
+  hoverVariant?: "primary" | "danger" | "warning" | "success" | "info";
   justify?:
     | "flex-start"
     | "flex-end"

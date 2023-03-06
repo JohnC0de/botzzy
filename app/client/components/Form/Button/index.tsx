@@ -18,6 +18,7 @@ export function Button({
   children,
   disabled,
   justify,
+  hoverVariant,
   ...rest
 }: ButtonTypes) {
   return (
@@ -28,6 +29,7 @@ export function Button({
         fontSize,
         fontWeight,
         radii,
+        hoverVariant,
         space,
       })}
       {...rest}

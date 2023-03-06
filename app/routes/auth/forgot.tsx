@@ -1,5 +1,5 @@
 import { ForgotServer, ForgotClient } from "~/models";
-import { Treatment } from "~/client/treatment";
+import { ErrorLimit } from "~/client/components";
 import type {
   ActionFunction,
   ErrorBoundaryComponent,
@@ -8,7 +8,7 @@ import type {
 
 export const meta = ForgotClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
-  <Treatment error={error} />
+  <ErrorLimit error={error} />
 );
 
 export const action: ActionFunction = async ({ request }) => {

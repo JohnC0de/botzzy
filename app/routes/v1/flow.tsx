@@ -2,7 +2,7 @@ import { ClientOnly } from "remix-utils";
 
 import { FlowClient } from "~/models";
 import { Spinner } from "~/client/components";
-import { Treatment } from "~/client/treatment";
+import { ErrorLimit } from "~/client/components";
 
 import { ReactFlowProvider } from "reactflow";
 import { FlowContextProvider } from "~/models/protectByLoggin/FlowModel/hook/useFlow";
@@ -11,7 +11,7 @@ import type { ErrorBoundaryComponent } from "@remix-run/node";
 export const links = FlowClient.links;
 export const meta = FlowClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
-  <Treatment error={error} />
+  <ErrorLimit error={error} />
 );
 
 export default function () {
