@@ -27,9 +27,16 @@ export function UserPopover() {
 
   return (
     <Popover position="bottom-left" button={<PopoverButton />}>
-      <Card space={2} radii="xs" direction="column" spacing={2} showBgColor>
+      <Card
+        space={2}
+        radii="xs"
+        direction="column"
+        spacing={2}
+        showBgColor
+        style={{ width: "200px" }}
+      >
         <Card direction="column" spacing={1} space={2}>
-          <h5>{user.nome || "Usuário sem nome"}</h5>
+          <h5>{user.name || "Usuário sem nome"}</h5>
           <small>{user.email}</small>
         </Card>
 

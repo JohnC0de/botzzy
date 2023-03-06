@@ -31,7 +31,7 @@ export const darkThemeColors = {
     200: "#85182a",
     300: "#a11d33",
     400: "#a71e34",
-    500: "#f87171",
+    500: "#fca5a5",
     600: "#fca5a5",
     700: "#fecaca",
     800: "#fee2e2",

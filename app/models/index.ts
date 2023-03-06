@@ -14,4 +14,7 @@ export { SignInClient, SignInServer } from "./authModels/SignInModel";
 //root/v1/flow/*
 export { FlowClient } from "./protectByLoggin/FlowModel";
 //root/v1/protect/integrations
-export { IntegrationsModelClient } from "./protectByLoggin/IntegrationsModel";
+export {
+  IntegrationsModelClient,
+  IntegrationsModelServer,
+} from "./protectByLoggin/IntegrationsModel";

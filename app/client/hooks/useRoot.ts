@@ -1,9 +1,9 @@
 import { useRouteLoaderData } from "@remix-run/react";
-import type { userProps } from "~/models/authModels/SignInModel/functions/signIn";
+import type { userDTO } from "~/models/authModels/SignInModel/types/userDTO";
 
 type rootProps = {
   theme: "dark" | "light";
-  user: userProps;
+  user: userDTO;
 };
 
 export function useRoot() {

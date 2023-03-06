@@ -1,8 +1,12 @@
-import type { ErrorBoundaryComponent } from "@remix-run/node";
+import type { ErrorBoundaryComponent, LoaderFunction } from "@remix-run/node";
 import { CrudContextProvider } from "~/client/contexts";
 import { ErrorLimit } from "~/client/components";
 
-import { IntegrationsModelClient } from "~/models";
+import { IntegrationsModelClient, IntegrationsModelServer } from "~/models";
+
+export const loader: LoaderFunction = ({ request }) => {
+  return IntegrationsModelServer.LoaderController({ request });
+};
 
 export const meta = IntegrationsModelClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
