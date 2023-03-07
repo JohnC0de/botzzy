@@ -12,6 +12,7 @@ import {
   Header,
   Input,
   type TableCollumnsProps,
+  Badge,
 } from "~/client/components";
 
 import { ModalForm, FilterDrawer, ModalDelete } from "../components";
@@ -31,7 +32,25 @@ export function View() {
 
   const columns: TableCollumnsProps<IntegrationDTO> = [
     { showOrder: true, key: "name", title: "Nome" },
-    { showOrder: true, key: "description", title: "Descrição" },
+    {
+      key: "status",
+      title: "Status",
+      render: ({ status }) => (
+        <Badge variant={status === "Ativo" ? "success" : "danger"}>
+          {status}
+        </Badge>
+      ),
+    },
+    {
+      key: "test_status",
+      title: "Verificado",
+      render: ({ test_status }) => (
+        <Badge variant={test_status === "Verificado" ? "success" : "danger"}>
+          {test_status}
+        </Badge>
+      ),
+    },
+    { showOrder: true, key: "created_at", title: "Data de criação" },
     {
       key: "action",
       title: "Ações",

@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
-import { useActionData } from "@remix-run/react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { createContext, useEffect, useState, type ReactNode } from "react";
+import { useActionData, useLoaderData } from "@remix-run/react";
+import { toast } from "react-hot-toast";
 import { useToast } from "~/client/hooks";
-import type { ReactNode } from "react";
 
 type openFormModalProps = {
   data?: any;
@@ -32,6 +33,15 @@ export const CrudContext = createContext({} as CrudContextProps);
 
 export function CrudContextProvider({ children }: CrudContextProviderProps) {
   const { fireToast } = useToast();
+  const loaderData = useLoaderData();
+
+  // LOADER response
+  useEffect(() => {
+    const myToast = loaderData?.toast ? fireToast(loaderData.toast) : null;
+    return () => {
+      myToast && toast.remove(myToast);
+    };
+  }, [loaderData.toast]);
 
   // CREATE/UPDATE modal
   const [formModal, setFormModal] = useState<openFormModalProps | null>(null);
@@ -56,7 +66,7 @@ export function CrudContextProvider({ children }: CrudContextProviderProps) {
   const closeFilterDrawer = () => setFilterDrawer(false);
 
   // Toast and modal api controll
-  let actionData = useActionData();
+  const actionData = useActionData();
   useEffect(() => {
     if (actionData?.toast) fireToast(actionData?.toast);
     if (actionData?.closeModal) {

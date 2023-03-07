@@ -11,7 +11,7 @@ type FireToastProps = {
 };
 
 type ToastContextProps = {
-  fireToast: (props: FireToastProps) => void;
+  fireToast: (props: FireToastProps) => string;
 };
 
 type CrudContextProviderProps = {
@@ -26,49 +26,45 @@ export function ToastContextProvider({ children }: CrudContextProviderProps) {
   function fireToast(props: FireToastProps) {
     switch (props.type) {
       case "info":
-        toast(props.message, {
+        return toast(props.message, {
           icon: <Icons.InfoCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.cyan[100],
+            backgroundColor: vars.colors.cyan[50],
             fontWeight: vars.fontWeights.medium,
             color: vars.colors.cyan[500],
           },
         });
-        break;
 
       case "success":
-        toast(props.message, {
+        return toast(props.message, {
           icon: <Icons.CheckCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.emerald[100],
+            backgroundColor: vars.colors.emerald[50],
             fontWeight: vars.fontWeights.medium,
             color: vars.colors.emerald[500],
           },
         });
-        break;
 
       case "error":
-        toast(props.message, {
+        return toast(props.message, {
           icon: <Icons.XCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.red[100],
+            backgroundColor: vars.colors.red[50],
             fontWeight: vars.fontWeights.medium,
             color: vars.colors.red[500],
           },
         });
-        break;
 
       case "warning":
-        toast(props.message, {
+        return toast(props.message, {
           icon: <Icons.AlertCircle size={24} />,
           style: {
-            backgroundColor: vars.colors.yellow[100],
+            backgroundColor: vars.colors.yellow[50],
             fontWeight: vars.fontWeights.medium,
             color: vars.colors.yellow[500],
             textAlign: "center",
           },
         });
-        break;
     }
   }
 
