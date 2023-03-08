@@ -9,7 +9,6 @@ export function ModalForm() {
   const actionData = useActionData();
   const { state } = useTransition();
 
-  console.log(initialFields);
   return (
     <Modal
       isVisible={!!formModal}

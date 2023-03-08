@@ -6,7 +6,7 @@ export function AccountNavigationMenu() {
     <nav className={navigationContainerStyle}>
       <AccountNavigationLink content="Perfil" redirectKey="profile" />
       <AccountNavigationLink content="Senha" redirectKey="password" />
-      <AccountNavigationLink content="Pagamentos" redirectKey="payment" />
+      <AccountNavigationLink content="Pagamentos" redirectKey="billing" />
     </nav>
   );
 }

@@ -18,7 +18,8 @@ export async function LoaderController({ request }: loaderControllerProps) {
   if (error) {
     return json({
       integrations: [],
-      toast: { type: "error", message: error },
+      error: { path: url, error: error },
+      toast: { type: "error", message: "500 | Ocorreu um erro interno" },
     });
   }
 

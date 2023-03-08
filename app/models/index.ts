@@ -1,5 +1,6 @@
 //* ACCOUNT
 export { AccountClient } from "./accountModels/AccountModel"; // root/v1/account/*
+export { BillingClient, BillingServer } from "./accountModels/BillingModel"; // root/v1/account/billing
 export { ProfileClient, ProfileServer } from "./accountModels/ProfileModel"; // root/v1/account/profile
 export { PasswordClient, PasswordServer } from "./accountModels/PasswordModel"; // root/v1/account/password
 

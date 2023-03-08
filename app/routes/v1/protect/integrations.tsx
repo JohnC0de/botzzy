@@ -22,9 +22,11 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
 );
 export const shouldRevalidate: ShouldRevalidateFunction = ({
   formAction,
-  currentUrl,
+  defaultShouldRevalidate,
 }) => {
-  return currentUrl.pathname === formAction;
+  return !formAction?.includes("integrations")
+    ? false
+    : defaultShouldRevalidate;
 };
 
 export default function () {

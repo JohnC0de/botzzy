@@ -8,10 +8,17 @@ export function Table({
   columns,
   data,
   content,
+  space = 4,
   showCheckbox = false,
 }: TableProps) {
   return (
-    <Card spacing={4} space={4} radii="xs" showBgColor direction="column">
+    <Card
+      spacing={4}
+      space={space ? space : undefined}
+      radii="xs"
+      showBgColor
+      direction="column"
+    >
       {content}
       <table className={tableContainerStyle}>
         <thead>
