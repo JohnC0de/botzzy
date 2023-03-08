@@ -16,18 +16,19 @@ export function InputCard({
 }: InputCardProps) {
   const id = useId();
   return (
-    <Card align="center" spacing={8} wrap="wrap" justify="space-between">
-      <label htmlFor={id}>
+    <Card direction="row" spacing={8} align="center" wrap="wrap">
+      <label htmlFor={id} style={{ flex: 1 }}>
         <strong>{label}</strong>
       </label>
-      <Input
-        id={id}
-        size={40}
-        type="password"
-        disabled={isDisabled}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-      />
+      <Card direction="column" style={{ flex: 2 }}>
+        <Input
+          id={id}
+          type="password"
+          disabled={isDisabled}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+        />
+      </Card>
     </Card>
   );
 }

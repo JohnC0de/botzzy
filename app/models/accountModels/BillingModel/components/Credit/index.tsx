@@ -13,7 +13,7 @@ export function Credit() {
         <small>Expira dia 19/05</small>
       </div>
 
-      <Button style={{ marginLeft: "8rem" }} variant="ghost">
+      <Button style={{ marginLeft: "auto" }} variant="ghost">
         Editar
       </Button>
     </li>

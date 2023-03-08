@@ -9,22 +9,26 @@ export function CreditCard() {
 
   return (
     <Card align="start" spacing={8} wrap="wrap" justify="space-between">
-      <label>
+      <label style={{ flex: 1 }}>
         <strong>Cartões de crédito</strong>
       </label>
 
-      <Card direction="column" align="start" spacing={3} showBgColor>
+      <Card direction="column" spacing={3} showBgColor style={{ flex: 2 }}>
         <Card
           direction="column"
           radii="xs"
           bordered="full"
-          style={{ overflow: "hidden" }}
+          style={{ flex: 2, overflow: "hidden" }}
         >
           <Credit />
           <Divider />
           <Credit />
         </Card>
-        <Button variant="ghost" onClick={() => setModalIsOpen(true)}>
+        <Button
+          variant="ghost"
+          style={{ marginRight: "auto" }}
+          onClick={() => setModalIsOpen(true)}
+        >
           <Icons.Plus size={22} /> Adicionar novo
         </Button>
       </Card>
