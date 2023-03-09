@@ -1,82 +1,55 @@
-import { json } from "@remix-run/node";
-import { redirect } from "react-router";
+import { json, redirect } from "@remix-run/node";
 import { z } from "zod";
+
 import { api } from "~/server/api";
-import {
-  filterControl,
-  getAccessToken,
-  getScopedParams,
-  getUserCredentials,
-} from "~/server/utils";
-import { integrationSchema } from "../types/IntegrationDTO";
-import { integrationTypeSchema } from "../types/IntegrationTypeDTO";
+import { filterControl, getScopedParams, getCredentials } from "~/server/utils";
+import { integrationSchema, integrationTypeSchema } from "../schemas";
+
+const reditectURL = "/auth/signin?redirectURL=/v1/protect/integrations";
+const errorResponse = (path: string, error: any) =>
+  json({
+    integrations: [],
+    integrationTypes: [],
+    error: { path, error },
+    toast: { type: "error", message: "500 | Ocorreu um erro interno" },
+  });
 
 type loaderControllerProps = { request: Request };
-const reditectURL = "/auth/signin?redirectURL=/v1/protect/integrations";
-
 export async function LoaderController({ request }: loaderControllerProps) {
-  const token = await getAccessToken(request);
-  const user = await getUserCredentials(request);
-  if (user === "notLogged" || token === "notLogged") {
-    return redirect(reditectURL);
-  }
+  const credentials = await getCredentials(request);
+  if (credentials === "notLogged") return redirect(reditectURL);
+  const { user, token } = credentials;
 
   const filterParams = getScopedParams(request);
   const filters = filterControl(filterParams, ["per_page", "search"]);
 
   const integrationsURL = `/account/${user.account_id}/integrations${filters}`;
-  const integrations = await api.GET({ url: integrationsURL, token });
-  if (integrations.error) {
-    return json({
-      integrations: [],
-      integrationTypes: [],
-      error: { path: integrationsURL, error: integrations.error },
-      toast: { type: "error", message: "500 | Ocorreu um erro interno" },
-    });
-  }
+  const integrationTypesURL = `/account/${user.account_id}/integrationTypes`;
+
+  const [
+    { data: integrationsData, error: integrationsError },
+    { data: integrationTypesData, error: integrationTypesError },
+  ] = await Promise.all([
+    await api.GET({ url: integrationsURL, token }),
+    await api.GET({ url: integrationTypesURL, token }),
+  ]);
+
+  if (integrationsError)
+    return errorResponse(integrationsURL, integrationsError);
+  if (integrationTypesError)
+    return errorResponse(integrationTypesURL, integrationTypesError);
 
   const validateIntegrations = z
     .array(integrationSchema)
-    .safeParse(integrations.data);
-  if (!validateIntegrations.success) {
-    return json({
-      integrations: [],
-      integrationTypes: [],
-      error: { path: integrationsURL, error: validateIntegrations.error },
-      toast: {
-        type: "error",
-        message: "400 | Dados recebidos inválidos",
-      },
-    });
-  }
-
-  const integrationsTypeURL = `/account/${user.account_id}/integrationTypes`;
-  const integrationsType = await api.GET({ url: integrationsTypeURL, token });
-  if (integrationsType.error) {
-    return json({
-      integrations: [],
-      integrationTypes: [],
-      error: { path: integrationsTypeURL, error: integrationsType.error },
-      toast: { type: "error", message: "500 | Ocorreu um erro interno" },
-    });
-  }
+    .safeParse(integrationsData);
+  if (!validateIntegrations.success)
+    return errorResponse(integrationsURL, validateIntegrations.error);
 
   const validateIntegrationTypes = z
     .array(integrationTypeSchema)
-    .safeParse(integrationsType.data);
+    .safeParse(integrationTypesData);
   if (!validateIntegrationTypes.success) {
-    return json({
-      integrations: [],
-      integrationTypes: [],
-      error: {
-        path: integrationsTypeURL,
-        error: validateIntegrationTypes.error,
-      },
-      toast: {
-        type: "error",
-        message: "400 | Dados recebidos inválidos",
-      },
-    });
+    return errorResponse(integrationTypesURL, validateIntegrationTypes.error);
   }
 
   return json({

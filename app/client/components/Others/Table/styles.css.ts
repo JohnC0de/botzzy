@@ -37,7 +37,7 @@ export const tbodyTrStyle = recipe({
   base: {
     padding: vars.space[4],
     fontSize: vars.fontSizes.sm,
-    fontWeight: vars.fontWeights.regular,
+    fontWeight: vars.fontWeights.medium,
   },
   variants: {
     isNotLastChield: {

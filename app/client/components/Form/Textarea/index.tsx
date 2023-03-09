@@ -1,10 +1,10 @@
 import { useId, useState } from "react";
 import {
-  inputContainerStyle,
   errorInputStyle,
+  inputContainerStyle,
   inputStyle,
   labelStyle,
-} from "./styles.css";
+} from "../inputStyles.css";
 
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
@@ -86,6 +86,7 @@ export function Textarea({
           isError: !!error,
         })}
         value={textareaValue}
+        style={{ resize: "none" }}
         onChange={(e) => onChange(e.target.value)}
         {...rest}
       />

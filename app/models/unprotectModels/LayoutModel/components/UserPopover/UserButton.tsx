@@ -1,5 +1,6 @@
 import { Button, Card } from "~/client/components";
 import { useRoot } from "~/client/hooks";
+import { globalStyles } from "~/client/styles";
 
 export function UserButton() {
   const { user } = useRoot();
@@ -19,19 +20,27 @@ export function UserButton() {
           />
 
           <Card direction="column" align="start">
-            <small style={{ fontWeight: "400", fontSize: "0.7rem" }}>
+            <small
+              style={{
+                color: globalStyles.vars.colors.text[100],
+                fontWeight: globalStyles.vars.fontWeights.regular,
+                fontSize: globalStyles.vars.fontSizes.xs,
+              }}
+            >
               Usuário
             </small>
-            <h5
+            <h4
               style={{
+                textAlign: "start",
                 maxWidth: "7rem",
                 overflow: "hidden",
+                fontSize: globalStyles.vars.fontSizes.sm,
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
               }}
             >
               {user.name || "Usuário sem nome"}
-            </h5>
+            </h4>
           </Card>
         </Card>
       </Button>

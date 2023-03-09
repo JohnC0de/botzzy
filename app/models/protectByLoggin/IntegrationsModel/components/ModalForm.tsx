@@ -13,7 +13,7 @@ import {
   Textarea,
 } from "~/client/components";
 import { useCrud } from "~/client/hooks";
-import type { IntegrationDTO, LoaderReturnProps } from "../types";
+import type { IntegrationDTO, LoaderReturnProps } from "../schemas";
 
 export function ModalForm() {
   const actionData = useActionData();

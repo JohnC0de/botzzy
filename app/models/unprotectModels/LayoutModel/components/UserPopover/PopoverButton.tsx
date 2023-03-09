@@ -20,7 +20,7 @@ export function PopoverButton({ icon: Icon, text, to }: MenuButtonProps) {
       spacing={4}
       variant="ghost"
     >
-      <Icon size={22} />
+      <Icon size={18} />
       <span style={{ whiteSpace: "nowrap" }}>{text}</span>
     </Button>
   );

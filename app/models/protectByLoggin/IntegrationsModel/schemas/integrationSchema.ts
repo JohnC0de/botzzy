@@ -13,5 +13,3 @@ export const integrationSchema = z.object({
     .string()
     .transform((created_at) => new Date(created_at).toLocaleDateString()),
 });
-
-export type IntegrationDTO = z.infer<typeof integrationSchema>;

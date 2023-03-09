@@ -26,7 +26,7 @@ const selectStyles: StylesConfig = {
   input: (baseStyles) => ({
     ...baseStyles,
     color: vars.colors.text[500],
-    fontSize: vars.fontSizes.md,
+    fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
     "::placeholder": { color: vars.colors.text[100] },
   }),
@@ -35,14 +35,14 @@ const selectStyles: StylesConfig = {
     ...baseStyles,
     color: vars.colors.text[100],
     opacity: 0.6,
-    fontSize: vars.fontSizes.md,
+    fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
   }),
 
   option: (baseStyles) => ({
     ...baseStyles,
     color: vars.colors.text[500],
-    fontSize: vars.fontSizes.md,
+    fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
   }),
 
@@ -54,14 +54,16 @@ const selectStyles: StylesConfig = {
   menu: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: vars.colors.bg[100],
+    margin: 0,
+    border: "1px solid " + vars.colors.line,
     borderRadius: vars.radii.xs,
-    boxShadow: "2px 2px 1px rgba(0, 0, 0, 0.1)",
+    boxShadow: "none",
   }),
 
   singleValue: (baseStyles) => ({
     ...baseStyles,
     color: vars.colors.text[500],
-    fontSize: vars.fontSizes.md,
+    fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
   }),
 

@@ -1,5 +1,6 @@
 import { redirect } from "@remix-run/node";
-import { getAccessToken, getUserCredentials } from "~/server/utils";
+import { getCredentials } from "~/server/utils";
+
 import {
   createIntegration,
   deleteIntegration,
@@ -9,11 +10,9 @@ import {
 type ActionControllerProps = { request: Request };
 const reditectURL = "/auth/signin?redirectURL=/v1/protect/integrations";
 export async function ActionController({ request }: ActionControllerProps) {
-  const token = await getAccessToken(request);
-  const user = await getUserCredentials(request);
-  if (user === "notLogged" || token === "notLogged") {
-    return redirect(reditectURL);
-  }
+  const credentials = await getCredentials(request);
+  if (credentials === "notLogged") return redirect(reditectURL);
+  const { user, token } = credentials;
 
   const account_id = user.account_id;
   if (!account_id) return null;

@@ -2,6 +2,7 @@ import { useFetcher } from "react-router-dom";
 import { Card, Divider, Popover } from "~/client/components";
 import { useRoot } from "~/client/hooks";
 import { Icons } from "~/client/icons";
+import { globalStyles } from "~/client/styles";
 import { PopoverButton } from "./PopoverButton";
 import { UserButton } from "./UserButton";
 
@@ -33,26 +34,31 @@ export function UserPopover() {
           <Card direction="column" align="start">
             <small
               style={{
-                maxWidth: "9rem",
+                color: globalStyles.vars.colors.text[100],
+                fontWeight: globalStyles.vars.fontWeights.regular,
+                fontSize: globalStyles.vars.fontSizes.xs,
                 overflow: "hidden",
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
-                fontWeight: "400",
-                fontSize: "0.7rem",
+                maxWidth: "10rem",
+                minWidth: "10rem",
               }}
             >
               {user.email}
             </small>
-            <h5
+            <h4
               style={{
-                maxWidth: "9rem",
+                textAlign: "start",
+                maxWidth: "10rem",
+                fontSize: globalStyles.vars.fontSizes.sm,
+                minWidth: "10rem",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
               }}
             >
               {user.name || "Usuário sem nome"}
-            </h5>
+            </h4>
           </Card>
         </Card>
 

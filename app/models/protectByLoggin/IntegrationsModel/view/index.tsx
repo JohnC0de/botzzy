@@ -14,10 +14,10 @@ import {
 } from "~/client/components";
 
 import { ModalForm, FilterDrawer, ModalDelete } from "../components";
-import type { IntegrationDTO, LoaderReturnProps } from "../types";
+import type { integrationProps, loaderReturnProps } from "../types";
 
 export function View() {
-  const loaderData = useLoaderData<LoaderReturnProps>();
+  const loaderData = useLoaderData<loaderReturnProps>();
 
   const navigate = useNavigate();
   const { openFormModal, openDeleteModal, openFilterDrawer } = useCrud();
@@ -27,7 +27,7 @@ export function View() {
     navigate(getScopedSearch({ search: e ? e : undefined }));
   }
 
-  const columns: TableCollumnsProps<IntegrationDTO> = [
+  const columns: TableCollumnsProps<integrationProps> = [
     { showOrder: true, key: "name", title: "Nome" },
     {
       key: "status",
@@ -77,7 +77,6 @@ export function View() {
           <Card spacing={2} justify="space-between" style={{ flex: 1 }}>
             <Card>
               <Input
-                variant="outline"
                 space={2}
                 placeholder="Search..."
                 onChange={(e) => onChangeSearchInput(e.target.value)}
@@ -86,14 +85,14 @@ export function View() {
 
             <Card spacing={1}>
               <Button space={2} onClick={() => openFilterDrawer()}>
-                <Icons.Filter size={20} />
+                <Icons.Filter size={18} />
               </Button>
               <Button
                 space={2}
                 spacing={2}
                 onClick={() => openFormModal({ title: "Adicionar integração" })}
               >
-                <Icons.Plus size={20} />
+                <Icons.Plus size={18} />
                 Adicionar
               </Button>
             </Card>

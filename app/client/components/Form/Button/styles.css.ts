@@ -96,7 +96,7 @@ export const buttonStyle = recipe({
     },
   },
   defaultVariants: {
-    fontSize: "md",
+    fontSize: "sm",
     space: 3,
     radii: "xs",
     fontWeight: "bold",

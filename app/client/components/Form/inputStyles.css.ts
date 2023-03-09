@@ -92,7 +92,7 @@ export const inputStyle = recipe({
   },
 
   defaultVariants: {
-    fontSize: "md",
+    fontSize: "sm",
     space: 3,
     radii: "xs",
     fontWeight: "medium",
