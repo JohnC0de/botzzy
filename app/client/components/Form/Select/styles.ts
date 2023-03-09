@@ -25,7 +25,7 @@ const selectStyles: StylesConfig = {
 
   input: (baseStyles) => ({
     ...baseStyles,
-    color: vars.colors.text[500],
+    color: vars.colors.text[100],
     fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
     "::placeholder": { color: vars.colors.text[100] },
@@ -41,28 +41,30 @@ const selectStyles: StylesConfig = {
 
   option: (baseStyles) => ({
     ...baseStyles,
-    color: vars.colors.text[500],
+    color: vars.colors.text[100],
     fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
+    ":hover": { cursor: "pointer" },
   }),
 
   dropdownIndicator: (baseStyles) => ({
     ...baseStyles,
-    color: vars.colors.text[500],
+    color: vars.colors.text[100],
   }),
 
   menu: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: vars.colors.bg[100],
     margin: 0,
+    zIndex: 9999,
     border: "1px solid " + vars.colors.line,
     borderRadius: vars.radii.xs,
-    boxShadow: "none",
+    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)",
   }),
 
   singleValue: (baseStyles) => ({
     ...baseStyles,
-    color: vars.colors.text[500],
+    color: vars.colors.text[100],
     fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
   }),
@@ -110,8 +112,8 @@ export const selectTheme = (theme: Theme) => ({
   ...theme,
   colors: {
     ...theme.colors,
-    primary: vars.colors.line,
-    primary25: vars.colors.line,
-    primary50: vars.colors.line,
+    primary: vars.colors.slate[200],
+    primary25: vars.colors.slate[200],
+    primary50: vars.colors.slate[200],
   },
 });

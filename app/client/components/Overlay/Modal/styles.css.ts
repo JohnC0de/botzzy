@@ -22,7 +22,6 @@ export const modalContentStyle = style({
   backgroundColor: vars.colors.bg[100],
   zIndex: 4,
   minWidth: "300px",
-  overflow: "hidden",
 });
 
 export const modalContentHeaderStyle = style({
@@ -48,7 +47,7 @@ export const modalOverlayStyle = style({
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  backgroundColor: "rgba(0, 0, 0, 0.7)",
   zIndex: 3,
   ":hover": { cursor: "pointer" },
 });

@@ -10,15 +10,15 @@ export const inputContainerStyle = style({
 });
 
 export const labelStyle = style({
-  fontSize: vars.fontSizes.md,
-  fontWeight: vars.fontWeights.medium,
+  fontSize: vars.fontSizes.sm,
+  fontWeight: vars.fontWeights.bold,
   color: vars.colors.text[500],
   fontFamily: vars.fonts.default,
 });
 
 export const inputStyle = recipe({
   base: {
-    color: vars.colors.text[500],
+    color: vars.colors.text[100],
     border: "1px solid transparent",
     outline: "none",
     fontFamily: vars.fonts.default,

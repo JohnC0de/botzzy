@@ -23,7 +23,7 @@ export function UserButton() {
             <small
               style={{
                 color: globalStyles.vars.colors.text[100],
-                fontWeight: globalStyles.vars.fontWeights.regular,
+                fontWeight: globalStyles.vars.fontWeights.medium,
                 fontSize: globalStyles.vars.fontSizes.xs,
               }}
             >

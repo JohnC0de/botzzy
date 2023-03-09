@@ -83,6 +83,7 @@ export function Table({ columns, data, content, space = 4 }: TableProps) {
         <span></span>
         <Card direction="column" style={{ width: "12rem" }}>
           <Select
+            label=""
             placeholder="Itens por página"
             menuPlacement="top"
             defaultValue={defaultSelectPerPage}

@@ -14,7 +14,7 @@ export const tableThStyle = recipe({
     whiteSpace: "nowrap",
     fontWeight: vars.fontWeights.medium,
     fontSize: vars.fontSizes.md,
-    color: vars.colors.text[900],
+    color: vars.colors.text[500],
     background: vars.colors.slate[200],
   },
   variants: {
@@ -38,6 +38,7 @@ export const tbodyTrStyle = recipe({
     padding: vars.space[4],
     fontSize: vars.fontSizes.sm,
     fontWeight: vars.fontWeights.medium,
+    color: globalStyles.vars.colors.text[100],
   },
   variants: {
     isNotLastChield: {

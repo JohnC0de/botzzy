@@ -61,6 +61,15 @@ export function View() {
           >
             <Icons.Edit size={20} />
           </Button>
+
+          <Button
+            variant="ghost"
+            hoverVariant="primary"
+            space={1}
+            onClick={() => navigate("/v1/protect/integrations/events")}
+          >
+            <Icons.FolderOpen size={20} />
+          </Button>
         </Card>
       ),
     },

@@ -12,7 +12,7 @@ export const headerStyle = style({
 
 export const titleStyle = recipe({
   base: {
-    fontWeight: vars.fontWeights.bold,
+    fontWeight: vars.fontWeights.extraBold,
     color: vars.colors.text[900],
     lineHeight: vars.lineHeights.short,
   },
@@ -36,7 +36,7 @@ export const titleStyle = recipe({
 
 export const subTitleStyle = style({
   fontSize: vars.fontSizes.sm,
-  fontWeight: vars.fontWeights.regular,
+  fontWeight: vars.fontWeights.medium,
   lineHeight: vars.lineHeights.short,
   marginTop: vars.space[1],
   color: vars.colors.text[100],

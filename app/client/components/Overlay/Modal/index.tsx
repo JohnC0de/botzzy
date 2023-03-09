@@ -31,7 +31,14 @@ export function Modal({
           >
             {title && (
               <header className={modalContentHeaderStyle}>
-                <h3>{title}</h3>
+                <h3
+                  style={{
+                    color: globalStyles.vars.colors.text[900],
+                    fontWeight: globalStyles.vars.fontWeights.bold,
+                  }}
+                >
+                  {title}
+                </h3>
 
                 <button
                   onClick={makeInvisible}
@@ -44,7 +51,6 @@ export function Modal({
                 </button>
               </header>
             )}
-
             {children}
           </motion.div>
 

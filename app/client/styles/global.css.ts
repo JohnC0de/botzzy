@@ -18,7 +18,7 @@ globalStyle("li", {
 
 globalStyle("body", {
   backgroundColor: vars.colors.bg[500],
-  color: vars.colors.text[500],
+  color: vars.colors.text[100],
 });
 
 export const globalStyles = { vars, darkTheme, lightTheme };

@@ -47,6 +47,8 @@ import {
   BiUser,
   BiDollar,
   BiSmile,
+  BiCustomize,
+  BiFolderOpen,
 } from "react-icons/bi";
 
 const Icons = {
@@ -58,6 +60,8 @@ const Icons = {
 
   Dollar: BiDollar,
   User: BiUser,
+  FolderOpen: BiFolderOpen,
+  Customize: BiCustomize,
 
   ChevronTop: BiChevronUp,
   ChevronRight: BiChevronRight,

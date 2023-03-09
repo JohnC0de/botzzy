@@ -13,15 +13,15 @@ import {
   Textarea,
 } from "~/client/components";
 import { useCrud } from "~/client/hooks";
-import type { IntegrationDTO, LoaderReturnProps } from "../schemas";
+import type { integrationProps, loaderReturnProps } from "../types";
 
 export function ModalForm() {
   const actionData = useActionData();
   const { state } = useTransition();
-  const loaderData = useLoaderData<LoaderReturnProps>();
+  const loaderData = useLoaderData<loaderReturnProps>();
 
   const { formModal, closeFormModal } = useCrud();
-  const initialFields = (formModal?.data as IntegrationDTO) || null;
+  const initialFields = (formModal?.data as integrationProps) || null;
 
   const selectOptions = loaderData.integrationTypes.map((item) => ({
     label: item.name,
@@ -36,7 +36,7 @@ export function ModalForm() {
     >
       <Card space={6}>
         <Form method="post">
-          <Card direction="column" spacing={6} style={{ width: 400 }}>
+          <Card direction="column" spacing={6} style={{ width: 600 }}>
             <Input
               label="Nome:"
               name="name"

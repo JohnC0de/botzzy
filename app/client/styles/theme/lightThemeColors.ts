@@ -67,7 +67,7 @@ export const lightThemeColors = {
   slate: {
     50: "#f8fafc",
     100: "#f1f5f9",
-    200: "#f3f4f6",
+    200: "#f8f8f8",
     300: "#cbd5e1",
     400: "#94a3b8",
     500: "#64748b",
@@ -79,7 +79,7 @@ export const lightThemeColors = {
 
   text: {
     100: "#94a3b8",
-    500: "#64748b",
+    500: "#5c6886",
     900: "#0f172a",
   },
 
