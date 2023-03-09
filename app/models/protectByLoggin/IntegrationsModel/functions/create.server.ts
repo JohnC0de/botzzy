@@ -8,17 +8,24 @@ type formProps = z.infer<typeof schema>;
 type createProps = {
   formData: { [x: string]: any };
   token: string;
+  account_id: string;
 };
 
 const schema = z.object({
   name: z.string().min(1, "O campo é obrigatório."),
+  description: z.string().min(1, "O campo é obrigatório."),
+  integration_type_id: z.string().min(1, "O campo é obrigatório."),
 });
 
-export async function createIntegration({ formData, token }: createProps) {
+export async function createIntegration({
+  formData,
+  token,
+  account_id,
+}: createProps) {
   const { data, success } = await formControl<formProps>(formData, schema);
   if (!success) return json({ error: data }, 400);
 
-  const url = "/hotmartProducts";
+  const url = `/account/${account_id}/integrations`;
   const apiResponse = await api.POST({ url, token, data });
 
   if (apiResponse.error) {

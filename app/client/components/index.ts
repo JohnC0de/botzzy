@@ -14,6 +14,7 @@ export { Button } from "./Form/Button";
 export { CurrencyInput } from "./Form/CurrencyInput";
 export { Input } from "./Form/Input";
 export { MaskedInput } from "./Form/MaskedInput";
+export { Select } from "./Form/Select";
 export { Textarea } from "./Form/Textarea";
 
 // Others

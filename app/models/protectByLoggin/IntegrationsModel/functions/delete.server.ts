@@ -4,17 +4,25 @@ import { api } from "~/server/api";
 import { formControl } from "~/server/utils";
 
 type formProps = z.infer<typeof schema>;
-type deleteProps = { formData: { [x: string]: any }; token: string };
+type deleteProps = {
+  formData: { [x: string]: any };
+  token: string;
+  account_id: string;
+};
 
 const schema = z.object({
   id: z.string({ required_error: "ID não fornecido" }),
 });
 
-export async function deleteIntegration({ formData, token }: deleteProps) {
+export async function deleteIntegration({
+  formData,
+  token,
+  account_id,
+}: deleteProps) {
   const { data, success } = await formControl<formProps>(formData, schema);
   if (!success) return json({ toast: { type: "error", message: data.id } });
 
-  const url = `/hotmartProducts/${data.id}`;
+  const url = `/account/${account_id}/integrations/${data.id}`;
   const apiResponse = await api.DELETE({ token, url });
 
   if (apiResponse.error) {

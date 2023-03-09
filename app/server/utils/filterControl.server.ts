@@ -15,5 +15,7 @@ export function filterControl(urlSearch: URLSearchParams, filters: string[]) {
     .map((filter) => `&${filter.key}=${filter.value}`)
     .join();
 
-  return `?${concatData.replace(/,/g, "")}`;
+  return concatData.length === 0
+    ? ""
+    : `?${concatData.replace(/,/g, "").replace("&", "")}`;
 }

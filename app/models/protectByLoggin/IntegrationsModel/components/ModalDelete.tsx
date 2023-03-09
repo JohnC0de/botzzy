@@ -1,10 +1,10 @@
-import { Form } from "@remix-run/react";
+import { Form, useTransition } from "@remix-run/react";
 import { Button, Card, Modal } from "~/client/components";
 import { useCrud } from "~/client/hooks";
 
 export function ModalDelete() {
   const { deleteModal, closeDeleteModal } = useCrud();
-
+  const { state } = useTransition();
   return (
     <Modal
       isVisible={!!deleteModal}
@@ -12,10 +12,10 @@ export function ModalDelete() {
       makeInvisible={closeDeleteModal}
     >
       <Card space={6}>
-        <Form>
+        <Form method="post">
           <Card direction="column" spacing={6} style={{ width: 400 }}>
             <p>Você deseja deleta essa integração?</p>
-
+            <input type="hidden" name="id" value={deleteModal?.toString()} />
             <Card
               showBgColor
               spacing={3}
@@ -25,7 +25,11 @@ export function ModalDelete() {
               <Button variant="ghost" type="button" onClick={closeDeleteModal}>
                 Cancelar
               </Button>
-              <Button name="_action" value={"onDelete"}>
+              <Button
+                name="_action"
+                isLoading={state === "submitting"}
+                value="deleteIntegration"
+              >
                 Deletar
               </Button>
             </Card>

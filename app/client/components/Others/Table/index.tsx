@@ -1,16 +1,19 @@
-import { Card } from "~/client/components";
+import { useNavigate } from "@remix-run/react";
+import { Card, Select } from "~/client/components";
+import { useScopedParams } from "~/client/hooks";
 import { Icons } from "~/client/icons";
 import { tableContainerStyle, tableThStyle, tbodyTrStyle } from "./styles.css";
 import type { TableProps } from "./types";
 
 export type { TableCollumnsProps } from "./types";
-export function Table({
-  columns,
-  data,
-  content,
-  space = 4,
-  showCheckbox = false,
-}: TableProps) {
+export function Table({ columns, data, content, space = 4 }: TableProps) {
+  const navigate = useNavigate();
+  const { getParam, getScopedSearch } = useScopedParams();
+  const defaultSelectPerPage = {
+    value: getParam("per_page") || "10",
+    label: (getParam("per_page") || "10") + " / Página",
+  };
+
   return (
     <Card
       spacing={4}
@@ -75,6 +78,25 @@ export function Table({
           ))}
         </tbody>
       </table>
+
+      <Card align="center" justify="space-between" wrap="wrap">
+        <span></span>
+        <Card direction="column" style={{ width: "12rem" }}>
+          <Select
+            placeholder="Itens por página"
+            menuPlacement="top"
+            defaultValue={defaultSelectPerPage}
+            options={[
+              { label: "10 / Página", value: "10" },
+              { label: "30 / Página", value: "30" },
+              { label: "50 / Página", value: "50" },
+            ]}
+            onChange={(e: any) =>
+              navigate(getScopedSearch({ per_page: e.value }))
+            }
+          />
+        </Card>
+      </Card>
     </Card>
   );
 }

@@ -44,6 +44,8 @@ import {
   BiFolder,
   BiCookie,
   BiGitBranch,
+  BiUser,
+  BiDollar,
   BiSmile,
 } from "react-icons/bi";
 
@@ -53,6 +55,9 @@ const Icons = {
   CaretDown: BiCaretDown,
   CaretLeft: BiCaretLeft,
   Smile: BiSmile,
+
+  Dollar: BiDollar,
+  User: BiUser,
 
   ChevronTop: BiChevronUp,
   ChevronRight: BiChevronRight,

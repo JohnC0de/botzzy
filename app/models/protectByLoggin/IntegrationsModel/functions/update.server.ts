@@ -7,27 +7,30 @@ type formProps = z.infer<typeof schema>;
 type updateProps = {
   formData: { [x: string]: any };
   token: string;
+  account_id: string;
 };
 
 const schema = z.object({
   id: z.string().min(1, "O campo é obrigatório."),
   name: z.string().min(1, "O campo é obrigatório."),
-  title: z.string().min(1, "O campo é obrigatório."),
-  content: z.string().min(1, "O campo é obrigatório."),
-  hotmartProduct_category_id: z.string().min(1, "O campo é obrigatório."),
+  description: z.string().min(1, "O campo é obrigatório."),
+  integration_type_id: z.string().min(1, "O campo é obrigatório."),
 });
 
-export async function updateIntegration({ token, formData }: updateProps) {
+export async function updateIntegration({
+  token,
+  formData,
+  account_id,
+}: updateProps) {
   const { data, success } = await formControl<formProps>(formData, schema);
   if (!success) return json({ error: data }, 400);
 
-  const url = `/hotmartProducts/${data.id}`;
+  const url = `/account/${account_id}/integrations/${data.id}`;
   const apiResponse = await api.PUT({
     data: {
       name: data.name,
-      title: data.title,
-      content: data.content,
-      hotmartProduct_category_id: data.hotmartProduct_category_id,
+      description: data.description,
+      integration_type_id: data.integration_type_id,
     },
     token,
     url,
@@ -41,7 +44,7 @@ export async function updateIntegration({ token, formData }: updateProps) {
   }
 
   return json({
-    toast: { type: "success", message: "Item atualizado com sucesso." },
+    toast: { type: "success", message: "Atualizado com sucesso." },
     closeModal: true,
   });
 }

@@ -2,11 +2,9 @@ import { useLoaderData, useNavigate } from "@remix-run/react";
 
 import { Icons } from "~/client/icons";
 import { useCrud, useScopedParams } from "~/client/hooks";
-import { globalStyles } from "~/client/styles";
 import {
   Card,
   Container,
-  Stats,
   Table,
   Button,
   Header,
@@ -18,7 +16,6 @@ import {
 import { ModalForm, FilterDrawer, ModalDelete } from "../components";
 import type { IntegrationDTO, LoaderReturnProps } from "../types";
 
-const { vars } = globalStyles;
 export function View() {
   const loaderData = useLoaderData<LoaderReturnProps>();
 
@@ -35,21 +32,13 @@ export function View() {
     {
       key: "status",
       title: "Status",
-      render: ({ status }) => (
-        <Badge variant={status === "Ativo" ? "success" : "danger"}>
-          {status}
+      render: ({ is_active }) => (
+        <Badge variant={is_active === "Ativo" ? "success" : "danger"}>
+          {is_active}
         </Badge>
       ),
     },
-    {
-      key: "test_status",
-      title: "Verificado",
-      render: ({ test_status }) => (
-        <Badge variant={test_status === "Verificado" ? "success" : "danger"}>
-          {test_status}
-        </Badge>
-      ),
-    },
+
     { showOrder: true, key: "created_at", title: "Data de criação" },
     {
       key: "action",
@@ -80,31 +69,6 @@ export function View() {
   return (
     <Container>
       <Header title="Integrações" />
-      <Card spacing={6} wrap="wrap">
-        <Stats
-          icon={Icons.History}
-          iconBg={vars.colors.indigo[500]}
-          title="Total users"
-          content="2,420"
-          badge={{ type: "input", content: "22.5%" }}
-        />
-
-        <Stats
-          icon={Icons.Note}
-          iconBg={vars.colors.emerald[500]}
-          title="Active Users"
-          content="2,420"
-          badge={{ type: "input", content: "22.5%" }}
-        />
-
-        <Stats
-          icon={Icons.History}
-          iconBg={vars.colors.indigo[500]}
-          title="New Users"
-          content="241"
-          badge={{ type: "output", content: "2.3%" }}
-        />
-      </Card>
 
       <Table
         data={loaderData.integrations}

@@ -37,7 +37,10 @@ export async function signIn({ request, formData }: signInProps) {
   const { getSession, commitSession } = authCookie;
   const session = await getSession(request.headers.get("Cookie"));
   session.set("access_token", apiResponse.data.token.accessToken);
-  session.set("user_credentials", apiResponse.data.user);
+  session.set("user_credentials", {
+    ...apiResponse.data.user,
+    account_id: apiResponse.data.user.accounts[0].id,
+  });
 
   const scopedParams = getScopedParams(request);
   const redirectURL =

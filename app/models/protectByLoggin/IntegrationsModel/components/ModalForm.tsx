@@ -1,13 +1,32 @@
-import { Form, useActionData, useTransition } from "@remix-run/react";
-import { Button, Card, Input, Modal } from "~/client/components";
+import {
+  Form,
+  useActionData,
+  useLoaderData,
+  useTransition,
+} from "@remix-run/react";
+import {
+  Button,
+  Card,
+  Input,
+  Modal,
+  Select,
+  Textarea,
+} from "~/client/components";
 import { useCrud } from "~/client/hooks";
+import type { IntegrationDTO, LoaderReturnProps } from "../types";
 
 export function ModalForm() {
-  const { formModal, closeFormModal } = useCrud();
-  const initialFields = formModal?.data;
-
   const actionData = useActionData();
   const { state } = useTransition();
+  const loaderData = useLoaderData<LoaderReturnProps>();
+
+  const { formModal, closeFormModal } = useCrud();
+  const initialFields = (formModal?.data as IntegrationDTO) || null;
+
+  const selectOptions = loaderData.integrationTypes.map((item) => ({
+    label: item.name,
+    value: item.id.toString(),
+  }));
 
   return (
     <Modal
@@ -24,7 +43,27 @@ export function ModalForm() {
               placeholder="Escreva aqui..."
               error={actionData?.error?.name}
               defaultValue={initialFields?.name}
-              readOnly={!!initialFields}
+            />
+
+            <Textarea
+              label="Descrição:"
+              name="description"
+              rows={3}
+              placeholder="Escreva aqui..."
+              error={actionData?.error?.description}
+              defaultValue={initialFields?.description}
+            />
+
+            <Select
+              label="Tipo de integração:"
+              placeholder="Selecione..."
+              name="integration_type_id"
+              error={actionData?.error?.integration_type_id}
+              options={selectOptions}
+              defaultValue={selectOptions.find(
+                (old) =>
+                  old.value === String(initialFields?.integration_type_id)
+              )}
             />
 
             {initialFields && (
@@ -37,29 +76,11 @@ export function ModalForm() {
             )}
 
             {initialFields && (
-              <>
-                <Input
-                  label="Titulo:"
-                  name="title"
-                  placeholder="Escreva aqui..."
-                  error={actionData?.error?.title}
-                  defaultValue={initialFields?.title}
-                />
-                <Input
-                  label="Conteúdo:"
-                  name="content"
-                  placeholder="Escreva aqui..."
-                  error={actionData?.error?.content}
-                  defaultValue={initialFields?.content}
-                />
-                <Input
-                  label="Categoria:"
-                  name="hotmartProduct_category_id"
-                  placeholder="Escreva aqui..."
-                  error={actionData?.error?.hotmartProduct_category_id}
-                  defaultValue={initialFields?.hotmartProduct_category_id}
-                />
-              </>
+              <Input
+                label="Webhook URL:"
+                readOnly
+                defaultValue={initialFields?.webhook_url}
+              />
             )}
 
             <Card
