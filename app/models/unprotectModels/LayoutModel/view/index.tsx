@@ -1,6 +1,11 @@
-import { Outlet, useFetcher, useOutletContext } from "@remix-run/react";
+import {
+  Outlet,
+  useFetcher,
+  useNavigation,
+  useOutletContext,
+} from "@remix-run/react";
 
-import { Button, Card } from "~/client/components";
+import { Button, Card, Container, Spinner } from "~/client/components";
 import { Icons } from "~/client/icons";
 import { DetachMenu } from "../components/DetachMenu";
 
@@ -16,6 +21,8 @@ type outletContextProps = {
 export function View() {
   const { Form } = useFetcher();
   const outletContext = useOutletContext<outletContextProps>();
+  const navigation = useNavigation();
+  const loading = navigation.state === "loading" && !navigation.formMethod;
 
   return (
     <div className={viewContainerStyle}>
@@ -39,7 +46,23 @@ export function View() {
           <UserPopover />
         </header>
 
-        <Outlet />
+        {loading ? (
+          <Container>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                height: "100%",
+              }}
+            >
+              <Spinner size="2xl" />
+            </div>
+          </Container>
+        ) : (
+          <Outlet />
+        )}
       </div>
     </div>
   );

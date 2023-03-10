@@ -84,7 +84,19 @@ export function View() {
 
   return (
     <Container>
-      <Header title="Eventos" />
+      <Header
+        title="Eventos"
+        content={
+          <Button
+            space={2}
+            spacing={2}
+            variant="outline"
+            onClick={() => navigate("/v1/protect/integrations")}
+          >
+            <Icons.ChevronLeft size={18} /> Voltar
+          </Button>
+        }
+      />
 
       <Table
         data={loaderData.events}
