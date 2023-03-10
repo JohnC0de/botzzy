@@ -14,7 +14,7 @@ import {
 } from "~/client/components";
 
 import { ModalForm, FilterDrawer, ModalDelete } from "../components";
-import type { integrationProps, loaderReturnProps } from "../types";
+import type { eventProps, loaderReturnProps } from "../types";
 
 export function View() {
   const loaderData = useLoaderData<loaderReturnProps>();
@@ -27,7 +27,7 @@ export function View() {
     navigate(getScopedSearch({ search: e ? e : undefined }));
   }
 
-  const columns: TableCollumnsProps<integrationProps> = [
+  const columns: TableCollumnsProps<eventProps> = [
     { showOrder: true, key: "name", title: "Nome" },
     {
       key: "status",
@@ -38,8 +38,15 @@ export function View() {
         </Badge>
       ),
     },
-
-    { showOrder: true, key: "created_at", title: "Data de criação" },
+    {
+      key: "verified",
+      title: "Verificado",
+      render: ({ test_status }) => (
+        <Badge variant={test_status === "Testado" ? "success" : "danger"}>
+          {test_status}
+        </Badge>
+      ),
+    },
     {
       key: "action",
       title: "Ações",
@@ -57,7 +64,7 @@ export function View() {
             variant="ghost"
             hoverVariant="warning"
             space={1}
-            onClick={() => openFormModal({ title: "Editar integração", data })}
+            onClick={() => openFormModal({ title: "Editar evento", data })}
           >
             <Icons.Edit size={20} />
           </Button>
@@ -66,11 +73,9 @@ export function View() {
             variant="ghost"
             hoverVariant="primary"
             space={1}
-            onClick={() =>
-              navigate("/v1/protect/integrations/events/" + data.id)
-            }
+            onClick={() => navigate("/v1/protect/integrations/events")}
           >
-            <Icons.FolderOpen size={20} />
+            <Icons.Branch size={20} />
           </Button>
         </Card>
       ),
@@ -79,10 +84,10 @@ export function View() {
 
   return (
     <Container>
-      <Header title="Integrações" />
+      <Header title="Eventos" />
 
       <Table
-        data={loaderData.integrations}
+        data={loaderData.events}
         columns={columns}
         content={
           <Card spacing={2} justify="space-between" style={{ flex: 1 }}>
@@ -101,7 +106,7 @@ export function View() {
               <Button
                 space={2}
                 spacing={2}
-                onClick={() => openFormModal({ title: "Adicionar integração" })}
+                onClick={() => openFormModal({ title: "Adicionar evento" })}
               >
                 <Icons.Plus size={18} />
                 Adicionar

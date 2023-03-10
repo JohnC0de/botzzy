@@ -4,16 +4,9 @@ import {
   useLoaderData,
   useTransition,
 } from "@remix-run/react";
-import {
-  Button,
-  Card,
-  Input,
-  Modal,
-  Select,
-  Textarea,
-} from "~/client/components";
+import { Button, Card, Input, Modal, Select } from "~/client/components";
 import { useCrud } from "~/client/hooks";
-import type { integrationProps, loaderReturnProps } from "../types";
+import type { eventProps, loaderReturnProps } from "../types";
 
 export function ModalForm() {
   const actionData = useActionData();
@@ -21,11 +14,11 @@ export function ModalForm() {
   const loaderData = useLoaderData<loaderReturnProps>();
 
   const { formModal, closeFormModal } = useCrud();
-  const initialFields = (formModal?.data as integrationProps) || null;
+  const initialFields = (formModal?.data as eventProps) || null;
 
-  const selectOptions = loaderData.integrationTypes.map((item) => ({
+  const selectOptions = loaderData.eventTypes.map((item) => ({
     label: item.name,
-    value: item.id.toString(),
+    value: item.id,
   }));
 
   return (
@@ -45,24 +38,14 @@ export function ModalForm() {
               defaultValue={initialFields?.name}
             />
 
-            <Textarea
-              label="Descrição:"
-              name="description"
-              rows={3}
-              placeholder="Escreva aqui..."
-              error={actionData?.error?.description}
-              defaultValue={initialFields?.description}
-            />
-
             <Select
-              label="Tipo de integração:"
-              placeholder="Selecione..."
-              name="integration_type_id"
-              error={actionData?.error?.integration_type_id}
+              label="Tipo de evento:"
+              name="integration_type_event_id"
               options={selectOptions}
+              error={actionData?.error?.integration_type_event_id}
               defaultValue={selectOptions.find(
-                (old) =>
-                  old.value === String(initialFields?.integration_type_id)
+                (item) =>
+                  item.value === initialFields?.integration_type_event_id
               )}
             />
 
@@ -72,14 +55,6 @@ export function ModalForm() {
                 name="id"
                 value={initialFields?.id}
                 readOnly
-              />
-            )}
-
-            {initialFields && (
-              <Input
-                label="Webhook URL:"
-                readOnly
-                defaultValue={initialFields?.webhook_url}
               />
             )}
 
@@ -95,9 +70,7 @@ export function ModalForm() {
               <Button
                 name="_action"
                 isLoading={state === "submitting"}
-                value={
-                  initialFields ? "updateIntegration" : "createIntegration"
-                }
+                value={initialFields ? "updateEvent" : "createEvent"}
               >
                 {initialFields ? "Salvar" : "Adicionar"}
               </Button>

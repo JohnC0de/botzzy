@@ -12,7 +12,7 @@ export const tableThStyle = recipe({
   base: {
     textAlign: "start",
     whiteSpace: "nowrap",
-    fontWeight: vars.fontWeights.medium,
+    fontWeight: vars.fontWeights.bold,
     fontSize: vars.fontSizes.md,
     color: vars.colors.text[500],
     background: vars.colors.slate[200],

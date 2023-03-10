@@ -9,6 +9,10 @@ export { ForgotClient, ForgotServer } from "./authModels/ForgotModel"; // root/a
 export { SignInClient, SignInServer } from "./authModels/SignInModel"; // root/auth/signin
 
 //* PROTECT
+export {
+  EventsModelClient,
+  EventsModelServer,
+} from "./protectByLoggin/EventsModel"; //root/v1/protect/integrations/events
 export { FlowClient } from "./protectByLoggin/FlowModel"; //root/v1/flow/*
 export {
   IntegrationsModelClient,

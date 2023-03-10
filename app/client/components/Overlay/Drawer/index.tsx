@@ -36,7 +36,16 @@ export function Drawer({
             exit={{ transform: translateX }}
           >
             <header className={drawerHeaderButtonStyle({ title: !!title })}>
-              {title && <h3>{title}</h3>}
+              {title && (
+                <h3
+                  style={{
+                    color: globalStyles.vars.colors.text[900],
+                    fontWeight: globalStyles.vars.fontWeights.bold,
+                  }}
+                >
+                  {title}
+                </h3>
+              )}
 
               <button
                 onClick={makeInvisible}

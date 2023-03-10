@@ -8,7 +8,7 @@ const selectStyles: StylesConfig = {
     ...baseStyles,
     outline: "1px solid transparent",
     transition: "all 0s",
-    height: "3rem",
+    height: "2.5rem",
     flex: 1,
     borderRadius: vars.radii.xs,
     opacity: 1,
