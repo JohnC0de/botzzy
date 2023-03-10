@@ -80,7 +80,7 @@ export const lightThemeColors = {
   text: {
     100: "#94a3b8",
     500: "#5c6886",
-    900: "#0f172a",
+    900: "#303030",
   },
 
   bg: {

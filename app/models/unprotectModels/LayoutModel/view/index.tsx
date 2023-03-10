@@ -57,11 +57,11 @@ export function View() {
                 height: "100%",
               }}
             >
-              <Spinner size="2xl" />
+              <Spinner size="xl" />
             </div>
           </Container>
         ) : (
-          <Outlet />
+          <Outlet context={outletContext} />
         )}
       </div>
     </div>

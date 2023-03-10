@@ -15,6 +15,8 @@ import {
 
 import { ModalForm, FilterDrawer, ModalDelete } from "../components";
 import type { eventProps, loaderReturnProps } from "../types";
+import { EmptyTableView } from "./EmptyTableView";
+import { ErrorView } from "./ErrorView";
 
 export function View() {
   const loaderData = useLoaderData<loaderReturnProps>();
@@ -84,52 +86,62 @@ export function View() {
 
   return (
     <Container>
-      <Header
-        title="Eventos"
-        content={
-          <Button
-            space={2}
-            spacing={2}
-            variant="outline"
-            onClick={() => navigate("/v1/protect/integrations")}
-          >
-            <Icons.ChevronLeft size={18} /> Voltar
-          </Button>
-        }
-      />
-
-      <Table
-        data={loaderData.events}
-        columns={columns}
-        content={
-          <Card spacing={2} justify="space-between" style={{ flex: 1 }}>
-            <Card>
-              <Input
-                space={2}
-                placeholder="Buscar..."
-                onChange={(e) => onChangeSearchInput(e.target.value)}
-              />
-            </Card>
-
-            <Card spacing={1}>
-              <Button space={2} onClick={() => openFilterDrawer()}>
-                <Icons.Filter size={18} />
-              </Button>
+      {loaderData.events.length > 0 && (
+        <>
+          <Header
+            title="Eventos"
+            content={
               <Button
                 space={2}
-                spacing={2}
-                onClick={() => openFormModal({ title: "Adicionar evento" })}
+                spacing={1}
+                variant="outline"
+                onClick={() => navigate("/v1/protect/integrations")}
               >
-                <Icons.Plus size={18} />
-                Adicionar
+                <Icons.ChevronLeft size={16} /> Voltar
               </Button>
-            </Card>
-          </Card>
-        }
-      />
-      <FilterDrawer />
+            }
+          />
+
+          <Table
+            data={loaderData.events}
+            columns={columns}
+            content={
+              <Card spacing={2} justify="space-between" style={{ flex: 1 }}>
+                <Card>
+                  <Input
+                    space={2}
+                    placeholder="Buscar..."
+                    onChange={(e) => onChangeSearchInput(e.target.value)}
+                  />
+                </Card>
+
+                <Card spacing={1}>
+                  <Button space={2} onClick={() => openFilterDrawer()}>
+                    <Icons.Filter size={18} />
+                  </Button>
+                  <Button
+                    space={2}
+                    spacing={2}
+                    onClick={() => openFormModal({ title: "Adicionar evento" })}
+                  >
+                    <Icons.Plus size={18} />
+                    Adicionar
+                  </Button>
+                </Card>
+              </Card>
+            }
+          />
+          <FilterDrawer />
+          <ModalDelete />
+        </>
+      )}
+
+      {loaderData.events.length === 0 && loaderData.toast && <ErrorView />}
+      {loaderData.events.length === 0 && !loaderData.toast && (
+        <EmptyTableView />
+      )}
+
       <ModalForm />
-      <ModalDelete />
     </Container>
   );
 }
