@@ -1,6 +1,7 @@
 import {
   Outlet,
   useFetcher,
+  useLocation,
   useNavigation,
   useOutletContext,
 } from "@remix-run/react";
@@ -21,7 +22,9 @@ type outletContextProps = {
 export function View() {
   const { Form } = useFetcher();
   const outletContext = useOutletContext<outletContextProps>();
+  const { pathname } = useLocation();
   const navigation = useNavigation();
+  const isNotAccount = !pathname.includes("account");
   const loading = navigation.state === "loading" && !navigation.formMethod;
 
   return (
@@ -46,7 +49,7 @@ export function View() {
           <UserPopover />
         </header>
 
-        {loading ? (
+        {isNotAccount && loading ? (
           <Container>
             <div
               style={{

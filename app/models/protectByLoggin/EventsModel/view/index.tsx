@@ -15,7 +15,7 @@ import {
 
 import { ModalForm, FilterDrawer, ModalDelete } from "../components";
 import type { eventProps, loaderReturnProps } from "../types";
-import { EmptyTableView } from "./EmptyTableView";
+import { EmptyView } from "./EmptyView";
 import { ErrorView } from "./ErrorView";
 
 export function View() {
@@ -137,10 +137,7 @@ export function View() {
       )}
 
       {loaderData.events.length === 0 && loaderData.toast && <ErrorView />}
-      {loaderData.events.length === 0 && !loaderData.toast && (
-        <EmptyTableView />
-      )}
-
+      {loaderData.events.length === 0 && !loaderData.toast && <EmptyView />}
       <ModalForm />
     </Container>
   );

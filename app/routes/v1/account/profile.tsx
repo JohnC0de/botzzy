@@ -1,12 +1,16 @@
 import { ErrorLimit } from "~/client/components";
-import { ProfileClient } from "~/models";
-import type { ErrorBoundaryComponent } from "@remix-run/node";
+import { ProfileModelClient, ProfileModelServer } from "~/models";
+import type { ActionFunction, ErrorBoundaryComponent } from "@remix-run/node";
 
-export const meta = ProfileClient.meta;
+export const action: ActionFunction = ({ request }) => {
+  return ProfileModelServer.ActionController({ request });
+};
+
+export const meta = ProfileModelClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
   <ErrorLimit error={error} />
 );
 
 export default function () {
-  return <ProfileClient.View />;
+  return <ProfileModelClient.View />;
 }

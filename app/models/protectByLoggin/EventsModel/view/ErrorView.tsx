@@ -1,12 +1,14 @@
-import { Button, Card, Container } from "~/client/components";
-import errorImageLight from "~/client/assets/bug-light.svg";
-import welcomeImageDark from "~/client/assets/welcome-dark.png";
-import { globalStyles } from "~/client/styles";
 import { useOutletContext } from "@remix-run/react";
 
-const { vars } = globalStyles;
+import errorImageLight from "~/client/assets/bug-light.svg";
+import welcomeImageDark from "~/client/assets/welcome-dark.png";
+
+import { Button, Card, Container } from "~/client/components";
+import { globalStyles } from "~/client/styles";
+
 export function ErrorView() {
   const context = useOutletContext<any>();
+  const { vars } = globalStyles;
 
   return (
     <Container>
@@ -32,7 +34,7 @@ export function ErrorView() {
           href="mailto:lucasedugoncalves123@gmail.com"
           style={{ textDecoration: "none", marginTop: "1rem" }}
         >
-          <Button fontSize="lg">Entre em contato conosco</Button>
+          <Button fontSize="lg">Entrar em contato</Button>
         </a>
       </Card>
     </Container>
