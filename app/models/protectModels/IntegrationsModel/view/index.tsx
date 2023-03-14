@@ -79,7 +79,7 @@ export function View() {
 
   return (
     <Container>
-      <Header title="Integrações" />
+      <Header title="Integrações" subTitle="Home > Integrações" />
 
       <Table
         data={loaderData.integrations}

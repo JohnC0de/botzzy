@@ -76,7 +76,7 @@ export const badgeStyle = recipe({
 
   defaultVariants: {
     space: 2,
-    radii: "md",
+    radii: "xs",
     fontSize: "sm",
     fontWeight: "bold",
     variant: "primary",

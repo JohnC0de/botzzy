@@ -15,7 +15,12 @@ export function Menu() {
         menuKey="cruds"
         options={[
           {
-            icon: Icons.Branch,
+            icon: Icons.Cast,
+            label: "Canais",
+            to: "/v1/protect/channels",
+          },
+          {
+            icon: Icons.Category,
             label: "Integrações",
             to: "/v1/protect/integrations",
           },

@@ -1,30 +1,62 @@
 //* ACCOUNT
 export {
+  // root/v1/account/*
   AccountModelClient,
   AccountModelServer,
-} from "./accountModels/AccountModel"; // root/v1/account/*
-export { BillingClient } from "./accountModels/BillingModel"; // root/v1/account/billing
+} from "./accountModels/AccountModel";
 export {
+  // root/v1/account/profile
   ProfileModelClient,
   ProfileModelServer,
-} from "./accountModels/ProfileModel"; // root/v1/account/profile
-export { PasswordClient } from "./accountModels/PasswordModel"; // root/v1/account/password
+} from "./accountModels/ProfileModel";
+export {
+  // root/v1/account/billing
+  BillingClient,
+} from "./accountModels/BillingModel";
+export {
+  // root/v1/account/password
+  PasswordClient,
+} from "./accountModels/PasswordModel";
 
 //* AUTH
-export { ForgotClient, ForgotServer } from "./authModels/ForgotModel"; // root/auth/forgot
-export { SignInClient, SignInServer } from "./authModels/SignInModel"; // root/auth/signin
+export {
+  // root/auth/forgot
+  ForgotClient,
+  ForgotServer,
+} from "./authModels/ForgotModel";
+export {
+  // root/auth/signin
+  SignInClient,
+  SignInServer,
+} from "./authModels/SignInModel";
 
 //* PROTECT
 export {
+  // root/v1/protect/integrations/events
   EventsModelClient,
   EventsModelServer,
-} from "./protectByLoggin/EventsModel"; //root/v1/protect/integrations/events
-export { FlowClient } from "./protectByLoggin/FlowModel"; //root/v1/flow/*
+} from "./protectModels/EventsModel";
 export {
+  // root/v1/protect/integrations
   IntegrationsModelClient,
   IntegrationsModelServer,
-} from "./protectByLoggin/IntegrationsModel"; //root/v1/protect/integrations
+} from "./protectModels/IntegrationsModel";
+export {
+  // root/v1/protect/channels
+  ChannelsModelClient,
+  ChannelsModelServer,
+} from "./protectModels/ChannelsModel";
 
 //* UNPROTECT
-export { RootClient, RootServer } from "./unprotectModels/RootModel"; // root/*
-export { LayoutClient } from "./unprotectModels/LayoutModel"; // root/v1/*
+export {
+  // root/*
+  RootClient,
+  RootServer,
+} from "./unprotectModels/RootModel";
+export {
+  // root/v1/*
+  LayoutClient,
+} from "./unprotectModels/LayoutModel";
+
+//* FLOW
+export { FlowClient } from "./FlowModel"; //root/v1/flow/*

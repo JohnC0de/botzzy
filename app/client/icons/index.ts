@@ -49,6 +49,10 @@ import {
   BiSmile,
   BiCustomize,
   BiFolderOpen,
+  BiServer,
+  BiCategory,
+  BiCast,
+  BiPhone,
 } from "react-icons/bi";
 
 const Icons = {
@@ -56,8 +60,12 @@ const Icons = {
   CaretRight: BiCaretRight,
   CaretDown: BiCaretDown,
   CaretLeft: BiCaretLeft,
-  Smile: BiSmile,
 
+  Smile: BiSmile,
+  Server: BiServer,
+  Category: BiCategory,
+  Cast: BiCast,
+  Phone: BiPhone,
   Dollar: BiDollar,
   User: BiUser,
   FolderOpen: BiFolderOpen,

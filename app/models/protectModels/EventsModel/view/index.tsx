@@ -90,6 +90,7 @@ export function View() {
         <>
           <Header
             title="Eventos"
+            subTitle="Home > Integrações > Eventos"
             content={
               <Button
                 space={2}
