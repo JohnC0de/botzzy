@@ -53,6 +53,7 @@ import {
   BiCategory,
   BiCast,
   BiPhone,
+  BiDetail,
 } from "react-icons/bi";
 
 const Icons = {
@@ -64,6 +65,7 @@ const Icons = {
   Smile: BiSmile,
   Server: BiServer,
   Category: BiCategory,
+  Detail: BiDetail,
   Cast: BiCast,
   Phone: BiPhone,
   Dollar: BiDollar,

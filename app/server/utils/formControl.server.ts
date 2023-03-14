@@ -2,7 +2,7 @@ import type { z } from "zod";
 
 export async function formControl<T = unknown>(
   starter: { [k: string]: any },
-  schema: z.ZodObject<any>
+  schema: z.Schema<any>
 ) {
   const zodResponse = schema.safeParse(starter);
 

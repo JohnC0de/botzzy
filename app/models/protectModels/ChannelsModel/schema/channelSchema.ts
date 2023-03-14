@@ -3,6 +3,7 @@ import { z } from "zod";
 export const channelSchema = z.object({
   id: z.string(),
   internal_name: z.string(),
+  container_id: z.string(),
   state: z
     .string()
     .transform((state) =>

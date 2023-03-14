@@ -1,17 +1,23 @@
 import { Button, Card, Container, Header, Stats } from "~/client/components";
+import { useCrud } from "~/client/hooks";
 import { Icons } from "~/client/icons";
 import { globalStyles } from "~/client/styles";
-import { ModalDelete, ChannelsTable } from "../components";
+import { ModalDelete, ChannelsTable, ModalCreate } from "../components";
 
 const { vars } = globalStyles;
 export function View() {
+  const { openFormModal } = useCrud();
+
   return (
     <Container>
       <Header
         title="Canais"
         subTitle="Home > Canais"
         content={
-          <Button space={2}>
+          <Button
+            space={2}
+            onClick={() => openFormModal({ title: "Criar canal" })}
+          >
             <Icons.Plus size={22} />
             Novo Canal
           </Button>
@@ -42,6 +48,7 @@ export function View() {
       </Card>
 
       <ChannelsTable />
+      <ModalCreate />
       <ModalDelete />
     </Container>
   );

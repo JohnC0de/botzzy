@@ -6,6 +6,8 @@ type InputCardProps = {
   defaultValue?: string;
   placeholder?: string;
   isDisabled?: boolean;
+  name?: string;
+  error?: string | null;
 };
 
 export function InputCard({
@@ -13,6 +15,8 @@ export function InputCard({
   defaultValue,
   isDisabled,
   placeholder,
+  error,
+  name,
 }: InputCardProps) {
   const id = useId();
   return (
@@ -23,6 +27,8 @@ export function InputCard({
       <Card direction="column" style={{ flex: 2 }}>
         <Input
           id={id}
+          name={name}
+          error={error}
           type="password"
           disabled={isDisabled}
           defaultValue={defaultValue}

@@ -72,7 +72,12 @@ export function ToastContextProvider({ children }: CrudContextProviderProps) {
     <ToastContext.Provider value={{ fireToast }}>
       <Toaster
         position="top-right"
-        toastOptions={{ style: { borderRadius: "4px" } }}
+        toastOptions={{
+          style: {
+            zIndex: 9999,
+            borderRadius: "4px",
+          },
+        }}
       />
       {children}
     </ToastContext.Provider>

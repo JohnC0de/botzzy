@@ -15,7 +15,8 @@ export {
 } from "./accountModels/BillingModel";
 export {
   // root/v1/account/password
-  PasswordClient,
+  PasswordModelClient,
+  PasswordModelServer,
 } from "./accountModels/PasswordModel";
 
 //* AUTH
@@ -42,7 +43,7 @@ export {
   IntegrationsModelServer,
 } from "./protectModels/IntegrationsModel";
 export {
-  // root/v1/protect/channels
+  // root/v1/protect/channels/*
   ChannelsModelClient,
   ChannelsModelServer,
 } from "./protectModels/ChannelsModel";

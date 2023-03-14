@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import { Badge, Button, Card } from "~/client/components";
 import { Icons } from "~/client/icons";
 import { useCrud } from "~/client/hooks";
@@ -10,6 +10,7 @@ import type { loaderReturnProps } from "../../types";
 export function ChannelsTable() {
   const { channels } = useLoaderData<loaderReturnProps>();
   const { openDeleteModal } = useCrud();
+  const navigate = useNavigate();
 
   return (
     <table
@@ -72,14 +73,22 @@ export function ChannelsTable() {
             <td style={{ borderRadius: "0 4px 4px 0" }} className={tableTd}>
               <Card>
                 <Button
-                  onClick={() => openDeleteModal(channel.id)}
                   variant="ghost"
                   hoverVariant="danger"
+                  onClick={() => openDeleteModal(channel.container_id)}
                 >
                   <Icons.Trash size={20} />
                 </Button>
-                <Button variant="ghost" hoverVariant="primary">
-                  <Icons.QRCode size={20} />
+                <Button
+                  variant="ghost"
+                  hoverVariant="primary"
+                  onClick={() =>
+                    navigate(
+                      `/v1/protect/channels/whatsapp/${channel.container_id}`
+                    )
+                  }
+                >
+                  <Icons.Detail size={20} />
                 </Button>
               </Card>
             </td>

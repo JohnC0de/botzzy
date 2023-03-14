@@ -14,7 +14,7 @@ export function ModalDelete() {
       <Card space={6}>
         <Form method="post">
           <Card direction="column" spacing={6} style={{ width: 400 }}>
-            <p>Você deseja deleta essa integração?</p>
+            <p>Você deseja deletar essa integração?</p>
             <input type="hidden" name="id" value={deleteModal?.toString()} />
             <Card
               showBgColor

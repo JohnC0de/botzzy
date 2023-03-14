@@ -74,8 +74,6 @@ export function FlowContextProvider({ children }: FlowContextProviderProps) {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
-  console.log({ nodes, edges });
-
   const onConnect: OnConnect = useCallback(
     (params) => setEdges((eds) => addEdge({ ...params, ...edgeStyles }, eds)),
     [setEdges]

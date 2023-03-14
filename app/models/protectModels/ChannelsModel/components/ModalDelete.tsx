@@ -15,8 +15,9 @@ export function ModalDelete() {
       <Card space={6}>
         <Form method="post">
           <Card direction="column" spacing={6} style={{ width: 400 }}>
-            <p>Você deseja deleta esse canal?</p>
+            <p>Você deseja deletar esse canal?</p>
             <input type="hidden" name="id" value={deleteModal?.toString()} />
+
             <Card
               showBgColor
               spacing={3}

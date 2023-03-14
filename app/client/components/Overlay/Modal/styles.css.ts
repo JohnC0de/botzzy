@@ -12,7 +12,7 @@ export const modalContainerStyle = style({
   justifyContent: "center",
   overflow: "auto",
   padding: vars.space[4],
-  zIndex: 9999,
+  zIndex: 9998,
 });
 
 export const modalContentStyle = style({
@@ -47,7 +47,7 @@ export const modalOverlayStyle = style({
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: "rgba(0, 0, 0, 0.7)",
+  backgroundColor: "rgba(0, 0, 0, 0.85)",
   zIndex: 3,
   ":hover": { cursor: "pointer" },
 });
