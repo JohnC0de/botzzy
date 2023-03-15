@@ -1,29 +1,71 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import {
   Form,
   useActionData,
+  useFetcher,
   useOutletContext,
+  useRevalidator,
   useTransition,
 } from "@remix-run/react";
-import { useEffect } from "react";
-import { Button, Card, Divider, Header, Input } from "~/client/components";
+
+import { Badge, Button, Card, Divider, Header } from "~/client/components";
 import { useToast } from "~/client/hooks";
+import { globalStyles } from "~/client/styles";
+
+import { InputCard } from "../components/InputCard";
 import type { OutletContextProps } from "../../MenuModel";
 
+const { vars } = globalStyles;
 export function View() {
-  const { channel } = useOutletContext<OutletContextProps>();
-
   const actionData = useActionData();
-  const { state } = useTransition();
+  useEffect(() => {
+    if (actionData?.toast) fireToast(actionData.toast);
+  }, [actionData]);
+
+  const { channel } = useOutletContext<OutletContextProps>();
+  const transition = useTransition();
   const { fireToast } = useToast();
+  const { revalidate } = useRevalidator();
+
+  const [qrCode, setQrCode] = useState("");
+  const { submit, data, state } = useFetcher();
+
+  useEffect(() => {
+    if (data?.qrCode) setQrCode(data.qrCode);
+  }, [data]);
+
+  let time: NodeJS.Timeout;
+  function generateQRcode() {
+    setQrCode("");
+
+    submit(
+      { name: channel.name, apikey: channel.license_key },
+      { action: "/api/generateqrcode", method: "post" }
+    );
+
+    setTimeout(() => {
+      setQrCode("");
+      clearInterval(time);
+    }, 30000);
+
+    time = setInterval(() => {
+      revalidate();
+    }, 3000);
+  }
 
   function handleReset() {
     if (window) window.location.reload();
   }
 
-  useEffect(() => {
-    if (actionData?.toast) fireToast(actionData.toast);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [actionData]);
+  const connectionStatus =
+    channel.status_connection === "Conectado" ? "success" : "danger";
+  const status =
+    channel.state === "Ativo"
+      ? "success"
+      : channel.state === "Inativo"
+      ? "danger"
+      : "warning";
 
   return (
     <Form method="post">
@@ -36,25 +78,26 @@ export function View() {
 
         <Form>
           <Card direction="column" spacing={8}>
-            <Card align="center" justify="space-between">
-              <strong>Nome</strong>
-              <Input disabled defaultValue={channel.name} />
-            </Card>
-            <Card align="center">
-              <strong style={{ flex: 1 }}>Nome interno</strong>
-              <Input
-                name="internal_name"
-                defaultValue={channel.internal_name}
-                style={{ flex: 2 }}
-              />
-            </Card>
+            <InputCard
+              label="Nome"
+              name="name"
+              isDisabled
+              defaultValue={channel.name}
+            />
+            <InputCard
+              label="Nome interno"
+              name="internal_name"
+              defaultValue={channel.internal_name}
+              error={actionData?.error?.internal_name}
+            />
+
             <Card align="center" justify="flex-end" spacing={2} showBgColor>
               <Button variant="ghost" type="button" onClick={handleReset}>
                 Resetar
               </Button>
               <Button
                 variant="default"
-                isLoading={state === "submitting"}
+                isLoading={transition.state === "submitting"}
                 name="_action"
                 value="updatePassword"
               >
@@ -71,6 +114,53 @@ export function View() {
           subTitle="Verifique a conexão do canal com seu Whatsapp."
           titleFontSize="lg"
         />
+
+        <Card
+          align="center"
+          justify="space-between"
+          style={{ maxWidth: "1100px" }}
+        >
+          <div style={{ fontWeight: vars.fontWeights.bold }}>Status</div>
+          <Badge variant={status}>{channel.state}</Badge>
+        </Card>
+        <Card
+          align="center"
+          justify="space-between"
+          style={{ maxWidth: "1100px" }}
+        >
+          <div style={{ fontWeight: vars.fontWeights.bold }}>
+            Status de conexão
+          </div>
+          <Badge variant={connectionStatus}>{channel.status_connection}</Badge>
+        </Card>
+
+        {channel.status_connection === "Desconectado" && (
+          <Card
+            direction="column"
+            align="center"
+            justify="center"
+            spacing={6}
+            style={{ height: "23rem" }}
+          >
+            {connectionStatus === "danger" && (
+              <>
+                {qrCode ? (
+                  <img src={qrCode} alt="QR code" style={{ height: "20rem" }} />
+                ) : (
+                  <>
+                    <h2>Gere o QR code para conectar seu canal.</h2>
+                    <Button
+                      isLoading={state === "submitting"}
+                      onClick={generateQRcode}
+                    >
+                      Gerar QRCode
+                    </Button>
+                  </>
+                )}
+              </>
+            )}
+          </Card>
+        )}
       </Card>
     </Form>
   );
