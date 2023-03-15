@@ -84,7 +84,7 @@ export function ChannelsTable() {
                   hoverVariant="primary"
                   onClick={() =>
                     navigate(
-                      `/v1/protect/channels/whatsapp/${channel.container_id}`
+                      `/v1/protect/channels/whatsapp/${channel.container_id}/qrcode`
                     )
                   }
                 >

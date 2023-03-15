@@ -22,14 +22,20 @@ export function InputCard({
 }: InputCardProps) {
   const id = useId();
   return (
-    <Card align="center" spacing={8} wrap="wrap" justify="space-between">
+    <Card
+      align="center"
+      spacing={8}
+      wrap="wrap"
+      justify="space-between"
+      style={{ maxWidth: "1100px" }}
+    >
       <label
         htmlFor={id}
-        style={{ fontWeight: vars.fontWeights.bold, flex: 1 }}
+        style={{ fontWeight: vars.fontWeights.bold, flex: 2 }}
       >
         {label}
       </label>
-      <Card direction="column" style={{ flex: 2 }}>
+      <Card direction="column" style={{ flex: 3 }}>
         <Input
           id={id}
           name={name}

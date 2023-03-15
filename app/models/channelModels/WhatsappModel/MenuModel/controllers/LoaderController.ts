@@ -1,6 +1,5 @@
 import { json, redirect } from "@remix-run/node";
 import type { Params } from "@remix-run/react";
-import { z } from "zod";
 
 import { api } from "~/server/api";
 import { getCredentials } from "~/server/utils";
@@ -15,7 +14,7 @@ const errorResponse = (path: string, error: any) =>
   });
 
 type loaderControllerProps = { request: Request; params: Params<string> };
-export async function WhatsappLoaderController({
+export async function LoaderController({
   request,
   params,
 }: loaderControllerProps) {
@@ -33,12 +32,12 @@ export async function WhatsappLoaderController({
   ]);
   if (error) return errorResponse(containersURL, error);
 
-  // const validateChannels = z.array(channelSchema).safeParse(data);
-  // if (!validateChannels.success)
-  //   return errorResponse(containersURL, validateChannels.error);
+  const validateChannel = channelSchema.safeParse(data);
+  if (!validateChannel.success)
+    return errorResponse(containersURL, validateChannel.error);
 
   return json({
-    channel: data,
+    channel: validateChannel.data,
     toast: null,
   });
 }

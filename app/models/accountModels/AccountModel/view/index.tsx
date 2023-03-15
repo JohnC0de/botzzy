@@ -8,9 +8,18 @@ export function View() {
     <Container>
       <Header title="Minha conta" />
 
-      <Card showBgColor direction="column" radii="xs" space={4} spacing={4}>
-        <AccountNavigationMenu />
-        <Outlet context={{ me }} />
+      <Card direction="column" align="center">
+        <Card
+          showBgColor
+          direction="column"
+          radii="xs"
+          space={4}
+          spacing={4}
+          style={{ width: "100%", maxWidth: 1280 }}
+        >
+          <AccountNavigationMenu />
+          <Outlet context={{ me }} />
+        </Card>
       </Card>
     </Container>
   );

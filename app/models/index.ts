@@ -19,6 +19,25 @@ export {
   PasswordModelServer,
 } from "./accountModels/PasswordModel";
 
+//* CHANNEL
+export {
+  // root/v1/protect/channels
+  AllChannelsModelClient,
+  AllChannelsModelServer,
+} from "./channelModels/AllChannelsModel";
+export {
+  //? WHATSAPP
+  // root/v1/protect/channels/whatsapp/${id}/*
+  WhatsappMenuModelClient,
+  WhatsappMenuModelServer,
+} from "./channelModels/WhatsappModel/MenuModel";
+export {
+  //? WHATSAPP
+  // root/v1/protect/channels/whatsapp/${id}/*
+  WhatsaooQRCodeModelClient,
+  WhatsaooQRCodeModelServer,
+} from "./channelModels/WhatsappModel/QRCodeModel";
+
 //* AUTH
 export {
   // root/auth/forgot
@@ -42,11 +61,7 @@ export {
   IntegrationsModelClient,
   IntegrationsModelServer,
 } from "./protectModels/IntegrationsModel";
-export {
-  // root/v1/protect/channels/*
-  ChannelsModelClient,
-  ChannelsModelServer,
-} from "./protectModels/ChannelsModel";
+export { FlowClient } from "./protectModels/FlowModel"; //root/v1/flow/*
 
 //* UNPROTECT
 export {
@@ -58,6 +73,3 @@ export {
   // root/v1/*
   LayoutClient,
 } from "./unprotectModels/LayoutModel";
-
-//* FLOW
-export { FlowClient } from "./FlowModel"; //root/v1/flow/*

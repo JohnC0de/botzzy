@@ -5,7 +5,7 @@ import { Spinner } from "~/client/components";
 import { ErrorLimit } from "~/client/components";
 
 import { ReactFlowProvider } from "reactflow";
-import { FlowContextProvider } from "~/models/FlowModel/hook/useFlow";
+import { FlowContextProvider } from "~/models/protectModels/FlowModel/hook/useFlow";
 import type { ErrorBoundaryComponent } from "@remix-run/node";
 
 export const links = FlowClient.links;
