@@ -15,14 +15,21 @@ type loaderControllerProps = { request: Request };
 export async function LoaderController({ request }: loaderControllerProps) {
   const credentials = await getCredentials(request);
   if (credentials === "notLogged") return redirect(reditectURL);
-  const { token } = credentials;
+  const { token, user } = credentials;
 
-  const url = `/me`;
-  const { data, error } = await api.GET({ url, token });
-  if (error) return errorResponse(url, error);
+  const url1 = `/me`;
+  const url2 = `/account/${user.account_id}/accounts/account-info`;
+  const meData = await api.GET({ url: url1, token });
+  const accountData = await api.GET({ url: url2, token });
 
-  const validateMe = meSchema.safeParse(data);
-  if (!validateMe.success) return errorResponse(url, validateMe.error);
+  if (meData.error) return errorResponse(url1, meData.error);
 
-  return json({ me: validateMe.data, toast: null });
+  const validateMe = meSchema.safeParse(meData.data);
+  if (!validateMe.success) return errorResponse(url1, validateMe.error);
+
+  return json({
+    me: validateMe.data,
+    toast: null,
+    accountInfo: accountData.data,
+  });
 }

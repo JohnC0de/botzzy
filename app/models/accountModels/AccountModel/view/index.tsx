@@ -3,7 +3,7 @@ import { Card, Header, Container } from "~/client/components";
 import { AccountNavigationMenu } from "../components";
 
 export function View() {
-  const { me } = useLoaderData();
+  const { me, accountInfo } = useLoaderData();
   return (
     <Container>
       <Header title="Minha conta" />
@@ -18,7 +18,7 @@ export function View() {
           style={{ width: "100%", maxWidth: 1280 }}
         >
           <AccountNavigationMenu />
-          <Outlet context={{ me }} />
+          <Outlet context={{ me, accountInfo }} />
         </Card>
       </Card>
     </Container>
