@@ -1,5 +1,7 @@
-import { Form, useTransition } from "@remix-run/react";
+import { Form, useActionData, useTransition } from "@remix-run/react";
+import { useEffect } from "react";
 import { Button, Card, Input, MaskedInput, Modal } from "~/client/components";
+import { useToast } from "~/client/hooks";
 
 type ModalBillingInformationsProps = {
   isOpen: boolean;
@@ -11,6 +13,14 @@ export function ModalBillingInformations({
   onClose,
 }: ModalBillingInformationsProps) {
   const { state } = useTransition();
+  const actionData = useActionData();
+  const { fireToast } = useToast();
+
+  useEffect(() => {
+    if (actionData?.toast) fireToast(actionData?.toast);
+    if (actionData?.closeModal) onClose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [actionData]);
 
   return (
     <Modal
@@ -29,16 +39,58 @@ export function ModalBillingInformations({
               gridTemplateColumns: "repeat(2, 1fr)",
             }}
           >
-            <Input label="Nome completo:" name="name" />
-            <MaskedInput mask="999.999.999-99" label="CPF:" name="name" />
-            <Input label="Pais:" name="country" />
-            <Input label="Estado:" name="state" />
-            <Input label="Cidade:" name="city" />
-            <Input label="Bairro:" name="district" />
-            <MaskedInput mask="99999-999" label="CEP:" name="cep" />
-            <Input label="Endereço:" name="address" />
-            <Input label="Numero:" name="number" />
-            <Input label="Complemento:" name="complement" />
+            <Input
+              label="Nome completo:"
+              name="name"
+              error={actionData?.error?.name}
+            />
+            <MaskedInput
+              mask="999.999.999-99"
+              label="CPF:"
+              name="cpf"
+              error={actionData?.error?.cpf}
+            />
+            <Input
+              label="Pais:"
+              name="country"
+              error={actionData?.error?.country}
+            />
+            <Input
+              label="Estado:"
+              name="state"
+              error={actionData?.error?.state}
+            />
+            <Input
+              label="Cidade:"
+              name="city"
+              error={actionData?.error?.city}
+            />
+            <Input
+              label="Bairro:"
+              name="district"
+              error={actionData?.error?.district}
+            />
+            <MaskedInput
+              mask="99999-999"
+              label="CEP:"
+              name="postal_code"
+              error={actionData?.error?.postal_code}
+            />
+            <Input
+              label="Endereço:"
+              name="address"
+              error={actionData?.error?.address}
+            />
+            <Input
+              label="Numero:"
+              name="number"
+              error={actionData?.error?.number}
+            />
+            <Input
+              label="Complemento:"
+              name="complement"
+              error={actionData?.error?.complement}
+            />
 
             <Card
               showBgColor
@@ -52,7 +104,7 @@ export function ModalBillingInformations({
               <Button
                 name="_action"
                 isLoading={state === "submitting"}
-                value="createChannel"
+                value="updateBillingInformation"
               >
                 Criar
               </Button>

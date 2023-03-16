@@ -11,7 +11,8 @@ export {
 } from "./accountModels/ProfileModel";
 export {
   // root/v1/account/billing
-  BillingClient,
+  BillingClientModel,
+  BillingServerModel,
 } from "./accountModels/BillingModel";
 export {
   // root/v1/account/password
