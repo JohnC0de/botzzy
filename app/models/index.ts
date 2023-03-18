@@ -50,6 +50,11 @@ export {
   SignInClient,
   SignInServer,
 } from "./authModels/SignInModel";
+export {
+  // root/auth/signupaffiliate
+  SignUpAffiliateModelClient,
+  SignUpAffiliateModelServer,
+} from "./authModels/SignUpAffiliateModel";
 
 //* PROTECT
 export {
