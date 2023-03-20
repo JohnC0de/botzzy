@@ -6,7 +6,9 @@ export const registeAffiliateSchema = z
   .object({
     name: z.string({ required_error: errorMessage }).min(1, errorMessage),
     email: z.string({ required_error: errorMessage }).min(1, errorMessage),
-    phone: z.string({ required_error: errorMessage }).min(1, errorMessage),
+    whatsapp_contact: z
+      .string({ required_error: errorMessage })
+      .min(1, errorMessage),
     instagram: z.string({ required_error: errorMessage }).min(1, errorMessage),
     youtube: z.string({ required_error: errorMessage }).min(1, errorMessage),
     password: z.string({ required_error: errorMessage }).min(1, errorMessage),

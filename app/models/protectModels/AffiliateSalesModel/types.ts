@@ -5,5 +5,7 @@ export type salesProps = z.infer<typeof salesSchema>;
 
 export type loaderReturnProps = {
   sales: salesProps[];
+  totalSales: string;
+  totalComission: string;
   toast: { message: string; type: "error" };
 };

@@ -56,7 +56,7 @@ export function View() {
 
           <Input
             label="Telefone:"
-            name="phone"
+            name="whatsapp_contact"
             variant="outline"
             placeholder="Escreva aqui..."
             error={data?.error?.phone}

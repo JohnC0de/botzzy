@@ -10,13 +10,16 @@ import {
   Header,
   Input,
   type TableCollumnsProps,
+  Stats,
 } from "~/client/components";
 
 import { FilterDrawer } from "../components";
 import { EmptyView } from "./EmptyView";
 import { ErrorView } from "./ErrorView";
 import type { salesProps, loaderReturnProps } from "../types";
+import { globalStyles } from "~/client/styles";
 
+const { vars } = globalStyles;
 export function View() {
   const loaderData = useLoaderData<loaderReturnProps>();
 
@@ -53,6 +56,27 @@ export function View() {
               </Button>
             }
           />
+
+          <Card wrap="wrap" spacing={6}>
+            <Stats
+              title="Total de vendas"
+              icon={Icons.History}
+              iconBg={vars.colors.cyan[500]}
+              content={loaderData.sales.length.toString()}
+            />
+            <Stats
+              title="Total"
+              icon={Icons.CheckCircle}
+              iconBg={vars.colors.indigo[500]}
+              content={loaderData.totalSales}
+            />
+            <Stats
+              title="Disponivel para saque"
+              icon={Icons.Dollar}
+              iconBg={vars.colors.emerald[500]}
+              content={loaderData.totalComission}
+            />
+          </Card>
 
           <Table
             data={loaderData.sales}
