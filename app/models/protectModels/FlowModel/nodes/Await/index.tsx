@@ -1,5 +1,4 @@
-import whatsLogo from "~/client/assets/whatsapp_logo.png";
-import { Button, Card, Input } from "~/client/components";
+import { Button, Card, Input, Select } from "~/client/components";
 import { useState } from "react";
 import { Position } from "reactflow";
 import type { NodeProps } from "reactflow";
@@ -7,19 +6,15 @@ import type { NodeProps } from "reactflow";
 import { NodePort } from "../../components/NodePort";
 import { useFlow } from "../../hook/useFlow";
 
-import {
-  messageZone,
-  awaitNodeContainer,
-  imageStyle,
-  messageStyle,
-} from "./styles.css";
+import { awaitNodeContainer } from "./styles.css";
 import { Icons } from "~/client/icons";
+import { globalStyles } from "~/client/styles";
 
 type awaitProps = { time?: string; timeType?: string };
 function DrawerContent({ data, id }: { data: awaitProps; id: string }) {
   const [time, setTime] = useState(data.time || "");
   const [timeType, setTimeType] = useState(data.timeType || "");
-  const { setNodes, onCloseDrawer } = useFlow();
+  const { setNodes, onCloseDrawer, deleteNodeById } = useFlow();
 
   function handleSubmitNode() {
     setNodes((nds) =>
@@ -32,6 +27,18 @@ function DrawerContent({ data, id }: { data: awaitProps; id: string }) {
     onCloseDrawer();
   }
 
+  function handleDeleteNode() {
+    deleteNodeById(id);
+    onCloseDrawer();
+  }
+
+  const selectOptions = [
+    { label: "Dias", value: "dias" },
+    { label: "Horas", value: "horas" },
+    { label: "Minutos", value: "minutos" },
+    { label: "Segundos", value: "segundos" },
+  ];
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <Card direction="column" space={6} spacing={4} style={{ width: "400px" }}>
@@ -41,14 +48,18 @@ function DrawerContent({ data, id }: { data: awaitProps; id: string }) {
           onChange={(e) => setTime(e.target.value)}
           placeholder="Quanto tempo deve ser esperado?"
         />
-        <Input
+        <Select
           label="Medida:"
-          value={timeType}
-          onChange={(e) => setTimeType(e.target.value)}
+          defaultValue={selectOptions.find((item) => item.value === timeType)}
+          options={selectOptions}
+          onChange={(e: any) => setTimeType(e.value)}
           placeholder="Qual a medida de tempo?"
         />
 
         <Button onClick={handleSubmitNode}>Salvar</Button>
+        <Button variant="ghost" onClick={handleDeleteNode}>
+          Deletar
+        </Button>
       </Card>
     </form>
   );
@@ -71,29 +82,30 @@ export function Await({ data, id }: NodeProps<awaitProps>) {
         }
       >
         <Card spacing={3} align="center">
-          <img src={whatsLogo} alt="Logo do whatsapp" className={imageStyle} />
+          <Card
+            space={2}
+            radii="xs"
+            style={{
+              background: globalStyles.vars.colors.yellow[500],
+              marginRight: "2rem",
+            }}
+          >
+            <Icons.Clock size={30} color="#FFF" />
+          </Card>
 
-          <Card direction="column">
-            <p>Esperar</p>
-            <small>Esperar ação (comum)</small>
+          <p>Aguardar</p>
+          <Card
+            space={3}
+            radii="xs"
+            style={{ background: globalStyles.vars.colors.yellow[50] }}
+          >
+            {data.time ? (
+              data.time + " " + data.timeType
+            ) : (
+              <small style={{ flex: 1, textAlign: "center" }}>... </small>
+            )}
           </Card>
         </Card>
-        <div className={messageZone}>
-          {data.time ? (
-            <div className={messageStyle}>
-              <Icons.Clock size={20} />
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: data.time + " " + data.timeType,
-                }}
-              />
-            </div>
-          ) : (
-            <small style={{ flex: 1, textAlign: "center" }}>
-              Adicione um tempo
-            </small>
-          )}
-        </div>
       </div>
       <NodePort type="source" position={Position.Bottom} />
     </>

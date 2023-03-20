@@ -17,7 +17,7 @@ export function ModalForm() {
   const initialFields = (formModal?.data as eventProps) || null;
 
   const selectOptions = loaderData.eventTypes.map((item) => ({
-    label: item.name,
+    label: item.description || item.name,
     value: item.id,
   }));
 

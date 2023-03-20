@@ -46,8 +46,8 @@ export function Textarea({
   return (
     <div className={inputContainerStyle}>
       {label && (
-        <label htmlFor={id} className={labelStyle}>
-          {label}
+        <div className={labelStyle}>
+          <label htmlFor={id}>{label}</label>
           {showEmoticons && (
             <Popover
               isOpen={emoticonsIsVisibled}
@@ -72,7 +72,7 @@ export function Textarea({
               />
             </Popover>
           )}
-        </label>
+        </div>
       )}
 
       <textarea

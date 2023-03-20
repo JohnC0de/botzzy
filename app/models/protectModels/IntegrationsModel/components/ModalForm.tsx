@@ -24,7 +24,7 @@ export function ModalForm() {
   const initialFields = (formModal?.data as integrationProps) || null;
 
   const selectOptions = loaderData.integrationTypes.map((item) => ({
-    label: item.name,
+    label: item.description || item.name,
     value: item.id.toString(),
   }));
 

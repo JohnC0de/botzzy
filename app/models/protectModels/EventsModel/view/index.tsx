@@ -89,7 +89,7 @@ export function View() {
       {loaderData.events.length > 0 && (
         <>
           <Header
-            title="Eventos"
+            title={`Eventos - ${loaderData.integration.name}`}
             subTitle="Home > Integrações > Eventos"
             content={
               <Button

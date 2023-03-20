@@ -47,6 +47,7 @@ type FlowContextProps = {
 
   onConnect: OnConnect;
   onDragOver: (event: DragEvent<HTMLDivElement>) => void;
+  deleteNodeById: (id: string) => void;
 };
 
 type FlowContextProviderProps = {
@@ -73,6 +74,10 @@ export function FlowContextProvider({ children }: FlowContextProviderProps) {
 
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+  function deleteNodeById(id: string) {
+    setNodes((nds) => nds.filter((node) => node.id !== id));
+  }
 
   const onConnect: OnConnect = useCallback(
     (params) => setEdges((eds) => addEdge({ ...params, ...edgeStyles }, eds)),
@@ -101,6 +106,7 @@ export function FlowContextProvider({ children }: FlowContextProviderProps) {
 
         onConnect,
         onDragOver,
+        deleteNodeById,
 
         onOpenDrawer,
         onCloseDrawer,

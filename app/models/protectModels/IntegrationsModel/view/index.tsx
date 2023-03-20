@@ -28,6 +28,24 @@ export function View() {
   }
 
   const columns: TableCollumnsProps<integrationProps> = [
+    {
+      key: "img",
+      title: "",
+      render: (data) => (
+        <Card
+          align="center"
+          justify="center"
+          direction="column"
+          style={{ height: "3rem", width: "8rem" }}
+        >
+          <img
+            src={data.image}
+            style={{ height: "8rem" }}
+            alt="imagem da linha"
+          />
+        </Card>
+      ),
+    },
     { showOrder: true, key: "name", title: "Nome" },
     {
       key: "status",

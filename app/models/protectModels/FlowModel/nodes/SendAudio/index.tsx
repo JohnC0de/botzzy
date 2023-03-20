@@ -22,7 +22,7 @@ type AudioProps = { url: string; blob: Blob };
 type AudioStateProps = { url: string; blob: Blob } | null;
 
 function DrawerContent({ data, id }: { data: AudioProps; id: string }) {
-  const { setNodes, onCloseDrawer } = useFlow();
+  const { setNodes, onCloseDrawer, deleteNodeById } = useFlow();
   const [audio, setAudio] = useState<AudioStateProps>(data || null);
 
   const recorderControls = useAudioRecorder();
@@ -39,6 +39,11 @@ function DrawerContent({ data, id }: { data: AudioProps; id: string }) {
       })
     );
 
+    onCloseDrawer();
+  }
+
+  function handleDeleteNode() {
+    deleteNodeById(id);
     onCloseDrawer();
   }
 
@@ -74,6 +79,9 @@ function DrawerContent({ data, id }: { data: AudioProps; id: string }) {
           {audio ? "Trocar para arquivo interno" : "Enviar arquivo"}
         </Button>
         <Button onClick={handleSubmitNode}>Salvar</Button>
+        <Button variant="ghost" onClick={handleDeleteNode}>
+          Deletar
+        </Button>
       </Card>
     </form>
   );

@@ -17,7 +17,7 @@ import {
 type SendMessageProps = { message?: string };
 function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
   const [message, setMessage] = useState(data.message || "");
-  const { setNodes, onCloseDrawer } = useFlow();
+  const { setNodes, onCloseDrawer, deleteNodeById } = useFlow();
 
   function handleSubmitNode() {
     setNodes((nds) =>
@@ -35,6 +35,11 @@ function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
     onCloseDrawer();
   }
 
+  function handleDeleteNode() {
+    deleteNodeById(id);
+    onCloseDrawer();
+  }
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <Card direction="column" space={6} spacing={4} style={{ width: "400px" }}>
@@ -48,6 +53,9 @@ function DrawerContent({ data, id }: { data: SendMessageProps; id: string }) {
         />
 
         <Button onClick={handleSubmitNode}>Salvar</Button>
+        <Button variant="ghost" onClick={handleDeleteNode}>
+          Deletar
+        </Button>
       </Card>
     </form>
   );

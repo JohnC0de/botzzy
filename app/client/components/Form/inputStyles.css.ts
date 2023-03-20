@@ -14,6 +14,9 @@ export const labelStyle = style({
   fontWeight: vars.fontWeights.bold,
   color: vars.colors.text[500],
   fontFamily: vars.fonts.default,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
 });
 
 export const inputStyle = recipe({
