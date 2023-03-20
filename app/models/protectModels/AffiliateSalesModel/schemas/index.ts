@@ -1,0 +1,1 @@
+export { salesSchema } from "./salesSchema";

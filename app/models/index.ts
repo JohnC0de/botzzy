@@ -58,15 +58,20 @@ export {
 
 //* PROTECT
 export {
+  // root/v1/protect/integrations
+  IntegrationsModelClient,
+  IntegrationsModelServer,
+} from "./protectModels/IntegrationsModel";
+export {
   // root/v1/protect/integrations/events
   EventsModelClient,
   EventsModelServer,
 } from "./protectModels/EventsModel";
 export {
-  // root/v1/protect/integrations
-  IntegrationsModelClient,
-  IntegrationsModelServer,
-} from "./protectModels/IntegrationsModel";
+  // root/v1/protect/affiliatesales
+  AffiliateSalesModelClient,
+  AffiliateSalesModelServer,
+} from "./protectModels/AffiliateSalesModel";
 export { FlowClient } from "./protectModels/FlowModel"; //root/v1/flow/*
 
 //* UNPROTECT

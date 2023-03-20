@@ -28,6 +28,19 @@ export function Menu() {
       />
 
       <MenuButton
+        label="Afiliado"
+        icon={Icons.User}
+        menuKey="my_settings"
+        options={[
+          {
+            icon: Icons.Dollar,
+            label: "Vendas",
+            to: "/v1/protect/affiliated",
+          },
+        ]}
+      />
+
+      <MenuButton
         label="Meu Fluxo"
         icon={Icons.Layout}
         menuKey="my-flow"
