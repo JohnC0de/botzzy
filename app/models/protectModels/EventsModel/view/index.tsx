@@ -75,7 +75,7 @@ export function View() {
             variant="ghost"
             hoverVariant="primary"
             space={1}
-            onClick={() => navigate("/v1/protect/integrations/events")}
+            onClick={() => navigate("/v1/protect/flow/" + data.flow_id)}
           >
             <Icons.Branch size={20} />
           </Button>

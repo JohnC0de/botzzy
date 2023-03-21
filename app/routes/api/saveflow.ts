@@ -1,5 +1,6 @@
 import { type ActionFunction, redirect } from "@remix-run/node";
 import { json } from "react-router";
+import { api } from "~/server/api";
 import { getCredentials } from "~/server/utils";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -14,13 +15,13 @@ export const action: ActionFunction = async ({ request }) => {
 
   const edges = JSON.parse(String(formData.edges));
   const nodes = JSON.parse(String(formData.nodes));
+  const flowId = String(formData.flowId);
 
-  const data = {
-    edges,
-    nodes,
-    account_id: user.account_id,
+  const apiResponse = await api.PUT({
+    url: `/account/${user.account_id}/flows/${flowId}`,
+    data: { edges, nodes },
     token,
-  };
+  });
 
-  return json(data);
+  return json(apiResponse);
 };

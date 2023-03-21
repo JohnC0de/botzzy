@@ -25,7 +25,7 @@ import type {
   EdgeChange,
 } from "reactflow";
 import { Drawer } from "~/client/components";
-import { useFetcher } from "@remix-run/react";
+import { useFetcher, useParams } from "@remix-run/react";
 
 type DrawerProps = { title: string; children: ReactNode; id: string };
 type OnChange<ChangesType> = (changes: ChangesType[]) => void;
@@ -111,10 +111,17 @@ export function FlowContextProvider({ children }: FlowContextProviderProps) {
     event.dataTransfer.dropEffect = "move";
   }, []);
 
+  const params = useParams();
   const { submit, state } = useFetcher();
+
   function saveFlow(url: string) {
+    if (!params?.flowid) return;
     submit(
-      { nodes: JSON.stringify(nodes), edges: JSON.stringify(edges) },
+      {
+        nodes: JSON.stringify(nodes),
+        edges: JSON.stringify(edges),
+        flowId: params?.flowid,
+      },
       { method: "post", action: url }
     );
   }

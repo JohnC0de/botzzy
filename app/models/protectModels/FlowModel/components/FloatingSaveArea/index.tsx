@@ -14,9 +14,9 @@ export function FloatingSaveArea() {
         space={2}
         spacing={1}
       >
-        <Button space={2} variant="ghost" disabled title="Já está salvo">
+        {/* <Button space={2} variant="ghost" disabled title="Já está salvo">
           Salvar rascunho
-        </Button>
+        </Button> */}
         <Button
           isLoading={isSavingFlow}
           onClick={() => saveFlow("/api/saveflow")}

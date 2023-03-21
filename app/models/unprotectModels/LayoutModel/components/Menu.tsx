@@ -39,13 +39,6 @@ export function Menu() {
           },
         ]}
       />
-
-      <MenuButton
-        label="Meu Fluxo"
-        icon={Icons.Layout}
-        menuKey="my-flow"
-        options={[{ icon: Icons.QRCode, label: "Meu flow", to: "/v1/flow" }]}
-      />
     </MenuContainer>
   );
 }

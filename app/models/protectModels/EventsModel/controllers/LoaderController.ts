@@ -47,8 +47,6 @@ export async function LoaderController({
     await api.GET({ url: integrationURL, token }),
   ]);
 
-  console.log(eventTypesData);
-
   if (eventsError) return errorResponse(eventsURL, eventsError);
   if (eventTypesError) return errorResponse(eventTypesURL, eventTypesError);
   if (eventTypesError) return errorResponse(integrationURL, integrationError);
