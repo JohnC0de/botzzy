@@ -33,18 +33,21 @@ export function View() {
       <Table
         data={[
           {
+            id: 1,
             product: "Pacote premium",
             status: "Pendente",
             date: "15/2/2023",
             amount: "R$ 168,50",
           },
           {
+            id: 2,
             product: "Assinatura do Business Board Pro",
             status: "Pago",
             date: "10/2/2023",
             amount: "R$ 56,80",
           },
           {
+            id: 3,
             product: "Assinatura do Business Board Pro",
             status: "Pago",
             date: "10/1/2023",

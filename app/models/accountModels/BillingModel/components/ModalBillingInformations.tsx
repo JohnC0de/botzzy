@@ -136,7 +136,7 @@ export function ModalBillingInformations({
                 isLoading={state === "submitting"}
                 value="updateBillingInformation"
               >
-                Criar
+                Salvar
               </Button>
             </Card>
           </Card>

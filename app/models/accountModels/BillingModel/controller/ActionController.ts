@@ -1,5 +1,6 @@
 import { redirect } from "@remix-run/node";
 import { getCredentials } from "~/server/utils";
+import { addCreditCard } from "../functions/addCreditCard.server";
 
 import { updateBillingInformation } from "../functions/update.server";
 
@@ -19,6 +20,12 @@ export async function ActionController({ request }: ActionControllerProps) {
         formData,
         token,
         account_id: user.account_id,
+      });
+    case "addCreditCard":
+      return await addCreditCard({
+        account_id: user.account_id,
+        formData,
+        token,
       });
     default:
       return null;

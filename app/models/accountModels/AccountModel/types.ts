@@ -1,4 +1,5 @@
 import type { z } from "zod";
+import type { cardSchema } from "./schema/cardSchema";
 import type { meSchema } from "./schema/me.server";
 
 type accountInfoProps = {
@@ -50,7 +51,10 @@ type accountInfoProps = {
   }[];
 };
 
+type cardProps = z.infer<typeof cardSchema>;
+
 export type OutletContextProps = {
   me: z.infer<typeof meSchema>;
+  cards: cardProps[];
   accountInfo: accountInfoProps;
 };
