@@ -19,7 +19,3 @@ export const loader: LoaderFunction = async ({ request }) => {
     headers: { "Set-Cookie": await destroySession(session) },
   });
 };
-
-export default function () {
-  return <></>;
-}

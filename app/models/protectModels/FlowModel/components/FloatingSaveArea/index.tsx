@@ -1,8 +1,9 @@
 import { Button, Card } from "~/client/components";
-import { Icons } from "~/client/icons";
+import { useFlow } from "../../hook/useFlow";
 import { floatingSaveAreaContainerStyle } from "./styles.css";
 
 export function FloatingSaveArea() {
+  const { saveFlow, isSavingFlow } = useFlow();
   return (
     <div className={floatingSaveAreaContainerStyle}>
       <Card
@@ -13,21 +14,16 @@ export function FloatingSaveArea() {
         space={2}
         spacing={1}
       >
-        <Button
-          space={2}
-          variant="ghost"
-          disabled
-          title="Já está salvo nos cookies"
-        >
-          <Icons.Cookie size={20} />
+        <Button space={2} variant="ghost" disabled title="Já está salvo">
+          Salvar rascunho
         </Button>
         <Button
+          isLoading={isSavingFlow}
+          onClick={() => saveFlow("/api/saveflow")}
           space={2}
           variant="ghost"
-          disabled
-          title="Já está salvo na nuvem"
         >
-          <Icons.CloudUpload size={20} />
+          Salvar
         </Button>
       </Card>
     </div>

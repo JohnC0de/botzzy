@@ -14,11 +14,13 @@ import { viewContainer } from "./styles.css";
 import { Await } from "../nodes/Await";
 import { SendMessage } from "../nodes/SendMessage";
 import { SendAudio } from "../nodes/SendAudio";
+import { InitialNode } from "../nodes/InitialNode";
 
 const nodeTypes: NodeTypes = {
   send_message: SendMessage,
   await: Await,
   send_audio: SendAudio,
+  initial_node: InitialNode,
 };
 
 export function View() {
@@ -53,6 +55,8 @@ export function View() {
         ref={reactFlowWrapperRef}
         onInit={setReactFlowInstance}
         onNodesChange={onNodesChange}
+        fitView
+        fitViewOptions={{ maxZoom: 1 }}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}

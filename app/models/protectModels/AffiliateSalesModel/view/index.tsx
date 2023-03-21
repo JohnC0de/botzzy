@@ -42,20 +42,7 @@ export function View() {
     <Container>
       {loaderData.sales.length > 0 && (
         <>
-          <Header
-            title={`Vendas`}
-            subTitle="Home > Afiliado > Vendas"
-            content={
-              <Button
-                space={2}
-                spacing={1}
-                variant="outline"
-                onClick={() => navigate("/v1/protect/integrations")}
-              >
-                <Icons.ChevronLeft size={16} /> Voltar
-              </Button>
-            }
-          />
+          <Header title={`Vendas`} subTitle="Home > Afiliado > Vendas" />
 
           <Card wrap="wrap" spacing={6}>
             <Stats
