@@ -55,6 +55,7 @@ import {
   BiPhone,
   BiDetail,
   BiCopy,
+  BiFileBlank,
 } from "react-icons/bi";
 
 const Icons = {
@@ -63,6 +64,7 @@ const Icons = {
   CaretDown: BiCaretDown,
   CaretLeft: BiCaretLeft,
   Copy: BiCopy,
+  FileBlank: BiFileBlank,
 
   Smile: BiSmile,
   Server: BiServer,

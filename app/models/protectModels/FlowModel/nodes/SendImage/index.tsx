@@ -15,20 +15,25 @@ import {
   messageStyle,
   labelButtonContainerStyle,
 } from "./styles.css";
-import { Icons } from "~/client/icons";
 
-type AudioProps = { file: File };
+type ImageProps = { image: { url: string; file: File } };
 
-function DrawerContent({ data, id }: { data: AudioProps; id: string }) {
+function DrawerContent({ data, id }: { data: ImageProps; id: string }) {
   const { setNodes, onCloseDrawer, deleteNodeById } = useFlow();
-  const [file, setFile] = useState<File | null>(data?.file || null);
+  const [image, setImage] = useState<ImageProps["image"] | null>(
+    data.image || null
+  );
 
   const inputId = useId();
+  function onChange(file: File) {
+    const url = URL.createObjectURL(file);
+    setImage({ url, file });
+  }
 
   function handleSubmitNode() {
     setNodes((nds) =>
       nds.map((node) => {
-        if (node.id === id) node.data = { ...node.data, file };
+        if (node.id === id) node.data = { ...node.data, image };
         return node;
       })
     );
@@ -44,24 +49,21 @@ function DrawerContent({ data, id }: { data: AudioProps; id: string }) {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <Card direction="column" space={6} spacing={4} style={{ width: "400px" }}>
-        {file && (
-          <>
-            <p>
-              <strong>Nome:</strong> {file.name}
-            </p>
-            <p>
-              <strong>Tamanho:</strong> {file.size}B
-            </p>
-          </>
+        {image && (
+          <img
+            src={image.url}
+            alt="uma imagem a ser enviada"
+            style={{ maxWidth: "400px", borderRadius: "4px" }}
+          />
         )}
         <label className={labelButtonContainerStyle} htmlFor={inputId}>
           <Input
             type="file"
             id={inputId}
             style={{ display: "none" }}
-            onChange={(e) => e.target.files && setFile(e.target.files[0])}
+            onChange={(e) => e.target.files && onChange(e.target.files[0])}
           />
-          {file ? "Trocar arquivo" : "Escolher um arquivo"}
+          {image ? "Trocar imagem" : "Escolher uma imagem"}
         </label>
 
         <Button onClick={handleSubmitNode}>Salvar</Button>
@@ -73,7 +75,7 @@ function DrawerContent({ data, id }: { data: AudioProps; id: string }) {
   );
 }
 
-export function SendFile({ data, id }: NodeProps<AudioProps>) {
+export function SendImage({ data, id }: NodeProps<ImageProps>) {
   const { onOpenDrawer } = useFlow();
   return (
     <>
@@ -84,7 +86,7 @@ export function SendFile({ data, id }: NodeProps<AudioProps>) {
         onDoubleClick={() =>
           onOpenDrawer({
             id,
-            title: "Enviar arquivo - nó",
+            title: "Enviar imagem - nó",
             children: <DrawerContent data={data} id={id} />,
           })
         }
@@ -93,29 +95,18 @@ export function SendFile({ data, id }: NodeProps<AudioProps>) {
           <img src={whatsLogo} alt="Logo do whatsapp" className={imageStyle} />
 
           <Card direction="column">
-            <p>Enviar arquivo</p>
+            <p>Enviar imagem</p>
             <small>Suporte ao cliente (comum)</small>
           </Card>
         </Card>
         <div className={messageZone}>
-          {data.file ? (
+          {data.image ? (
             <div className={messageStyle}>
-              <Card direction="row" align="center" spacing={2}>
-                <Icons.FileBlank size={40} />
-                <Card direction="column" spacing={1}>
-                  <div
-                    style={{
-                      whiteSpace: "nowrap",
-                      textOverflow: "ellipsis",
-                      overflow: "hidden",
-                      maxWidth: "12rem",
-                    }}
-                  >
-                    {data.file.name}
-                  </div>
-                  <small>{data.file.size}B</small>
-                </Card>
-              </Card>
+              <img
+                src={data.image.url}
+                alt="Uma imagem a ser enviada"
+                style={{ maxWidth: "240px", borderRadius: "4px" }}
+              />
             </div>
           ) : (
             <small style={{ flex: 1, textAlign: "center" }}>

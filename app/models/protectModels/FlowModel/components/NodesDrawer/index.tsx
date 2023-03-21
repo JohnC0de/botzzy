@@ -48,6 +48,22 @@ export function NodesDrawer() {
           >
             <Icons.Microphone size={22} /> Enviar audio
           </div>
+          <div
+            draggable
+            onDragStart={(event) => onDragStart(event, "send_file")}
+            onDragEnd={() => setIsOpen(false)}
+            className={draggableNodeStyle}
+          >
+            <Icons.FileBlank size={22} /> Enviar arquivo
+          </div>
+          <div
+            draggable
+            onDragStart={(event) => onDragStart(event, "send_image")}
+            onDragEnd={() => setIsOpen(false)}
+            className={draggableNodeStyle}
+          >
+            <Icons.AddImage size={22} /> Enviar imagem
+          </div>
         </menu>
       </Drawer>
 

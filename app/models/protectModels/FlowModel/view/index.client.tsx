@@ -15,12 +15,16 @@ import { Await } from "../nodes/Await";
 import { SendMessage } from "../nodes/SendMessage";
 import { SendAudio } from "../nodes/SendAudio";
 import { InitialNode } from "../nodes/InitialNode";
+import { SendFile } from "../nodes/SendFile";
+import { SendImage } from "../nodes/SendImage";
 
 const nodeTypes: NodeTypes = {
   send_message: SendMessage,
   await: Await,
   send_audio: SendAudio,
+  send_file: SendFile,
   initial_node: InitialNode,
+  send_image: SendImage,
 };
 
 export function View() {
