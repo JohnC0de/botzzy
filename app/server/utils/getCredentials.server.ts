@@ -1,5 +1,5 @@
 import { authCookie } from "../cookies";
-import type { userDTO } from "~/models/authModels/SignInModel/types/userDTO";
+import type { userDTO } from "~/modules/Auth/SignIn/types/userDTO";
 
 export async function getCredentials(request: Request) {
   const session = await authCookie.getSession(request.headers.get("Cookie"));

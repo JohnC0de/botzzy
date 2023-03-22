@@ -1,5 +1,5 @@
 import { useRouteLoaderData } from "@remix-run/react";
-import type { userDTO } from "~/models/authModels/SignInModel/types/userDTO";
+import type { userDTO } from "~/modules/Auth/SignIn/types/userDTO";
 
 type rootProps = {
   theme: "dark" | "light";

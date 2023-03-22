@@ -1,25 +1,3 @@
-//* ACCOUNT
-export {
-  // root/v1/account/*
-  AccountModelClient,
-  AccountModelServer,
-} from "./accountModels/AccountModel";
-export {
-  // root/v1/account/profile
-  ProfileModelClient,
-  ProfileModelServer,
-} from "./accountModels/ProfileModel";
-export {
-  // root/v1/account/billing
-  BillingClientModel,
-  BillingServerModel,
-} from "./accountModels/BillingModel";
-export {
-  // root/v1/account/password
-  PasswordModelClient,
-  PasswordModelServer,
-} from "./accountModels/PasswordModel";
-
 //* CHANNEL
 export {
   // root/v1/protect/channels
@@ -38,23 +16,6 @@ export {
   WhatsaooQRCodeModelClient,
   WhatsaooQRCodeModelServer,
 } from "./channelModels/WhatsappModel/QRCodeModel";
-
-//* AUTH
-export {
-  // root/auth/forgot
-  ForgotClient,
-  ForgotServer,
-} from "./authModels/ForgotModel";
-export {
-  // root/auth/signin
-  SignInClient,
-  SignInServer,
-} from "./authModels/SignInModel";
-export {
-  // root/auth/signupaffiliate
-  SignUpAffiliateModelClient,
-  SignUpAffiliateModelServer,
-} from "./authModels/SignUpAffiliateModel";
 
 //* PROTECT
 export {

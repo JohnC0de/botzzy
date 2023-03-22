@@ -29,6 +29,8 @@ export async function POST<T = unknown>({
       error: err.response.data.error,
     };
 
+    console.log(err.response.data);
+
     return failedAnswer;
   }
 }
