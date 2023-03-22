@@ -14,6 +14,7 @@ export const formStyle = style({
   flexDirection: "column",
   justifyContent: "center",
   maxWidth: "30rem",
+  width: "100%",
   padding: vars.space[4],
   gap: vars.space[3],
   animation: `${animateEnterForm} 0.7s`,

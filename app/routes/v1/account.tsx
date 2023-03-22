@@ -1,4 +1,4 @@
-import { AccountModelClient, AccountModelServer } from "~/models";
+import { AccountClient, AccountServer } from "~/modules";
 import { ErrorLimit } from "~/client/components";
 import type { ErrorBoundaryComponent, LoaderFunction } from "@remix-run/node";
 import { useEffect } from "react";
@@ -7,7 +7,7 @@ import { useLoaderData } from "@remix-run/react";
 import toast from "react-hot-toast";
 
 export const loader: LoaderFunction = ({ request }) => {
-  return AccountModelServer.LoaderController({ request });
+  return AccountServer.LoaderController({ request });
 };
 
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
@@ -25,5 +25,5 @@ export default function () {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loaderData.toast]);
 
-  return <AccountModelClient.View />;
+  return <AccountClient.View />;
 }

@@ -1,4 +1,4 @@
-import { ActionController } from "./controllers/ActionController.server";
+import { ActionController } from "./controllers";
 
 import { meta } from "./functions/meta";
 import { View } from "./view";

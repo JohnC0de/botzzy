@@ -1,7 +1,7 @@
 import { redirect } from "@remix-run/node";
 
 import { getCredentials } from "~/server/utils";
-import { signUp } from "../functions/signUp.server";
+import { signUp } from "../functions";
 
 type ActionControllerProps = { request: Request };
 export async function ActionController({ request }: ActionControllerProps) {

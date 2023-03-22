@@ -26,10 +26,9 @@ export async function POST<T = unknown>({
   } catch (err: any) {
     const failedAnswer: APIReturnProps<null> = {
       data: null,
-      error: err.response.data.error,
+      error:
+        err?.response?.data?.error?.message || "500 | Ocorreu um erro interno.",
     };
-
-    console.log(err.response.data);
 
     return failedAnswer;
   }

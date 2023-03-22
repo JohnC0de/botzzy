@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { Link, useFetcher } from "@remix-run/react";
+import { Link, useFetcher, useParams } from "@remix-run/react";
 
 import { Button, Input } from "~/client/components";
 import { useToast } from "~/client/hooks";
@@ -15,6 +15,7 @@ import {
 
 export function View() {
   const { fireToast } = useToast();
+  const params = useParams();
   const { Form, data, type } = useFetcher();
 
   useEffect(() => {
@@ -23,23 +24,34 @@ export function View() {
 
   return (
     <Form method="post" className={formStyle}>
-      <h1 className={headingStyle}>Recuperar senha?</h1>
+      <h1 className={headingStyle}>Recuperar senha</h1>
       <p className={textStyle}>
-        Digite seu e-mail no campo abaixo para receber um link e resetar sua
-        senha.
+        {params?.token
+          ? "Digite sua nova senha no campo abaixo."
+          : "Digite seu e-mail no campo abaixo para receber um link e resetar sua senha."}
       </p>
 
-      <Input
-        label="E-mail:"
-        name="email"
-        variant="outline"
-        placeholder="Escreva aqui..."
-        error={data?.error?.email}
-      />
+      {params?.token ? (
+        <Input
+          label="Nova senha:"
+          name="password"
+          variant="outline"
+          placeholder="Escreva aqui..."
+          error={data?.error?.password}
+        />
+      ) : (
+        <Input
+          label="E-mail:"
+          name="email"
+          variant="outline"
+          placeholder="Escreva aqui..."
+          error={data?.error?.email}
+        />
+      )}
 
       <Button
         name="_action"
-        value="forgot"
+        value={params?.token ? "reset_password" : "forgot"}
         isLoading={type === "actionSubmission"}
         type="submit"
       >

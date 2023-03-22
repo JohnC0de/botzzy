@@ -1,16 +1,16 @@
 import { ErrorLimit } from "~/client/components";
-import { PasswordModelClient, PasswordModelServer } from "~/models";
+import { BillingClient, BillingServer } from "~/modules";
 import type { ActionFunction, ErrorBoundaryComponent } from "@remix-run/node";
 
 export const action: ActionFunction = ({ request }) => {
-  return PasswordModelServer.ActionController({ request });
+  return BillingServer.ActionController({ request });
 };
 
-export const meta = PasswordModelClient.meta;
+export const meta = BillingClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
   <ErrorLimit error={error} />
 );
 
 export default function () {
-  return <PasswordModelClient.View />;
+  return <BillingClient.View />;
 }
