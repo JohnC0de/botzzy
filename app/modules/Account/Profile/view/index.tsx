@@ -1,97 +1,89 @@
-import {
-  Form,
-  useActionData,
-  useOutletContext,
-  useTransition,
-} from "@remix-run/react";
-import { Button, Card, Divider, Header } from "~/client/components";
-import { InputCard } from "../components/InputCard";
+import { useOutletContext } from "@remix-run/react";
+
+import { Button, Card, Divider, Header, Input } from "~/client/components";
 import type { OutletContextProps } from "../../Base";
 
 export function View() {
-  const { me } = useOutletContext<OutletContextProps>();
-  const { state } = useTransition();
-  const actionData = useActionData();
-  const handleReset = () => window && window.location.reload();
+  const { me, state, data } = useOutletContext<OutletContextProps>();
 
   return (
-    <Form method="post">
-      <Card direction="column" space={4} spacing={8}>
-        <Header
-          title="Meu perfil"
-          subTitle="Informações básicas, como seu nome e endereço, que serão exibidas ao público."
-          titleFontSize="lg"
-        />
+    <>
+      <Header
+        title="Meu perfil"
+        subTitle="Informações básicas, como seu nome e endereço, que serão exibidas ao público."
+        titleFontSize="lg"
+      />
 
-        <InputCard
+      <Card
+        spacing={8}
+        style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+      >
+        <Input
           name="name"
-          label="Nome"
+          label="Nome:"
           placeholder="Escreva aqui..."
           defaultValue={me.name}
-          error={actionData?.error?.name}
+          error={data?.error?.name}
         />
-
-        <Divider />
-
-        <InputCard
+        <Input
           name="email"
-          label="Email"
+          label="E-mail:"
           placeholder="Escreva aqui..."
-          isDisabled
+          disabled
           defaultValue={me.email}
         />
+      </Card>
 
-        <Divider />
-
-        <InputCard
+      <Card
+        spacing={8}
+        style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+      >
+        <Input
           name="whatsapp_contact"
-          label="Whatsapp para contato"
+          label="Whatsapp para contato:"
           placeholder="Escreva aqui..."
           defaultValue={me.whatsapp_contact || ""}
-          error={actionData?.error?.whatsapp_contact}
+          error={data?.error?.whatsapp_contact}
         />
 
-        <Divider />
-
-        <InputCard
+        <Input
           name="whatsapp_notifications"
-          label="Whatsapp para notificações"
+          label="Whatsapp para notificações:"
           placeholder="Escreva aqui..."
           defaultValue={me.whatsapp_notifications || ""}
-          error={actionData?.error?.whatsapp_notifications}
+          error={data?.error?.whatsapp_notifications}
         />
-        <span></span>
-        <span></span>
-
-        <Header
-          title="Preferências"
-          subTitle="Sua preferência personalizada exibida em sua conta."
-          titleFontSize="lg"
-        />
-
-        <InputCard
-          label="Idioma"
-          name="lenguage"
-          placeholder="Seu email aqui..."
-          defaultValue="Português"
-          isDisabled
-        />
-
-        <Card align="center" justify="flex-end" spacing={2} showBgColor>
-          <Button type="button" variant="ghost" onClick={handleReset}>
-            Resetar
-          </Button>
-          <Button
-            type="submit"
-            variant="default"
-            name="_action"
-            value="updateProfile"
-            isLoading={state !== "idle"}
-          >
-            Atualizar
-          </Button>
-        </Card>
       </Card>
-    </Form>
+
+      <span></span>
+      <Divider />
+      <span></span>
+
+      <Header
+        title="Preferências"
+        subTitle="Sua preferência personalizada exibida em sua conta."
+        titleFontSize="lg"
+      />
+
+      <Input
+        label="Idioma:"
+        name="lenguage"
+        placeholder="Seu email aqui..."
+        defaultValue="Português"
+        disabled
+      />
+
+      <Card justify="flex-end">
+        <Button
+          variant="default"
+          type="submit"
+          name="_action"
+          value="updateProfile"
+          isLoading={state !== "idle"}
+        >
+          Atualizar
+        </Button>
+      </Card>
+    </>
   );
 }

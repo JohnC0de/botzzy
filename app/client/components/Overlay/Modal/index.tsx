@@ -41,6 +41,7 @@ export function Modal({
                 </h3>
 
                 <button
+                  type="button"
                   onClick={makeInvisible}
                   className={modalContentHeaderButtonStyle}
                 >

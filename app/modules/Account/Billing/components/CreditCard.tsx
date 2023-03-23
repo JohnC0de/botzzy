@@ -12,9 +12,7 @@ export function CreditCard() {
 
   return (
     <Card align="start" spacing={8} wrap="wrap" justify="space-between">
-      <label style={{ flex: 1 }}>
-        <strong>Cartões de crédito</strong>
-      </label>
+      <label style={{ flex: 1 }}>Cartões de crédito</label>
 
       <Card direction="column" spacing={3} showBgColor style={{ flex: 2 }}>
         <Card

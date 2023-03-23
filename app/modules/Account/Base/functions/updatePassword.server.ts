@@ -8,6 +8,7 @@ type updateProps = {
   formData: { [x: string]: any };
   token: string;
 };
+
 const schema = z
   .object({
     old_password: z.string().min(1, "O campo é obrigatório."),

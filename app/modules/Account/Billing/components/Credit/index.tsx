@@ -1,4 +1,3 @@
-// import { Button } from "~/client/components";
 import { creditContainerStyle } from "./styles.css";
 
 type CredirProps = {
@@ -23,10 +22,6 @@ export function Credit({ holder, card_number, expiration_date }: CredirProps) {
         </h4>
         <small>Expira dia {expiration_date}</small>
       </div>
-
-      {/* <Button style={{ marginLeft: "auto" }} variant="ghost">
-        Editar
-      </Button> */}
     </li>
   );
 }

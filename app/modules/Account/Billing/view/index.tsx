@@ -1,15 +1,19 @@
+import { useOutletContext } from "@remix-run/react";
 import { useState } from "react";
-import { Button, Card, Divider, Header, Table } from "~/client/components";
+
+import { Button, Divider, Header, Table } from "~/client/components";
 import { CreditCard } from "../components/CreditCard";
 import { ModalBillingInformations } from "../components/ModalBillingInformations";
+import type { OutletContextProps } from "../../Base";
 
 export function View() {
+  const { payments } = useOutletContext<OutletContextProps>();
   const [modalBilling, setModalBilling] = useState(false);
   const onOpenModalBilling = () => setModalBilling(true);
   const onCloseModalBilling = () => setModalBilling(false);
 
   return (
-    <Card direction="column" space={4} spacing={8}>
+    <>
       <Header
         title="Forma de pagamentos"
         subTitle="Você pode atualizar as informações dos seus cartões aqui."
@@ -31,34 +35,12 @@ export function View() {
       />
 
       <Table
-        data={[
-          {
-            id: 1,
-            product: "Pacote premium",
-            status: "Pendente",
-            date: "15/2/2023",
-            amount: "R$ 168,50",
-          },
-          {
-            id: 2,
-            product: "Assinatura do Business Board Pro",
-            status: "Pago",
-            date: "10/2/2023",
-            amount: "R$ 56,80",
-          },
-          {
-            id: 3,
-            product: "Assinatura do Business Board Pro",
-            status: "Pago",
-            date: "10/1/2023",
-            amount: "R$ 56,80",
-          },
-        ]}
+        data={payments}
         space={null}
         columns={[
-          { title: "Produto", key: "product" },
-          { title: "Status", key: "status" },
-          { title: "Data", key: "date" },
+          { title: "Produto", key: "name" },
+          { title: "Descrição", key: "description" },
+          { title: "Data", key: "created_at" },
           { title: "Valor", key: "amount" },
         ]}
       />
@@ -67,6 +49,6 @@ export function View() {
         isOpen={modalBilling}
         onClose={onCloseModalBilling}
       />
-    </Card>
+    </>
   );
 }

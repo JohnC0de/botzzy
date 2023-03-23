@@ -1,6 +1,7 @@
-import { Form, useActionData, useTransition } from "@remix-run/react";
+import { useOutletContext } from "@remix-run/react";
 import { useEffect } from "react";
 import { Button, Card, Input, MaskedInput, Modal } from "~/client/components";
+import type { OutletContextProps } from "../../Base";
 
 type CardModalProps = {
   initialValue?: any;
@@ -9,12 +10,11 @@ type CardModalProps = {
 };
 export function CardModal({ isOpen, onClose, initialValue }: CardModalProps) {
   const isCreating = !initialValue;
-  const actionData = useActionData();
-  const { state } = useTransition();
+  const { data, state } = useOutletContext<OutletContextProps>();
 
   useEffect(() => {
-    if (actionData?.closeModal) onClose();
-  }, [actionData, onClose]);
+    if (data?.closeModal) onClose();
+  }, [data, onClose]);
 
   return (
     <Modal
@@ -22,52 +22,51 @@ export function CardModal({ isOpen, onClose, initialValue }: CardModalProps) {
       isVisible={isOpen}
       makeInvisible={onClose}
     >
-      <Form method="post">
-        <Card direction="column" spacing={6} space={8}>
-          <Input
-            name="holder"
-            label="Nome do Titular:"
-            placeholder="Escreva aqui..."
-            error={actionData?.error?.holder}
+      <Card direction="column" spacing={6} space={8}>
+        <Input
+          name="holder"
+          label="Nome do Titular:"
+          placeholder="Escreva aqui..."
+          error={data?.error?.holder}
+        />
+
+        <MaskedInput
+          name="card_number"
+          label="Número do cartão de crédito:"
+          mask="9999 9999 9999 9999"
+          placeholder="**** **** **** ****"
+          maskChar={null}
+          error={data?.error?.card_number}
+        />
+
+        <Card direction="row" spacing={3}>
+          <MaskedInput
+            label="Data de expiração:"
+            mask="99/99"
+            name="expiration_date"
+            maskChar={null}
+            error={data?.error?.expiration_date}
           />
 
           <MaskedInput
-            name="card_number"
-            label="Número do cartão de crédito:"
-            mask="9999 9999 9999 9999"
-            placeholder="**** **** **** ****"
+            mask="999"
+            label="CVV:"
+            name="cvv"
+            placeholder="***"
             maskChar={null}
-            error={actionData?.error?.card_number}
+            error={data?.error?.cvv}
           />
-
-          <Card direction="row" spacing={3}>
-            <MaskedInput
-              label="Data de expiração:"
-              mask="99/99"
-              name="expiration_date"
-              maskChar={null}
-              error={actionData?.error?.expiration_date}
-            />
-
-            <MaskedInput
-              mask="999"
-              label="CVV:"
-              name="cvv"
-              placeholder="***"
-              maskChar={null}
-              error={actionData?.error?.cvv}
-            />
-          </Card>
-          <Button
-            isLoading={state === "submitting"}
-            name="_action"
-            value="addCreditCard"
-            type="submit"
-          >
-            {isCreating ? "Adicionar" : "Salvar"}
-          </Button>
         </Card>
-      </Form>
+
+        <Button
+          type="submit"
+          name="_action"
+          isLoading={state === "submitting"}
+          value="addCreditCard"
+        >
+          {isCreating ? "Adicionar" : "Salvar"}
+        </Button>
+      </Card>
     </Modal>
   );
 }

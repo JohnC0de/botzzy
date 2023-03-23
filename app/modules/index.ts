@@ -1,4 +1,4 @@
-//? Auth module
+// Auth module
 export { AuthBaseClient, AuthBaseServer } from "./Auth/Base";
 export { ForgotClient, ForgotServer } from "./Auth/Forgot";
 export { SignInClient, SignInServer } from "./Auth/SignIn";
@@ -8,8 +8,8 @@ export {
   SignUpAffiliateServer,
 } from "./Auth/SignUpAffiliate";
 
-//? Account module
-export { AccountClient, AccountServer } from "./Account/Base";
-export { BillingClient, BillingServer } from "./Account/Billing";
-export { PasswordClient, PasswordServer } from "./Account/Password";
-export { ProfileClient, ProfileServer } from "./Account/Profile";
+// Account module
+export { AccountBaseClient, AccountBaseServer } from "./Account/Base";
+export { BillingClient } from "./Account/Billing";
+export { PasswordClient } from "./Account/Password";
+export { ProfileClient } from "./Account/Profile";

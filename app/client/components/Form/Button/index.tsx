@@ -10,6 +10,7 @@ export function Button({
   isDanger,
   isLoading,
   radii,
+  type = "button",
   variant = "default",
   fontSize,
   spacing,
@@ -23,6 +24,7 @@ export function Button({
 }: ButtonTypes) {
   return (
     <button
+      type={type}
       disabled={isLoading || disabled}
       className={buttonStyle({
         variant,

@@ -1,12 +1,7 @@
 import { ErrorLimit } from "~/client/components";
-import { BillingClient, BillingServer } from "~/modules";
-import type { ActionFunction, ErrorBoundaryComponent } from "@remix-run/node";
+import { BillingClient } from "~/modules";
+import type { ErrorBoundaryComponent } from "@remix-run/node";
 
-export const action: ActionFunction = ({ request }) => {
-  return BillingServer.ActionController({ request });
-};
-
-export const meta = BillingClient.meta;
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
   <ErrorLimit error={error} />
 );

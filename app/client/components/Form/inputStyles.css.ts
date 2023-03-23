@@ -11,8 +11,8 @@ export const inputContainerStyle = style({
 
 export const labelStyle = style({
   fontSize: vars.fontSizes.sm,
-  fontWeight: vars.fontWeights.bold,
-  color: vars.colors.text[500],
+  fontWeight: vars.fontWeights.extraBold,
+  color: vars.colors.text[100],
   fontFamily: vars.fonts.default,
   display: "flex",
   alignItems: "center",

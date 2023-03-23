@@ -1,6 +1,7 @@
 import type { z } from "zod";
 import type { cardSchema } from "./schema/cardSchema";
 import type { meSchema } from "./schema/me.server";
+import type { paymentSchema } from "./schema/paymentsSchema";
 
 type accountInfoProps = {
   id: number;
@@ -57,4 +58,7 @@ export type OutletContextProps = {
   me: z.infer<typeof meSchema>;
   cards: cardProps[];
   accountInfo: accountInfoProps;
+  payments: z.infer<typeof paymentSchema>[];
+  state: "idle" | "loading" | "submitting";
+  data: any;
 };
