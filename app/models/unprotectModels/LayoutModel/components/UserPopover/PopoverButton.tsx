@@ -13,6 +13,7 @@ export function PopoverButton({ icon: Icon, text, to }: MenuButtonProps) {
 
   return (
     <Button
+      type="submit"
       style={{ width: "100%" }}
       justify="initial"
       space={2}

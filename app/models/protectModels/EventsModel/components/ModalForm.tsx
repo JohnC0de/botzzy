@@ -69,6 +69,7 @@ export function ModalForm() {
               </Button>
               <Button
                 name="_action"
+                type="submit"
                 isLoading={state === "submitting"}
                 value={initialFields ? "updateEvent" : "createEvent"}
               >

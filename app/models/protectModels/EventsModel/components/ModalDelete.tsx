@@ -27,6 +27,7 @@ export function ModalDelete() {
               </Button>
               <Button
                 name="_action"
+                type="submit"
                 isLoading={state === "submitting"}
                 value="deleteEvent"
               >

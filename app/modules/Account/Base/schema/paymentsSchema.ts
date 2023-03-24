@@ -15,5 +15,5 @@ export const paymentSchema = z.object({
       style: "currency",
     })
   ),
-  // status: z.string(),
+  status: z.string(),
 });

@@ -28,8 +28,9 @@ export function View() {
           name="password"
           error={data?.error?.password}
         />
+        <span></span>
         <Input
-          label="Confirmar senha:"
+          label="Confirmar nova senha:"
           name="confirm_password"
           error={data?.error?.confirm_password}
         />

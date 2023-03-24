@@ -1,10 +1,25 @@
-import { useOutletContext } from "@remix-run/react";
+import { useFetcher, useOutletContext } from "@remix-run/react";
 
-import { Button, Card, Divider, Header, Input } from "~/client/components";
+import {
+  Button,
+  Card,
+  Divider,
+  Header,
+  Input,
+  Select,
+} from "~/client/components";
+import { useRoot } from "~/client/hooks";
 import type { OutletContextProps } from "../../Base";
 
 export function View() {
+  const { lenguage } = useRoot();
   const { me, state, data } = useOutletContext<OutletContextProps>();
+  const { submit } = useFetcher();
+
+  const options = [
+    { label: "🇧🇷 Português", value: "pt-br" },
+    { label: "🇺🇸 English", value: "en" },
+  ];
 
   return (
     <>
@@ -65,12 +80,18 @@ export function View() {
         titleFontSize="lg"
       />
 
-      <Input
+      <Select
         label="Idioma:"
+        isSearchable={false}
         name="lenguage"
-        placeholder="Seu email aqui..."
-        defaultValue="Português"
-        disabled
+        defaultValue={options.find((option) => option.value === lenguage)}
+        options={options}
+        onChange={(e: any) =>
+          submit(
+            { lenguage: e.value },
+            { action: "/api/switchlenguage", method: "post" }
+          )
+        }
       />
 
       <Card justify="flex-end">

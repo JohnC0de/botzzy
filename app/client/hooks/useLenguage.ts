@@ -1,12 +1,12 @@
-import { useState } from "react";
 import ptLenguage from "../json/lenguage-en.json";
 import enLenguage from "../json/lenguage-pt.json";
+import { useRoot } from "./useRoot";
 
 export function useLenguage() {
-  const [activeLanguage, setActiveLanguage] = useState<"pt-br" | "en">("pt-br");
+  const { lenguage: rootLenguage } = useRoot();
 
   function lenguage() {
-    switch (activeLanguage) {
+    switch (rootLenguage) {
       case "pt-br":
         return ptLenguage;
       case "en":
@@ -15,8 +15,6 @@ export function useLenguage() {
   }
 
   return {
-    activeLanguage,
-    setActiveLanguage,
     lenguage: lenguage(),
   };
 }

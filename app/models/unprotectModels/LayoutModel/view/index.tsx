@@ -8,6 +8,7 @@ import {
 import { Button, Card, Container, Spinner } from "~/client/components";
 import { Icons } from "~/client/icons";
 import { DetachMenu } from "../components/DetachMenu";
+import { LenguagePopover } from "../components/LenguagePopover";
 
 import { Menu } from "../components/Menu";
 import { UserPopover } from "../components/UserPopover";
@@ -34,6 +35,7 @@ export function View() {
           <Form method="post" action="/api/switchtheme">
             <Card align="center" spacing={2} showBgColor>
               <Button
+                type="submit"
                 onClick={outletContext.toggleTheme}
                 space={2}
                 variant="ghost"
@@ -43,6 +45,7 @@ export function View() {
               </Button>
             </Card>
           </Form>
+          <LenguagePopover />
           <UserPopover />
         </header>
 
