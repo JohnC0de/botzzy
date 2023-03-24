@@ -56,10 +56,12 @@ import {
   BiDetail,
   BiCopy,
   BiFileBlank,
+  BiHome,
 } from "react-icons/bi";
 
 const Icons = {
   CaretTop: BiCaretUp,
+  Home: BiHome,
   CaretRight: BiCaretRight,
   CaretDown: BiCaretDown,
   CaretLeft: BiCaretLeft,

@@ -9,11 +9,17 @@ import {
   useTransition,
 } from "@remix-run/react";
 
-import { Badge, Button, Card, Divider, Header } from "~/client/components";
+import {
+  Badge,
+  Button,
+  Card,
+  Divider,
+  Header,
+  Input,
+} from "~/client/components";
 import { useToast } from "~/client/hooks";
 import { globalStyles } from "~/client/styles";
 
-import { InputCard } from "../components/InputCard";
 import type { OutletContextProps } from "../../MenuModel";
 
 const { vars } = globalStyles;
@@ -54,10 +60,6 @@ export function View() {
     }, 3000);
   }
 
-  function handleReset() {
-    if (window) window.location.reload();
-  }
-
   const connectionStatus =
     channel.status_connection === "Conectado" ? "success" : "danger";
   const status =
@@ -78,23 +80,42 @@ export function View() {
 
         <Form>
           <Card direction="column" spacing={8}>
-            <InputCard
-              label="Nome"
-              name="name"
-              isDisabled
-              defaultValue={channel.name}
-            />
-            <InputCard
-              label="Nome interno"
-              name="internal_name"
-              defaultValue={channel.internal_name}
-              error={actionData?.error?.internal_name}
-            />
+            <Card
+              spacing={8}
+              style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+            >
+              <Input
+                label="Nome:"
+                name="name"
+                disabled
+                defaultValue={channel.name}
+              />
 
-            <Card align="center" justify="flex-end" spacing={2} showBgColor>
-              <Button variant="ghost" type="button" onClick={handleReset}>
-                Resetar
-              </Button>
+              <Card direction="column" spacing={1}>
+                <div style={{ fontWeight: vars.fontWeights.bold }}>Status:</div>
+                <Badge variant={status} space={3}>
+                  {channel.state}
+                </Badge>
+              </Card>
+
+              <Input
+                label="Nome interno:"
+                name="internal_name"
+                defaultValue={channel.internal_name}
+                error={actionData?.error?.internal_name}
+              />
+
+              <Card direction="column" spacing={1}>
+                <div style={{ fontWeight: vars.fontWeights.bold }}>
+                  Status de conexão:
+                </div>
+                <Badge space={3} variant={connectionStatus}>
+                  {channel.status_connection}
+                </Badge>
+              </Card>
+            </Card>
+
+            <Card justify="flex-end">
               <Button
                 variant="default"
                 isLoading={transition.state === "submitting"}
@@ -107,59 +128,46 @@ export function View() {
           </Card>
         </Form>
 
-        <Divider />
-
-        <Header
-          title="Status de conexão"
-          subTitle="Verifique a conexão do canal com seu Whatsapp."
-          titleFontSize="lg"
-        />
-
-        <Card
-          align="center"
-          justify="space-between"
-          style={{ maxWidth: "1100px" }}
-        >
-          <div style={{ fontWeight: vars.fontWeights.bold }}>Status</div>
-          <Badge variant={status}>{channel.state}</Badge>
-        </Card>
-        <Card
-          align="center"
-          justify="space-between"
-          style={{ maxWidth: "1100px" }}
-        >
-          <div style={{ fontWeight: vars.fontWeights.bold }}>
-            Status de conexão
-          </div>
-          <Badge variant={connectionStatus}>{channel.status_connection}</Badge>
-        </Card>
-
         {channel.status_connection === "Desconectado" && (
-          <Card
-            direction="column"
-            align="center"
-            justify="center"
-            spacing={6}
-            style={{ height: "23rem" }}
-          >
-            {connectionStatus === "danger" && (
-              <>
-                {qrCode ? (
-                  <img src={qrCode} alt="QR code" style={{ height: "20rem" }} />
-                ) : (
-                  <>
-                    <h2>Gere o QR code para conectar seu canal.</h2>
-                    <Button
-                      isLoading={state === "submitting"}
-                      onClick={generateQRcode}
-                    >
-                      Gerar QRCode
-                    </Button>
-                  </>
-                )}
-              </>
-            )}
-          </Card>
+          <>
+            <Divider />
+
+            <Header
+              title="Status de conexão"
+              subTitle="Gere um QRcode para criar uma conexão do canal com seu Whatsapp."
+              titleFontSize="lg"
+            />
+
+            <Card
+              direction="column"
+              align="center"
+              justify="center"
+              spacing={6}
+              style={{ height: "23rem" }}
+            >
+              {connectionStatus === "danger" && (
+                <>
+                  {qrCode ? (
+                    <img
+                      src={qrCode}
+                      alt="QR code"
+                      style={{ height: "20rem" }}
+                    />
+                  ) : (
+                    <>
+                      <h2>Gere o QR code para conectar seu canal.</h2>
+                      <Button
+                        isLoading={state === "submitting"}
+                        onClick={generateQRcode}
+                      >
+                        Gerar QRCode
+                      </Button>
+                    </>
+                  )}
+                </>
+              )}
+            </Card>
+          </>
         )}
       </Card>
     </Form>

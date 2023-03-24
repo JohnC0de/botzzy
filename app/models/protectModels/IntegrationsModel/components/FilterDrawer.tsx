@@ -1,9 +1,11 @@
-import { useLocation, useNavigate } from "@remix-run/react";
-import { Button, Card, Drawer, Input } from "~/client/components";
+import { useLoaderData, useLocation, useNavigate } from "@remix-run/react";
+import { Button, Card, Drawer, Input, Select } from "~/client/components";
 import { useCrud, useScopedParams } from "~/client/hooks";
+import type { loaderReturnProps } from "../types";
 
 export function FilterDrawer() {
   const { filterDrawer, closeFilterDrawer } = useCrud();
+  const { integrationTypes } = useLoaderData<loaderReturnProps>();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,10 +40,20 @@ export function FilterDrawer() {
           type="date"
           onChange={(e) => handleApplyFilter("startDate", e.target.value)}
         />
+
         <Input
           label="Data Final:"
           type="date"
           onChange={(e) => handleApplyFilter("endDate", e.target.value)}
+        />
+
+        <Select
+          label="Plataforma:"
+          onChange={(e: any) => handleApplyFilter("integration_type", e.value)}
+          options={integrationTypes.map((item) => ({
+            label: item.description || item.name,
+            value: item.id,
+          }))}
         />
 
         {existsAppliedFilters && (

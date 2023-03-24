@@ -10,6 +10,24 @@ export function Menu() {
       <img src={LogoIcon} alt="Botzzy Logo" />
 
       <MenuButton
+        label="Usuário"
+        icon={Icons.User}
+        menuKey="my_settings"
+        options={[
+          {
+            icon: Icons.Home,
+            label: "Home",
+            to: "/v1/protect/dashboard",
+          },
+          {
+            icon: Icons.Dollar,
+            label: "Vendas",
+            to: "/v1/protect/affiliated",
+          },
+        ]}
+      />
+
+      <MenuButton
         label="Cruds"
         icon={Icons.Archive}
         menuKey="cruds"
@@ -23,19 +41,6 @@ export function Menu() {
             icon: Icons.Category,
             label: "Integrações",
             to: "/v1/protect/integrations",
-          },
-        ]}
-      />
-
-      <MenuButton
-        label="Afiliado"
-        icon={Icons.User}
-        menuKey="my_settings"
-        options={[
-          {
-            icon: Icons.Dollar,
-            label: "Vendas",
-            to: "/v1/protect/affiliated",
           },
         ]}
       />

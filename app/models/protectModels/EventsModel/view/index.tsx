@@ -50,6 +50,18 @@ export function View() {
       ),
     },
     {
+      key: "flow",
+      title: "Fluxo",
+      render: (data) => (
+        <Button
+          space={2}
+          onClick={() => navigate("/v1/protect/flow/" + data.flow_id)}
+        >
+          Editar Fluxo
+        </Button>
+      ),
+    },
+    {
       key: "action",
       title: "Ações",
       render: (data) => (
@@ -69,15 +81,6 @@ export function View() {
             onClick={() => openFormModal({ title: "Editar evento", data })}
           >
             <Icons.Edit size={20} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            hoverVariant="primary"
-            space={1}
-            onClick={() => navigate("/v1/protect/flow/" + data.flow_id)}
-          >
-            <Icons.Branch size={20} />
           </Button>
         </Card>
       ),

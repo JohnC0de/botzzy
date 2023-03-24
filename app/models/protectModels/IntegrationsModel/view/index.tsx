@@ -59,6 +59,18 @@ export function View() {
 
     { showOrder: true, key: "created_at", title: "Data de criação" },
     {
+      key: "events",
+      title: "Eventos",
+      render: (data) => (
+        <Button
+          space={2}
+          onClick={() => navigate("/v1/protect/integrations/events/" + data.id)}
+        >
+          Ver eventos
+        </Button>
+      ),
+    },
+    {
       key: "action",
       title: "Ações",
       render: (data) => (
@@ -78,17 +90,6 @@ export function View() {
             onClick={() => openFormModal({ title: "Editar integração", data })}
           >
             <Icons.Edit size={20} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            hoverVariant="primary"
-            space={1}
-            onClick={() =>
-              navigate("/v1/protect/integrations/events/" + data.id)
-            }
-          >
-            <Icons.FolderOpen size={20} />
           </Button>
         </Card>
       ),

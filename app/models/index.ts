@@ -33,6 +33,11 @@ export {
   AffiliateSalesModelClient,
   AffiliateSalesModelServer,
 } from "./protectModels/AffiliateSalesModel";
+export {
+  // root/v1/protect/dashboard
+  DashboardModelClient,
+  DashboardModelServer,
+} from "./protectModels/DashboardModel";
 export { FlowClient } from "./protectModels/FlowModel"; //root/v1/flow/*
 
 //* UNPROTECT

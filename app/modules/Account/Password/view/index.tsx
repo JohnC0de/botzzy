@@ -40,6 +40,7 @@ export function View() {
           variant="default"
           isLoading={state !== "idle"}
           name="_action"
+          type="submit"
           value="updatePassword"
         >
           Atualizar senha
