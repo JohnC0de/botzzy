@@ -22,6 +22,7 @@ specifiers:
   eslint: ^8.36.0
   framer-motion: ^10.9.1
   isbot: ^3.6.7
+  nanoid: ^4.0.1
   react: ^18.2.0
   react-apexcharts: ^1.4.0
   react-audio-voice-recorder: ^1.0.5
@@ -30,8 +31,6 @@ specifiers:
   react-icons: ^4.8.0
   react-input-mask: ^2.0.4
   react-select: ^5.7.2
-  react-utils: ^1.0.0
-  react-uuid: ^2.0.0
   reactflow: ^11.6.1
   remix-utils: ^6.0.0
   typescript: ^5.0.2
@@ -54,6 +53,7 @@ dependencies:
   emoji-mart: 5.5.2
   framer-motion: 10.9.1_biqbaboplfbrettd7655fr4n2y
   isbot: 3.6.7
+  nanoid: 4.0.1
   react: 18.2.0
   react-apexcharts: 1.4.0_cbhe6kbz4fn4qz2xv4h7x6rhii
   react-audio-voice-recorder: 1.0.5_biqbaboplfbrettd7655fr4n2y
@@ -62,8 +62,6 @@ dependencies:
   react-icons: 4.8.0_react@18.2.0
   react-input-mask: 2.0.4_biqbaboplfbrettd7655fr4n2y
   react-select: 5.7.2_aen5vu2fkbnw3ssyd5drxdxkh4
-  react-utils: 1.0.0
-  react-uuid: 2.0.0
   reactflow: 11.6.1_biqbaboplfbrettd7655fr4n2y
   remix-utils: 6.0.0_dk2tduo4gx4denamyf4hlafioy
   up: 1.0.2
@@ -5899,6 +5897,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  /nanoid/4.0.1:
+    resolution: {integrity: sha512-udKGtCCUafD3nQtJg9wBhRP3KMbPglUsgV5JVsXhvyBs/oefqb4sqMEhKBBgqZncYowu58p1prsZQBYvAj/Gww==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
+
   /natural-compare-lite/1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
     dev: true
@@ -6589,15 +6593,6 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /react-utils/1.0.0:
-    resolution: {integrity: sha512-K7jaCSa/J6uVzL3MX4H9ZM3Ri3ZJubliwR4lqvdfEuFhD8I1bHu1fyUl6xTr3ZF0rK0jgQCHhHmbUbkgTgMfTw==}
-    dev: false
-
-  /react-uuid/2.0.0:
-    resolution: {integrity: sha512-FNUH/8WR/FEtx0Bu6gmt1eONfc413hhvrEXFWUSFGvznUhI4dYoVZA09p7JHoTpnM4WC2D/bG2YSxGKXF4oVLg==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: false
 
   /react/18.2.0:
