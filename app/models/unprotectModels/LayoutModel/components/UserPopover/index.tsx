@@ -1,14 +1,14 @@
-import { useFetcher } from "react-router-dom";
-import { Card, Divider, Popover } from "~/client/components";
-import { useRoot } from "~/client/hooks";
-import { Icons } from "~/client/icons";
-import { globalStyles } from "~/client/styles";
-import { PopoverButton } from "./PopoverButton";
-import { UserButton } from "./UserButton";
+import { useFetcher } from "@remix-run/react"
+import { Card, Divider, Popover } from "~/client/components"
+import { useRoot } from "~/client/hooks"
+import { Icons } from "~/client/icons"
+import { globalStyles } from "~/client/styles"
+import { PopoverButton } from "./PopoverButton"
+import { UserButton } from "./UserButton"
 
 export function UserPopover() {
-  const { Form } = useFetcher();
-  const { user } = useRoot();
+  const { Form } = useFetcher()
+  const { user } = useRoot()
 
   return (
     <Popover position="bottom-left" button={<UserButton />}>
@@ -27,7 +27,7 @@ export function UserPopover() {
             style={{
               height: "1.9rem",
               width: "1.9rem",
-              borderRadius: "9999px",
+              borderRadius: "9999px"
             }}
           />
 
@@ -41,7 +41,7 @@ export function UserPopover() {
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
                 maxWidth: "10rem",
-                minWidth: "10rem",
+                minWidth: "10rem"
               }}
             >
               {user.email}
@@ -54,7 +54,7 @@ export function UserPopover() {
                 minWidth: "10rem",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
-                textOverflow: "ellipsis",
+                textOverflow: "ellipsis"
               }}
             >
               {user.name || "Usuário sem nome"}
@@ -87,5 +87,5 @@ export function UserPopover() {
         </Form>
       </Card>
     </Popover>
-  );
+  )
 }

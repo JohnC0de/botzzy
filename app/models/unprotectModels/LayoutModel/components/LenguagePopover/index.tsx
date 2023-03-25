@@ -1,14 +1,14 @@
-import { useFetcher } from "react-router-dom";
-import { Card, Popover } from "~/client/components";
+import { useFetcher } from "@remix-run/react"
+import { Card, Popover } from "~/client/components"
 
-import { LenguageButton } from "./LenguageButton";
-import { PopoverButton } from "./PopoverButton";
+import { LenguageButton } from "./LenguageButton"
+import { PopoverButton } from "./PopoverButton"
 
 export function LenguagePopover() {
-  const { state, submit } = useFetcher();
+  const { state, submit } = useFetcher()
 
   function onChange(e: string) {
-    submit({ lenguage: e }, { method: "post", action: "/api/switchlenguage" });
+    submit({ lenguage: e }, { method: "post", action: "/api/switchlenguage" })
   }
 
   return (
@@ -34,5 +34,5 @@ export function LenguagePopover() {
         </Card>
       </Card>
     </Popover>
-  );
+  )
 }
